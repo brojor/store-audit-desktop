@@ -14,7 +14,7 @@
     >
       <div class="row">
         <h3 class="title col1">{{ kategories[katKey] }}</h3>
-        <div class="pointPerc col2">33%</div>
+        <div class="pointPerc col2">{{ calcKategoryPerc(katKey) }} %</div>
         <div class="pointPerc col2">45%</div>
         <div class="pointPerc col2">78%</div>
       </div>
@@ -25,7 +25,12 @@
           :key="pointIndex"
         >
           <div class="pointName col1">{{ points[katKey][pointKey] }}</div>
-          <div class="status col2">splněno</div>
+          <div class="status col2" :title="dataStore[katKey][pointKey].note">
+            <MySvg
+              :status="dataStore[katKey][pointKey].status"
+              :size="16"
+            ></MySvg>
+          </div>
           <div class="status col2">splněno</div>
           <div class="status col2">splněno</div>
         </div>
@@ -35,11 +40,13 @@
 </template>
 
 <script>
+import MySvg from '@/components/MySvg.vue';
 import dataStore from '../../dataStore';
 import { kategories, points, weights } from '../../names';
 
 export default {
   name: 'DesktopView',
+  components: { MySvg },
 
   data() {
     return {
@@ -48,6 +55,36 @@ export default {
       points,
       weights,
     };
+  },
+  methods: {
+    calcTotalAvailable(kategory) {
+      return Object.values(this.weights[kategory]).reduce(
+        (acc, val) => acc + val,
+      );
+    },
+    calcTotalGained(kategory) {
+      return Object.keys(this.weights[kategory]).reduce((acc, point) => {
+        if (this.dataStore[kategory][point].status === 'accepted') {
+          return acc + weights[kategory][point];
+        }
+        return acc;
+      }, 0);
+    },
+    calcKategoryPerc(kategory) {
+      const available = Object.values(this.weights[kategory]).reduce(
+        (acc, val) => acc + val,
+      );
+      const gained = Object.keys(this.weights[kategory]).reduce(
+        (acc, point) => {
+          if (this.dataStore[kategory][point].status === 'accepted') {
+            return acc + weights[kategory][point];
+          }
+          return acc;
+        },
+        0,
+      );
+      return ((gained * 100) / available).toFixed(1);
+    },
   },
 };
 </script>
@@ -65,6 +102,7 @@ h3.title {
 .pointName {
   background: #fcd5ce;
   padding: 0.75rem;
+  text-align: left;
 }
 .status {
   background: #fae1dd;
