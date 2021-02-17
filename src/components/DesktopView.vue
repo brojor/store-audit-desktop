@@ -19,7 +19,7 @@
           :key="auditIndex"
           class="pointPerc col2"
         >
-          audit{{ auditIndex }}
+          {{ katScoreAchieved(auditIndex, katKey) }} %
         </div>
       </div>
 
@@ -66,6 +66,16 @@ export default {
     };
   },
   methods: {
+    katScoreAchieved(auditIndex, katKey) {
+      const available = Object.values(this.weights[katKey]).reduce(
+        (acc, val) => acc + val,
+      );
+      const achieved = Object.values(
+        this.achievedScore[auditIndex][katKey],
+      ).reduce((acc, val) => acc + val);
+      return ((achieved * 100) / available).toFixed(2);
+    },
+
     calcTotalAvailable(kategory) {
       return Object.values(this.weights[kategory]).reduce(
         (acc, val) => acc + val,
