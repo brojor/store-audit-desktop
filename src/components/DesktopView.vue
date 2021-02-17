@@ -22,6 +22,7 @@
           audit{{ auditIndex }}
         </div>
       </div>
+
       <div class="points">
         <div
           class="row"
@@ -34,7 +35,10 @@
             :key="auditIndex"
             class="status col2"
           >
-            <MySvg :status="audit[katKey][pointKey].status" :size="16"></MySvg>
+            <MySvg
+              :status="audit.results[katKey][pointKey].status"
+              :size="16"
+            ></MySvg>
           </div>
         </div>
       </div>
@@ -120,20 +124,55 @@ export default {
         return Object.values(obj).reduce((acc, val) => acc + val);
       });
     },
+    // achievedScore() {
+    //   const result = {};
+    //   Object.keys(this.weights).forEach((kat) => {
+    //     result[kat] = {};
+    //     Object.keys(this.dataStore[kat]).forEach((point) => {
+    //       // eslint-disable-next-line
+    //       result[kat][point] =
+    //         this.dataStore[kat][point].status === 'accepted'
+    //           ? this.weights[kat][point]
+    //           : 0;
+    //     });
+    //   });
+    //   return result;
+    // },
+    // testComp() {
+    //   return this.audits.reduce((auditsObj, audit, index) => {
+    //     // eslint-disable-next-line
+    //     auditsObj[index] = Object.keys(this.weights).reduce(
+    //       (katsObj, katKey) => {
+    //         // eslint-disable-next-line
+    //         katsObj[katKey] = this.weights[katKey];
+    //         return katsObj;
+    //       },
+    //       {},
+    //     );
+
+    //     return auditsObj;
+    //   }, {});
+    // },
+    /* eslint-disable no-param-reassign */
     achievedScore() {
-      const result = {};
-      Object.keys(this.weights).forEach((kat) => {
-        result[kat] = {};
-        Object.keys(this.dataStore[kat]).forEach((point) => {
-          // eslint-disable-next-line
-          result[kat][point] =
-            this.dataStore[kat][point].status === 'accepted'
-              ? this.weights[kat][point]
-              : 0;
-        });
-      });
-      return result;
+      return this.audits.reduce((auditsObj, audit, index) => {
+        auditsObj[index] = Object.keys(audit.results).reduce((res, katKey) => {
+          res[katKey] = Object.keys(audit.results[katKey]).reduce(
+            (res2, pointKey) => {
+              // prettier-ignore
+              res2[pointKey] = audit.results[katKey][pointKey].status === 'accepted'
+                ? this.weights[katKey][pointKey]
+                : 0;
+              return res2;
+            },
+            {},
+          );
+          return res;
+        }, {});
+        return auditsObj;
+      }, {});
     },
+    /* eslint-enable no-param-reassign */
   },
 };
 </script>
