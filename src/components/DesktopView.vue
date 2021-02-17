@@ -8,36 +8,34 @@
       <div class="col2">85%</div>
     </div>
     <div
-      v-for="(katVal, katKey, katIndex) in dataStore"
+      v-for="(points, katKey, katIndex) in pointNames"
       :key="katIndex"
       class="kategory"
     >
       <div class="row">
-        <h3 class="title col1">{{ kategories[katKey] }}</h3>
-        <div class="pointPerc col2">
-          {{ calcTotalGained(katKey) }}|{{ calcAchievedScore(katKey) }}|{{
-            calcKategoryPerc(katKey)
-          }}
-          %
+        <h3 class="title col1">{{ katNames[katKey] }}</h3>
+        <div
+          v-for="(audit, auditIndex) in audits"
+          :key="auditIndex"
+          class="pointPerc col2"
+        >
+          audit{{ auditIndex }}
         </div>
-        <div class="pointPerc col2">45%</div>
-        <div class="pointPerc col2">78%</div>
       </div>
       <div class="points">
         <div
           class="row"
-          v-for="(pointVal, pointKey, pointIndex) in katVal"
+          v-for="(pointName, pointKey, pointIndex) in points"
           :key="pointIndex"
         >
-          <div class="pointName col1">{{ points[katKey][pointKey] }}</div>
-          <div class="status col2" :title="dataStore[katKey][pointKey].note">
-            <MySvg
-              :status="dataStore[katKey][pointKey].status"
-              :size="16"
-            ></MySvg>
+          <div class="pointName col1">{{ pointName }}</div>
+          <div
+            v-for="(audit, auditIndex) in audits"
+            :key="auditIndex"
+            class="status col2"
+          >
+            <MySvg :status="audit[katKey][pointKey].status" :size="16"></MySvg>
           </div>
-          <div class="status col2">splněno</div>
-          <div class="status col2">splněno</div>
         </div>
       </div>
     </div>
@@ -47,7 +45,8 @@
 <script>
 import MySvg from '@/components/MySvg.vue';
 import dataStore from '../../dataStore';
-import { kategories, points, weights } from '../../names';
+import audits from '../../dataStore2';
+import { katNames, pointNames, weights } from '../../names';
 
 export default {
   name: 'DesktopView',
@@ -55,9 +54,10 @@ export default {
 
   data() {
     return {
+      audits,
       dataStore,
-      kategories,
-      points,
+      katNames,
+      pointNames,
       weights,
     };
   },

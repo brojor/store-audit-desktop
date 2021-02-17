@@ -1,6 +1,6 @@
 // eslint-disable max-len
 module.exports = {
-  kategories: {
+  katNames: {
     kat0: 'Před prodejnou, vstup do prodejny',
     kat1: 'V prodejně',
     kat2: 'Sklad, zázemí, kancelář',
@@ -13,7 +13,7 @@ module.exports = {
     kat9: 'Expirace',
     kat10: 'Personál',
   },
-  points: {
+  pointNames: {
     kat0: {
       p0: 'Výlohy jsou čisté',
       p1:
