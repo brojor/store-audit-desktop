@@ -3,7 +3,7 @@
     <h1>Desktop view</h1>
     <div class="totalPerc">
       <div class="col1">Celkový počet procent</div>
-      <div class="col2">98%</div>
+      <div class="col2">{{ summaryPercAvailable }}</div>
       <div class="col2">93%</div>
       <div class="col2">85%</div>
     </div>
@@ -14,7 +14,12 @@
     >
       <div class="row">
         <h3 class="title col1">{{ kategories[katKey] }}</h3>
-        <div class="pointPerc col2">{{ calcKategoryPerc(katKey) }} %</div>
+        <div class="pointPerc col2">
+          {{ calcTotalGained(katKey) }}|{{ calcAchievedScore(katKey) }}|{{
+            calcKategoryPerc(katKey)
+          }}
+          %
+        </div>
         <div class="pointPerc col2">45%</div>
         <div class="pointPerc col2">78%</div>
       </div>
@@ -84,6 +89,50 @@ export default {
         0,
       );
       return ((gained * 100) / available).toFixed(1);
+    },
+    calcAchievedScore(kat) {
+      return Object.values(this.achievedScore[kat]).reduce(
+        (acc, val) => acc + val,
+      );
+    },
+  },
+  computed: {
+    summaryPercAvailable() {
+      const katWeights = Object.values(this.weights);
+      // eslint-disable-next-line
+      const summs = katWeights.map((obj) => {
+        return Object.values(obj).reduce((acc, val) => acc + val);
+      });
+      return summs.reduce((acc, val) => acc + val);
+    },
+    summaryPercGained() {
+      // eslint-disable-next-line
+      const gainedWeights = Object.keys(this.weights).map((kat) => {
+        // eslint-disable-next-line
+        return Object.keys(this.dataStore[kat]).map((point) => {
+          return this.dataStore[kat][point].status === 'accepted'
+            ? this.weights[kat][point]
+            : 0;
+        });
+      });
+      // eslint-disable-next-line
+      return gainedWeights.map((obj) => {
+        return Object.values(obj).reduce((acc, val) => acc + val);
+      });
+    },
+    achievedScore() {
+      const result = {};
+      Object.keys(this.weights).forEach((kat) => {
+        result[kat] = {};
+        Object.keys(this.dataStore[kat]).forEach((point) => {
+          // eslint-disable-next-line
+          result[kat][point] =
+            this.dataStore[kat][point].status === 'accepted'
+              ? this.weights[kat][point]
+              : 0;
+        });
+      });
+      return result;
     },
   },
 };

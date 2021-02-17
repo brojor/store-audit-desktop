@@ -1060,7 +1060,7 @@ body .markdown-body
     <h1>Desktop view</h1>
     <div class="totalPerc">
       <div class="col1">Celkový počet procent</div>
-      <div class="col2">98%</div>
+      <div class="col2">{{ summaryPercAvailable }}</div>
       <div class="col2">93%</div>
       <div class="col2">85%</div>
     </div>
@@ -1071,10 +1071,7 @@ body .markdown-body
     >
       <div class="row">
         <h3 class="title col1">{{ kategories[katKey] }}</h3>
-        <div class="pointPerc col2">
-          {{ calcTotalGained(katKey) }} z {{ calcTotalAvailable(katKey) }}
-          {{ calcKategoryPerc(katKey) }}
-        </div>
+        <div class="pointPerc col2">{{ calcKategoryPerc(katKey) }} %</div>
         <div class="pointPerc col2">45%</div>
         <div class="pointPerc col2">78%</div>
       </div>
@@ -1085,7 +1082,7 @@ body .markdown-body
           :key="pointIndex"
         >
           <div class="pointName col1">{{ points[katKey][pointKey] }}</div>
-          <div class="status col2">
+          <div class="status col2" :title="dataStore[katKey][pointKey].note">
             <MySvg
               :status="dataStore[katKey][pointKey].status"
               :size="16"
@@ -1142,7 +1139,27 @@ export default {
         },
         0,
       );
-      return (available * 100) / ;
+      return ((gained * 100) / available).toFixed(1);
+    },
+  },
+  computed: {
+    summaryPercAvailable() {
+      const katWeights = Object.values(this.weights);
+      // eslint-disable-next-line
+      const summs = katWeights.map((obj) => {
+        return Object.values(obj).reduce((acc, val) => acc + val);
+      });
+      return summs.reduce((acc, val) => acc + val);
+    },
+    summaryPercGained() {
+      // eslint-disable-next-line
+      const variable = Object.keys(this.weights).map((kat) => {
+        return Object.keys(this.dataStore[kat]).map((point) => {
+          if (this.dataStore[kat][point].status === '')
+        });
+      });
+
+      return variable;
     },
   },
 };
