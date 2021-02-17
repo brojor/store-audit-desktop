@@ -3,9 +3,12 @@
     <h1>Desktop view</h1>
     <div class="totalPerc">
       <div class="col1">Celkový počet procent</div>
-      <div class="col2">{{ summaryPercAvailable }}</div>
+      <div v-for="(audit, auditIndex) in audits" :key="auditIndex" class="col2">
+        {{ allKatsPerc(auditIndex) }} %
+      </div>
+      <!-- <div class="col2">{{ allKatsPerc(0) }}</div>
       <div class="col2">93%</div>
-      <div class="col2">85%</div>
+      <div class="col2">85%</div> -->
     </div>
     <div
       v-for="(points, katKey, katIndex) in pointNames"
@@ -19,7 +22,7 @@
           :key="auditIndex"
           class="pointPerc col2"
         >
-          {{ katScoreAchieved(auditIndex, katKey) }} %
+          {{ katScorePerc(auditIndex, katKey) }} %
         </div>
       </div>
 
@@ -66,7 +69,7 @@ export default {
     };
   },
   methods: {
-    katScoreAchieved(auditIndex, katKey) {
+    katScorePerc(auditIndex, katKey) {
       const available = Object.values(this.weights[katKey]).reduce(
         (acc, val) => acc + val,
       );
@@ -74,6 +77,23 @@ export default {
         this.achievedScore[auditIndex][katKey],
       ).reduce((acc, val) => acc + val);
       return ((achieved * 100) / available).toFixed(2);
+    },
+    allKatsPerc(auditIndex) {
+      // prettier-ignore
+      const totalAvailable = Object.values(this.weights)
+        .map((kat) => Object.values(kat).reduce(
+          (acc, pointWeight) => acc + pointWeight,
+        ))
+        .reduce((acc, val) => acc + val);
+
+      const totalAchieved = Object.values(
+        this.achievedScore[auditIndex],
+      ).reduce(
+        // prettier-ignore
+        (acc, points) => acc + Object.values(points).reduce((acc2, val) => acc2 + val),
+        0,
+      );
+      return ((totalAchieved * 100) / totalAvailable).toFixed(2);
     },
 
     calcTotalAvailable(kategory) {
