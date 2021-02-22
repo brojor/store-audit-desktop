@@ -1,50 +1,61 @@
 <template>
   <main>
     <h1>Desktop view</h1>
-    <div class="totalPerc">
-      <div class="col1">Celkový počet procent</div>
-      <div v-for="(audit, auditIndex) in audits" :key="auditIndex" class="col2">
-        {{ allKatsPerc(auditIndex) }} %
-      </div>
-      <!-- <div class="col2">{{ allKatsPerc(0) }}</div>
+    <div class="contos">
+      <div class="totalPerc">
+        <div class="col1">Celkový počet procent</div>
+        <div
+          v-for="(audit, auditIndex) in audits"
+          :key="auditIndex"
+          class="col2"
+        >
+          {{ allKatsPerc(auditIndex) }} %
+        </div>
+        <!-- <div class="col2">{{ allKatsPerc(0) }}</div>
       <div class="col2">93%</div>
       <div class="col2">85%</div> -->
+      </div>
     </div>
+    <div class="sum-kat-perc"><h5>100%</h5></div>
+
     <div
       v-for="(points, katKey, katIndex) in pointNames"
       :key="katIndex"
       class="kategory"
     >
-      <div class="row">
-        <h3 class="title col1">{{ katNames[katKey] }}</h3>
-        <div
-          v-for="(audit, auditIndex) in audits"
-          :key="auditIndex"
-          class="pointPerc col2"
-        >
-          {{ katScorePerc(auditIndex, katKey) }} %
-        </div>
-      </div>
-
-      <div class="points">
-        <div
-          class="row"
-          v-for="(pointName, pointKey, pointIndex) in points"
-          :key="pointIndex"
-        >
-          <div class="pointName col1">{{ pointName }}</div>
+      <div class="contos">
+        <div class="row">
+          <h3 class="title col1">{{ katNames[katKey] }}</h3>
           <div
             v-for="(audit, auditIndex) in audits"
             :key="auditIndex"
-            class="status col2"
+            class="pointPerc col2"
           >
-            <MySvg
-              :status="audit.results[katKey][pointKey].status"
-              :size="16"
-            ></MySvg>
+            {{ katScorePerc(auditIndex, katKey) }} %
+          </div>
+        </div>
+
+        <div class="points">
+          <div
+            class="row"
+            v-for="(pointName, pointKey, pointIndex) in points"
+            :key="pointIndex"
+          >
+            <div class="pointName col1">{{ pointName }}</div>
+            <div
+              v-for="(audit, auditIndex) in audits"
+              :key="auditIndex"
+              class="status col2"
+            >
+              <MySvg
+                :status="audit.results[katKey][pointKey].status"
+                :size="16"
+              ></MySvg>
+            </div>
           </div>
         </div>
       </div>
+      <div class="sum-kat-perc"><h5>100%</h5></div>
     </div>
   </main>
 </template>
@@ -208,12 +219,35 @@ export default {
 </script>
 
 <style lang="css" scoped>
+main {
+  width: 90vw;
+  margin: auto;
+}
+
 h3.title {
   background-color: #fec5bb;
 }
 
+.kategory {
+  display: flex;
+}
+.sum-kat-perc {
+  position: relative;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  width: 8rem;
+}
+.sum-kat-perc h5 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(90deg);
+  font-size: 1.5rem;
+}
+
 .row {
   display: flex;
+  width: 100%;
   border-bottom: 1px solid black;
   /*justify-content: space-between;*/
 }
@@ -230,11 +264,13 @@ h3.title {
 }
 .col1 {
   border-right: 1px solid black;
-  width: 500px;
+  /*width: 500px;*/
+  flex-basis: 40%;
 }
 .col2 {
   border-right: 1px solid black;
-  width: 100px;
+  /*width: 100px;*/
+  flex-basis: 10%;
 }
 .pointPerc {
   background-color: #fec5bb;
@@ -246,5 +282,8 @@ h3.title {
 }
 .totalPerc div {
   padding: 0.5rem;
+}
+.contos {
+  width: 90%;
 }
 </style>
