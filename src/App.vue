@@ -33,4 +33,16 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.center-x-y {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

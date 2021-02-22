@@ -1,61 +1,67 @@
 <template>
   <main>
     <h1>Desktop view</h1>
-    <div class="contos">
-      <div class="totalPerc">
-        <div class="col1">Celkový počet procent</div>
-        <div
-          v-for="(audit, auditIndex) in audits"
-          :key="auditIndex"
-          class="col2"
-        >
-          {{ allKatsPerc(auditIndex) }} %
-        </div>
-        <!-- <div class="col2">{{ allKatsPerc(0) }}</div>
-      <div class="col2">93%</div>
-      <div class="col2">85%</div> -->
-      </div>
-    </div>
-    <div class="sum-kat-perc"><h5>100%</h5></div>
-
-    <div
-      v-for="(points, katKey, katIndex) in pointNames"
-      :key="katIndex"
-      class="kategory"
-    >
-      <div class="contos">
-        <div class="row">
-          <h3 class="title col1">{{ katNames[katKey] }}</h3>
+    <div class="main-container">
+      <div class="container">
+        <div class="totalPerc">
+          <div class="col1 flex justify-between">
+            <h4>Celkový počet procent</h4>
+            <h4>67,89%</h4>
+          </div>
           <div
             v-for="(audit, auditIndex) in audits"
             :key="auditIndex"
-            class="pointPerc col2"
+            class="col2 center-x-y"
           >
-            {{ katScorePerc(auditIndex, katKey) }} %
-          </div>
-        </div>
-
-        <div class="points">
-          <div
-            class="row"
-            v-for="(pointName, pointKey, pointIndex) in points"
-            :key="pointIndex"
-          >
-            <div class="pointName col1">{{ pointName }}</div>
-            <div
-              v-for="(audit, auditIndex) in audits"
-              :key="auditIndex"
-              class="status col2"
-            >
-              <MySvg
-                :status="audit.results[katKey][pointKey].status"
-                :size="16"
-              ></MySvg>
-            </div>
+            <h4>{{ allKatsPerc(auditIndex) }} %</h4>
           </div>
         </div>
       </div>
-      <div class="sum-kat-perc"><h5>100%</h5></div>
+      <!-- <div class="sum-kat-perc"><h5>100%</h5></div> -->
+
+      <div
+        v-for="(points, katKey, katIndex) in pointNames"
+        :key="katIndex"
+        class="kategory"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="title col1">
+              <h3>{{ katNames[katKey] }}</h3>
+              <h3>Celkem: 56,78%</h3>
+            </div>
+
+            <div
+              v-for="(audit, auditIndex) in audits"
+              :key="auditIndex"
+              class="pointPerc col2"
+            >
+              {{ katScorePerc(auditIndex, katKey) }} %
+            </div>
+          </div>
+
+          <div class="points">
+            <div
+              class="row"
+              v-for="(pointName, pointKey, pointIndex) in points"
+              :key="pointIndex"
+            >
+              <div class="pointName col1">{{ pointName }}</div>
+              <div
+                v-for="(audit, auditIndex) in audits"
+                :key="auditIndex"
+                class="status col2"
+              >
+                <MySvg
+                  :status="audit.results[katKey][pointKey].status"
+                  :size="16"
+                ></MySvg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="sum-kat-perc"><h5>100%</h5></div> -->
+      </div>
     </div>
   </main>
 </template>
@@ -165,35 +171,7 @@ export default {
         return Object.values(obj).reduce((acc, val) => acc + val);
       });
     },
-    // achievedScore() {
-    //   const result = {};
-    //   Object.keys(this.weights).forEach((kat) => {
-    //     result[kat] = {};
-    //     Object.keys(this.dataStore[kat]).forEach((point) => {
-    //       // eslint-disable-next-line
-    //       result[kat][point] =
-    //         this.dataStore[kat][point].status === 'accepted'
-    //           ? this.weights[kat][point]
-    //           : 0;
-    //     });
-    //   });
-    //   return result;
-    // },
-    // testComp() {
-    //   return this.audits.reduce((auditsObj, audit, index) => {
-    //     // eslint-disable-next-line
-    //     auditsObj[index] = Object.keys(this.weights).reduce(
-    //       (katsObj, katKey) => {
-    //         // eslint-disable-next-line
-    //         katsObj[katKey] = this.weights[katKey];
-    //         return katsObj;
-    //       },
-    //       {},
-    //     );
 
-    //     return auditsObj;
-    //   }, {});
-    // },
     /* eslint-disable no-param-reassign */
     achievedScore() {
       return this.audits.reduce((auditsObj, audit, index) => {
@@ -224,8 +202,11 @@ main {
   margin: auto;
 }
 
-h3.title {
+.title {
   background-color: #fec5bb;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .kategory {
@@ -249,11 +230,12 @@ h3.title {
   display: flex;
   width: 100%;
   border-bottom: 1px solid black;
+  /*padding: 0.5rem;*/
   /*justify-content: space-between;*/
 }
 .pointName {
   background: #fcd5ce;
-  padding: 0.75rem;
+
   text-align: left;
 }
 .status {
@@ -264,8 +246,11 @@ h3.title {
 }
 .col1 {
   border-right: 1px solid black;
+  border-left: 1px solid black;
   /*width: 500px;*/
   flex-basis: 40%;
+  /*padding: 0 1rem;*/
+  padding: 0.5rem 1rem;
 }
 .col2 {
   border-right: 1px solid black;
@@ -273,7 +258,13 @@ h3.title {
   flex-basis: 10%;
 }
 .pointPerc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #fec5bb;
+  font-size: 1.1rem;
+  font-weight: 700;
+  /*padding: 0.5rem;*/
 }
 .totalPerc {
   display: flex;
@@ -281,9 +272,18 @@ h3.title {
   font-size: 1.6rem;
 }
 .totalPerc div {
-  padding: 0.5rem;
+  /*padding: 0.5rem;*/
 }
-.contos {
+.container {
+  width: 100%;
+}
+.main-container {
+  /*border: 1px solid black;*/
   width: 90%;
+  margin: auto;
+  border-top: 1px solid black;
+}
+.title {
+  padding: 0.5rem 1rem;
 }
 </style>
