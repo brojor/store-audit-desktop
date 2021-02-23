@@ -6,18 +6,17 @@
         <div class="totalPerc">
           <div class="col1 flex justify-between">
             <h4>Celkový počet procent</h4>
-            <h4>67,89%</h4>
+            <h4>{{ halfYearScore.toFixed(2) }} %</h4>
           </div>
           <div
             v-for="(audit, auditIndex) in audits"
             :key="auditIndex"
             class="col2 center-x-y"
           >
-            <h4>{{ allKatsPerc(auditIndex) }} %</h4>
+            <h4>{{ totalScorePerAudit(auditIndex) }} %</h4>
           </div>
         </div>
       </div>
-      <!-- <div class="sum-kat-perc"><h5>100%</h5></div> -->
 
       <div
         v-for="(points, katKey, katIndex) in pointNames"
@@ -28,7 +27,7 @@
           <div class="row">
             <div class="title col1">
               <h3>{{ katNames[katKey] }}</h3>
-              <h3>Celkem: 56,78%</h3>
+              <h3>Celkem: {{ totalScoreInKat(katKey).toFixed(2) }}%</h3>
             </div>
 
             <div
@@ -60,7 +59,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="sum-kat-perc"><h5>100%</h5></div> -->
       </div>
     </div>
   </main>
@@ -83,6 +81,7 @@ export default {
       katNames,
       pointNames,
       weights,
+      countCompletedAudits: 6,
     };
   },
   methods: {
@@ -95,7 +94,7 @@ export default {
       ).reduce((acc, val) => acc + val);
       return ((achieved * 100) / available).toFixed(2);
     },
-    allKatsPerc(auditIndex) {
+    totalScorePerAudit(auditIndex) {
       // prettier-ignore
       const totalAvailable = Object.values(this.weights)
         .map((kat) => Object.values(kat).reduce(
@@ -110,68 +109,21 @@ export default {
         (acc, points) => acc + Object.values(points).reduce((acc2, val) => acc2 + val),
         0,
       );
-      return ((totalAchieved * 100) / totalAvailable).toFixed(2);
+      return (totalAchieved * 100) / totalAvailable;
     },
-
-    calcTotalAvailable(kategory) {
-      return Object.values(this.weights[kategory]).reduce(
+    totalScoreInKat(kategory) {
+      const maxScore = Object.values(this.weights[kategory]).reduce(
         (acc, val) => acc + val,
       );
-    },
-    calcTotalGained(kategory) {
-      return Object.keys(this.weights[kategory]).reduce((acc, point) => {
-        if (this.dataStore[kategory][point].status === 'accepted') {
-          return acc + weights[kategory][point];
-        }
-        return acc;
-      }, 0);
-    },
-    calcKategoryPerc(kategory) {
-      const available = Object.values(this.weights[kategory]).reduce(
-        (acc, val) => acc + val,
-      );
-      const gained = Object.keys(this.weights[kategory]).reduce(
-        (acc, point) => {
-          if (this.dataStore[kategory][point].status === 'accepted') {
-            return acc + weights[kategory][point];
-          }
-          return acc;
-        },
-        0,
-      );
-      return ((gained * 100) / available).toFixed(1);
-    },
-    calcAchievedScore(kat) {
-      return Object.values(this.achievedScore[kat]).reduce(
-        (acc, val) => acc + val,
-      );
+      const available = maxScore * this.countCompletedAudits;
+      const achieved = Object.values(this.achievedScore)
+        .map((audit) => Object.values(audit[kategory]))
+        .flat()
+        .reduce((acc, val) => acc + val);
+      return (achieved * 100) / available;
     },
   },
   computed: {
-    summaryPercAvailable() {
-      const katWeights = Object.values(this.weights);
-      // eslint-disable-next-line
-      const summs = katWeights.map((obj) => {
-        return Object.values(obj).reduce((acc, val) => acc + val);
-      });
-      return summs.reduce((acc, val) => acc + val);
-    },
-    summaryPercGained() {
-      // eslint-disable-next-line
-      const gainedWeights = Object.keys(this.weights).map((kat) => {
-        // eslint-disable-next-line
-        return Object.keys(this.dataStore[kat]).map((point) => {
-          return this.dataStore[kat][point].status === 'accepted'
-            ? this.weights[kat][point]
-            : 0;
-        });
-      });
-      // eslint-disable-next-line
-      return gainedWeights.map((obj) => {
-        return Object.values(obj).reduce((acc, val) => acc + val);
-      });
-    },
-
     /* eslint-disable no-param-reassign */
     achievedScore() {
       return this.audits.reduce((auditsObj, audit, index) => {
@@ -190,6 +142,14 @@ export default {
         }, {});
         return auditsObj;
       }, {});
+    },
+    halfYearScore() {
+      // prettier-ignor
+      return (
+        Object.keys(this.audits)
+          .map((auditIndex) => this.totalScorePerAudit(auditIndex))
+          .reduce((acc, val) => acc + val) / Object.keys(this.audits).length
+      );
     },
     /* eslint-enable no-param-reassign */
   },
@@ -280,8 +240,8 @@ main {
 .main-container {
   /*border: 1px solid black;*/
   width: 90%;
-  margin: auto;
   border-top: 1px solid black;
+  margin: 3rem auto;
 }
 .title {
   padding: 0.5rem 1rem;
