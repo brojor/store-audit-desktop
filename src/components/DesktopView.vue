@@ -35,7 +35,7 @@
               :key="auditIndex"
               class="pointPerc col2"
             >
-              {{ katScorePerc(auditIndex, katKey) }} %
+              {{ katScorePerc(auditIndex, katKey).toFixed(2) }} %
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default {
       const achieved = Object.values(
         this.achievedScore[auditIndex][katKey],
       ).reduce((acc, val) => acc + val);
-      return ((achieved * 100) / available).toFixed(2);
+      return (achieved * 100) / available;
     },
     totalScorePerAudit(auditIndex) {
       // prettier-ignore
@@ -163,7 +163,7 @@ main {
 }
 
 .title {
-  background-color: #fec5bb;
+  background: var(--bg-semidark);
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
@@ -195,11 +195,13 @@ main {
 }
 .pointName {
   background: #fcd5ce;
+  background: var(--bg-mid);
 
   text-align: left;
 }
 .status {
-  background: #fae1dd;
+  /*background: #fae1dd;*/
+  background: var(--bg-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,7 +223,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fec5bb;
+  /*background-color: #fec5bb;*/
+  background: var(--bg-semidark);
   font-size: 1.1rem;
   font-weight: 700;
   /*padding: 0.5rem;*/
@@ -229,7 +232,9 @@ main {
 .totalPerc {
   display: flex;
   background: #783f8e;
+  background: var(--bg-dark);
   font-size: 1.6rem;
+  border-bottom: 1px solid black;
 }
 .totalPerc div {
   /*padding: 0.5rem;*/

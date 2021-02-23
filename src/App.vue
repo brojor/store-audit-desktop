@@ -23,6 +23,12 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --bg-light: #d3eeed;
+  --bg-mid: #a3d2d1;
+  --bg-semidark: #72b6b5;
+  --bg-dark: #107e7d;
+}
 
 html {
   font-size: 62.5%;
