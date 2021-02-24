@@ -64,6 +64,7 @@
                 v-for="(audit, auditIndex) in audits"
                 :key="auditIndex"
                 class="status col2"
+                :title="audit.results[katKey][pointKey].note"
               >
                 <MySvg
                   :status="audit.results[katKey][pointKey].status"
@@ -237,7 +238,7 @@ main {
 .pointName {
   background: #fcd5ce;
   background: var(--bg-mid);
-
+  font-size: 1.1rem;
   text-align: left;
 }
 .status {
@@ -300,6 +301,7 @@ main {
   font-size: 1.2rem;
   /*color: white;*/
   font-weight: 700;
+  letter-spacing: 3px;
 }
 .bubble {
   background: white;

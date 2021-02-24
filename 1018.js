@@ -5,11 +5,11 @@ const audit1 = {
   results: {
     kat0: {
       p0: { status: 'accepted', note: '' },
-      p1: { status: 'accepted', note: 'bla bla' },
+      p1: { status: 'accepted', note: '' },
       p2: { status: 'accepted', note: '' },
-      p3: { status: 'accepted', note: 'Něco se mi nezdá, ale nevím co' },
+      p3: { status: 'accepted', note: '' },
       p4: { status: 'accepted', note: '' },
-      p5: { status: 'accepted', note: 'třetí poznámka' },
+      p5: { status: 'accepted', note: '' },
     },
     kat1: {
       p0: { status: 'accepted', note: '' },
@@ -113,12 +113,15 @@ const audit2 = {
   month: '2020 / 10',
   results: {
     kat0: {
-      p0: { status: 'rejected', note: '' },
-      p1: { status: 'accepted', note: 'bla bla' },
+      p0: {
+        status: 'rejected',
+        note: 'TOTO JE JEN ZKOUŠKA:\n Výloha byla ušmudlaná a zaprášená',
+      },
+      p1: { status: 'accepted', note: '' },
       p2: { status: 'accepted', note: '' },
-      p3: { status: 'accepted', note: 'Něco se mi nezdá, ale nevím co' },
+      p3: { status: 'accepted', note: '' },
       p4: { status: 'accepted', note: '' },
-      p5: { status: 'accepted', note: 'třetí poznámka' },
+      p5: { status: 'accepted', note: '' },
     },
     kat1: {
       p0: { status: 'accepted', note: '' },
