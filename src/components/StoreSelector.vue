@@ -79,10 +79,13 @@ export default {
 
 h1 {
   /*margin-top: 0.5rem;*/
-  background: var(--bg-semidark);
-  padding: 0.25rem 3rem;
+  background: white;
+  padding: 0.5rem 3rem;
   border-radius: 1rem;
-  margin: 0 2rem;
+  margin: auto 2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
 }
 
 button {

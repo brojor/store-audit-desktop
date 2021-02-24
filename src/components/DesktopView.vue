@@ -1,7 +1,5 @@
 <template>
   <main>
-    <!-- <button @click="testfn">click</button> -->
-    <h1>Desktop view</h1>
     <div class="main-container">
       <header>
         <div class="row kategory">
@@ -200,6 +198,7 @@ header {
 }
 
 main {
+  /*justify-content: center;*/
   width: 90vw;
   margin: auto;
 }
@@ -289,7 +288,7 @@ main {
   /*border: 1px solid black;*/
   width: 90%;
   border-top: 1px solid black;
-  margin: 3rem auto;
+  margin: 0 auto;
 }
 .date {
   font-size: 1.2rem;

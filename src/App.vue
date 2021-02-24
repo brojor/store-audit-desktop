@@ -1,21 +1,25 @@
 <template>
   <div id="app">
+    <AuditStoreHeader />
     <DesktopView />
   </div>
 </template>
 
 <script>
+import AuditStoreHeader from '@/components/AuditStoreHeader.vue';
 import DesktopView from './components/DesktopView.vue';
 
 export default {
   name: 'App',
   components: {
     DesktopView,
+    AuditStoreHeader,
   },
 };
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 *,
 *::after,
 *::before {
@@ -26,11 +30,13 @@ export default {
 :root {
   --bg-light: #fde6d8;
   --bg-mid: #fcdcc5;
-  --bg-semidark: #d0d2dc;
-  --bg-dark: #5c80bc;
+  --bg-semidark: #f9b07c;
+  --bg-dark: #f47920;
+  --bg-main: #90837c;
 }
 
 html {
+  background: var(--bg-main);
   font-size: 62.5%;
 }
 #app {
