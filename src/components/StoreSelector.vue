@@ -97,6 +97,10 @@ button {
   padding: 0.1rem;
 }
 button:hover {
-  background: #7995c4;
+  background: var(--bg-semidark);
+}
+button:active {
+  background: var(--bg-semidark);
+  box-shadow: inset 0px 0px 7px 1px rgba(255, 255, 255, 0.5);
 }
 </style>
