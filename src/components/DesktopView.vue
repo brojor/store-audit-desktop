@@ -87,7 +87,6 @@ export default {
       katNames,
       pointNames,
       weights,
-      countCompletedAudits: 6,
     };
   },
   methods: {
@@ -121,7 +120,7 @@ export default {
       const maxScore = Object.values(this.weights[kategory]).reduce(
         (acc, val) => acc + val,
       );
-      const available = maxScore * this.countCompletedAudits;
+      const available = maxScore * this.numOfAudits;
       const achieved = Object.values(this.achievedScore)
         .map((audit) => Object.values(audit[kategory]))
         .flat()
@@ -149,22 +148,19 @@ export default {
         return auditsObj;
       }, {});
     },
-    // halfYearScore() {
-    //   return (
-    //     Object.keys(this.audits)
-    //       .map((auditIndex) => this.totalScorePerAudit(auditIndex))
-    //       .reduce((acc, val) => acc + val) / Object.keys(this.audits).length
-    //   );
-    // },
-    halfYearScore() {
-      const numOfAudits = this.sumPoints.filter((score) => score > 0).length;
-      const achivedScore = this.sumPoints.reduce((acc, val) => acc + val);
+    numOfAudits() {
+      return this.sumPoints.filter((score) => score > 0).length;
+    },
+    maxScorePerAudit() {
       // prettier-ignore
-      const availablePerAudit = Object.values(this.weights)
+      return Object.values(this.weights)
         .map((kat) => Object.values(kat)
           .reduce((acc, pointWeight) => acc + pointWeight))
         .reduce((acc, val) => acc + val);
-      return (achivedScore / (availablePerAudit * numOfAudits)) * 100;
+    },
+    halfYearScore() {
+      const achivedScore = this.sumPoints.reduce((acc, val) => acc + val);
+      return (achivedScore / (this.maxScorePerAudit * this.numOfAudits)) * 100;
     },
     // vrací pole součtů celkového počtu bodů za jeden audit
     sumPoints() {
@@ -173,6 +169,7 @@ export default {
         .map((audit) => Object.values(audit).map((kat) => Object.values(kat)
           .reduce((acc, val) => acc + val)).reduce((a, v) => a + v));
     },
+
     /* eslint-enable no-param-reassign */
   },
 };
