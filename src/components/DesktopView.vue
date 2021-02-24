@@ -249,7 +249,7 @@ main {
 }
 .col1 {
   border-right: 1px solid black;
-  border-left: 1px solid black;
+  /*border-left: 1px solid black;*/
   /*width: 500px;*/
   flex-basis: 40%;
   /*padding: 0 1rem;*/
@@ -260,6 +260,10 @@ main {
   /*width: 100px;*/
   flex-basis: 10%;
 }
+.col2:last-child {
+  border: none;
+}
+
 .pointPerc {
   display: flex;
   align-items: center;
@@ -287,8 +291,10 @@ main {
 .main-container {
   /*border: 1px solid black;*/
   width: 90%;
-  border-top: 1px solid black;
+  border: 1px solid black;
   margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .date {
   font-size: 1.2rem;
