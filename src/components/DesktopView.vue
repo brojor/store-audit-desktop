@@ -2,6 +2,12 @@
   <main>
     <h1>Desktop view</h1>
     <div class="main-container">
+      <div class="kategory">
+        <div class="title col1"></div>
+        <div class="status col2" v-for="(audit, index) in audits" :key="index">
+          {{ audit.month }}
+        </div>
+      </div>
       <div class="container">
         <div class="totalPerc">
           <div class="col1 flex justify-between">
@@ -143,13 +149,29 @@ export default {
         return auditsObj;
       }, {});
     },
+    // halfYearScore() {
+    //   return (
+    //     Object.keys(this.audits)
+    //       .map((auditIndex) => this.totalScorePerAudit(auditIndex))
+    //       .reduce((acc, val) => acc + val) / Object.keys(this.audits).length
+    //   );
+    // },
     halfYearScore() {
-      // prettier-ignor
-      return (
-        Object.keys(this.audits)
-          .map((auditIndex) => this.totalScorePerAudit(auditIndex))
-          .reduce((acc, val) => acc + val) / Object.keys(this.audits).length
-      );
+      const numOfAudits = this.sumPoints.filter((score) => score > 0).length;
+      const achivedScore = this.sumPoints.reduce((acc, val) => acc + val);
+      // prettier-ignore
+      const availablePerAudit = Object.values(this.weights)
+        .map((kat) => Object.values(kat)
+          .reduce((acc, pointWeight) => acc + pointWeight))
+        .reduce((acc, val) => acc + val);
+      return (achivedScore / (availablePerAudit * numOfAudits)) * 100;
+    },
+    // vrací pole součtů celkového počtu bodů za jeden audit
+    sumPoints() {
+      // prettier-ignore
+      return Object.values(this.achievedScore)
+        .map((audit) => Object.values(audit).map((kat) => Object.values(kat)
+          .reduce((acc, val) => acc + val)).reduce((a, v) => a + v));
     },
     /* eslint-enable no-param-reassign */
   },
