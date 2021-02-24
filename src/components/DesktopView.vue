@@ -1,28 +1,38 @@
 <template>
   <main>
+    <!-- <button @click="testfn">click</button> -->
     <h1>Desktop view</h1>
     <div class="main-container">
-      <div class="kategory">
-        <div class="title col1">tst</div>
-        <div class="status col2" v-for="(audit, index) in audits" :key="index">
-          {{ audit.month }}
-        </div>
-      </div>
-      <div class="container">
-        <div class="totalPerc">
-          <div class="col1 flex justify-between">
-            <h4>Celkový počet procent</h4>
-            <h4>{{ halfYearScore.toFixed(2) }} %</h4>
-          </div>
+      <header>
+        <div class="row kategory">
+          <StoreSelector
+            class="col1"
+            @storeChanged="toggleStore"
+          ></StoreSelector>
           <div
-            v-for="(audit, auditIndex) in audits"
-            :key="auditIndex"
-            class="col2 center-x-y"
+            class="col2 center-x-y date"
+            v-for="(audit, index) in audits"
+            :key="index"
           >
-            <h4>{{ totalScorePerAudit(auditIndex) }} %</h4>
+            {{ audit.month }}
           </div>
         </div>
-      </div>
+        <div class="container">
+          <div class="totalPerc">
+            <div class="col1 flex justify-between">
+              <h5>Celkový počet procent</h5>
+              <h5>{{ halfYearScore.toFixed(2) }} %</h5>
+            </div>
+            <div
+              v-for="(audit, auditIndex) in audits"
+              :key="auditIndex"
+              class="col2 center-x-y"
+            >
+              <h5>{{ totalScorePerAudit(auditIndex) }} %</h5>
+            </div>
+          </div>
+        </div>
+      </header>
 
       <div
         v-for="(points, katKey, katIndex) in pointNames"
@@ -71,18 +81,23 @@
 </template>
 
 <script>
+import StoreSelector from '@/components/StoreSelector.vue';
 import MySvg from '@/components/MySvg.vue';
 import dataStore from '../../dataStore';
-import audits from '../../1018';
+import store1015 from '../../1015';
+import store1016 from '../../1016';
+import store1018 from '../../1018';
+
 import { katNames, pointNames, weights } from '../../names';
 
 export default {
   name: 'DesktopView',
-  components: { MySvg },
+  components: { MySvg, StoreSelector },
 
   data() {
     return {
-      audits,
+      stores: { store1015, store1016, store1018 },
+      audits: store1015,
       dataStore,
       katNames,
       pointNames,
@@ -90,6 +105,10 @@ export default {
     };
   },
   methods: {
+    toggleStore(store) {
+      this.audits = this.stores[store];
+    },
+
     katScorePerc(auditIndex, katKey) {
       const available = Object.values(this.weights[katKey]).reduce(
         (acc, val) => acc + val,
@@ -176,6 +195,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+header {
+  background: var(--bg-dark);
+}
+
 main {
   width: 90vw;
   margin: auto;
@@ -185,7 +208,7 @@ main {
   background: var(--bg-semidark);
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .kategory {
@@ -254,6 +277,7 @@ main {
   background: var(--bg-dark);
   font-size: 1.6rem;
   border-bottom: 1px solid black;
+  /*color: #f47920;*/
 }
 .totalPerc div {
   /*padding: 0.5rem;*/
@@ -267,7 +291,9 @@ main {
   border-top: 1px solid black;
   margin: 3rem auto;
 }
-.title {
-  padding: 0.5rem 1rem;
+.date {
+  font-size: 1.2rem;
+  /*color: white;*/
+  font-weight: 700;
 }
 </style>
