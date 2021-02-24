@@ -17,9 +17,9 @@
         </div>
         <div class="container">
           <div class="totalPerc">
-            <div class="col1 flex justify-between">
-              <h5>Celkový počet procent</h5>
-              <h5>{{ halfYearScore.toFixed(2) }} %</h5>
+            <div class="col1 flex total-score">
+              <h5 class="absolute">Celkem:</h5>
+              <h5 class="bubble">{{ halfYearScore.toFixed(2) }} %</h5>
             </div>
             <div
               v-for="(audit, auditIndex) in audits"
@@ -300,5 +300,21 @@ main {
   font-size: 1.2rem;
   /*color: white;*/
   font-weight: 700;
+}
+.bubble {
+  background: white;
+  padding: 0.25rem 1.5rem;
+  border-radius: 0.75rem;
+  margin: auto 2rem;
+  /*font-family: 'Orbitron', sans-serif;*/
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin: 0 auto;
+}
+.absolute {
+  /*font-family: 'Orbitron', sans-serif;*/
+  position: absolute;
+  letter-spacing: 5px;
+  font-size: 1.4rem;
 }
 </style>
