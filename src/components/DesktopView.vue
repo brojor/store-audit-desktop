@@ -3,7 +3,7 @@
     <h1>Desktop view</h1>
     <div class="main-container">
       <div class="kategory">
-        <div class="title col1"></div>
+        <div class="title col1">tst</div>
         <div class="status col2" v-for="(audit, index) in audits" :key="index">
           {{ audit.month }}
         </div>
@@ -73,7 +73,7 @@
 <script>
 import MySvg from '@/components/MySvg.vue';
 import dataStore from '../../dataStore';
-import audits from '../../dataStore2';
+import audits from '../../1018';
 import { katNames, pointNames, weights } from '../../names';
 
 export default {

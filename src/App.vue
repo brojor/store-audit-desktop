@@ -24,10 +24,10 @@ export default {
   box-sizing: border-box;
 }
 :root {
-  --bg-light: #d3eeed;
-  --bg-mid: #a3d2d1;
-  --bg-semidark: #72b6b5;
-  --bg-dark: #107e7d;
+  --bg-light: #fde6d8;
+  --bg-mid: #fcdcc5;
+  --bg-semidark: #d0d2dc;
+  --bg-dark: #5c80bc;
 }
 
 html {
