@@ -2,17 +2,20 @@
   <div id="app">
     <AuditStoreHeader />
     <DesktopView />
+    <TableView />
   </div>
 </template>
 
 <script>
 import AuditStoreHeader from '@/components/AuditStoreHeader.vue';
 import DesktopView from './components/DesktopView.vue';
+import TableView from './components/TableView.vue';
 
 export default {
   name: 'App',
   components: {
     DesktopView,
+    TableView,
     AuditStoreHeader,
   },
 };
