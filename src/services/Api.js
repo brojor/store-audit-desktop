@@ -19,4 +19,10 @@ const axiosInstance = axios.create({
 //   },
 // );
 
-export default axiosInstance;
+function getAudits(dateRange) {
+  axiosInstance.post('/audits', { dateRange });
+}
+
+export default {
+  getAudits,
+};
