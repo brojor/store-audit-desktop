@@ -35,7 +35,7 @@ export default {
   --bg-mid: #fcdcc5;
   --bg-semidark: #f9b07c;
   --bg-dark: #f47920;
-  --bg-main: #90837c;
+  --bg-main: #333;
 }
 
 html {

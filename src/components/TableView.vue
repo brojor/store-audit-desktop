@@ -11,7 +11,7 @@
         <td>{{ formatDate(audits[5].date) }}</td>
       </tr>
       <tr>
-        <td>Celkem za pololetí {{halfYearAvaragePerc.toFixed(1)}}%</td>
+        <td>Celkem za pololetí {{ halfYearAvaragePerc.toFixed(1) }}%</td>
         <td>{{ audits[0].totalPerc.toFixed(1) }}%</td>
         <td>{{ audits[1].totalPerc.toFixed(1) }}%</td>
         <td>{{ audits[2].totalPerc.toFixed(1) }}%</td>
@@ -26,7 +26,7 @@
       :id="`cat${category.num}`"
       class="category"
     >
-      <tr>
+      <tr class="category-heading">
         <th>{{ category.name }} [{{ $store.getters.averagePerc(catIndex) }}]</th>
         <th>{{ audits[1].categories[catIndex].totalPerc.toFixed(1) }}%</th>
         <th>{{ audits[0].categories[catIndex].totalPerc.toFixed(1) }}%</th>
@@ -108,5 +108,16 @@ table {
   border-radius: 6px;
   border-style: hidden; /* hide standard table (collapsed) border */
   box-shadow: 0 0 0 2px rgb(0, 0, 0); /* this draws the table border  */
+  overflow: hidden;
+  background-color: #FFEBEB ;
+}
+
+thead {
+  background-color: #e60001;
+  color: white;
+  font-weight: 700;
+}
+.category-heading {
+  background-color: #FFC2C2;
 }
 </style>

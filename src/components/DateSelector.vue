@@ -77,6 +77,7 @@ h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 3px;
+  color: black;
 }
 
 button {
