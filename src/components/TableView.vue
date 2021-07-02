@@ -11,13 +11,17 @@
         <td>{{ formatDate(audits[5].date) }}</td>
       </tr>
       <tr>
-        <td>Celkem za pololetí {{ halfYearAvaragePerc.toFixed(1) }}%</td>
-        <td>{{ audits[0].totalPerc.toFixed(1) }}%</td>
-        <td>{{ audits[1].totalPerc.toFixed(1) }}%</td>
-        <td>{{ audits[2].totalPerc.toFixed(1) }}%</td>
-        <td>{{ audits[3].totalPerc.toFixed(1) }}%</td>
-        <td>{{ audits[4].totalPerc.toFixed(1) }}%</td>
-        <td>{{ audits[5].totalPerc.toFixed(1) }}%</td>
+        <td>
+          <h5 class="half-year-avarage">
+            Celkem: {{ showIfValid(halfYearAvaragePerc) }}
+          </h5>
+        </td>
+        <td>{{ showIfValid(audits[0].totalPerc) }}</td>
+        <td>{{ showIfValid(audits[1].totalPerc) }}</td>
+        <td>{{ showIfValid(audits[2].totalPerc) }}</td>
+        <td>{{ showIfValid(audits[3].totalPerc) }}</td>
+        <td>{{ showIfValid(audits[4].totalPerc) }}</td>
+        <td>{{ showIfValid(audits[5].totalPerc) }}</td>
       </tr>
     </thead>
     <tbody
@@ -27,13 +31,22 @@
       class="category"
     >
       <tr class="category-heading">
-        <th>{{ category.name }} [{{ $store.getters.averagePerc(catIndex) }}]</th>
-        <th>{{ audits[1].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ audits[0].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ audits[2].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ audits[3].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ audits[4].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ audits[5].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <!-- <th>{{ category.name }} [{{ $store.getters.averagePerc(catIndex) }}]</th> -->
+        <th>
+          <div class="category-name-and-perc">
+            <p>{{ category.name }}</p>
+            <p>
+              <span>Ø </span>
+              {{ showIfValid($store.getters.averagePerc(catIndex)) }}
+            </p>
+          </div>
+        </th>
+        <th>{{ showIfValid(audits[0].categories[catIndex].totalPerc) }}</th>
+        <th>{{ showIfValid(audits[1].categories[catIndex].totalPerc) }}</th>
+        <th>{{ showIfValid(audits[2].categories[catIndex].totalPerc) }}</th>
+        <th>{{ showIfValid(audits[3].categories[catIndex].totalPerc) }}</th>
+        <th>{{ showIfValid(audits[4].categories[catIndex].totalPerc) }}</th>
+        <th>{{ showIfValid(audits[5].categories[catIndex].totalPerc) }}</th>
       </tr>
       <tr
         v-for="(categoryPoint, catPointIndex) in category.categoryPoints"
@@ -41,12 +54,12 @@
         class="category-point"
       >
         <td>{{ categoryPoint.name }}</td>
-        <td>{{ audits[0].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ audits[1].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ audits[2].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ audits[3].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ audits[4].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ audits[5].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td v-for="(audit, index) in audits" :key="index">
+          <MySvg
+            :status="audits[index].categories[catIndex].categoryPoints[catPointIndex].accepted"
+            :size="16"
+          ></MySvg>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -54,12 +67,14 @@
 
 <script>
 import DateSelector from '@/components/DateSelector.vue';
+import MySvg from '@/components/MySvg.vue';
 import categories from './categories.json';
 
 export default {
   name: 'TableView',
   components: {
     DateSelector,
+    MySvg,
   },
   data() {
     return {
@@ -76,6 +91,9 @@ export default {
     halfYearAvaragePerc() {
       return this.$store.getters.halfYearAvaragePerc;
     },
+    showIfValid() {
+      return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
+    },
   },
   created() {
     this.$store.dispatch('getAudits');
@@ -89,7 +107,10 @@ th,
 td {
   border: 1px solid black;
   border-collapse: collapse;
-  padding: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+th {
+  padding: 0.75rem 1rem;
 }
 td:not(:first-child),
 th:not(:first-child) {
@@ -102,22 +123,47 @@ th:first-child {
   width: 40%;
 }
 table {
-  margin: 3rem;
-  /* border: 2px solid rgb(65, 160, 65); */
+  margin: 4rem 8rem;
   border-collapse: collapse;
   border-radius: 6px;
   border-style: hidden; /* hide standard table (collapsed) border */
   box-shadow: 0 0 0 2px rgb(0, 0, 0); /* this draws the table border  */
   overflow: hidden;
-  background-color: #FFEBEB ;
+  background-color: #ffebeb;
+  font-size: 1rem;
 }
 
 thead {
   background-color: #e60001;
   color: white;
-  font-weight: 700;
+  font-weight: 900;
+  font-size: 1.4rem;
 }
 .category-heading {
-  background-color: #FFC2C2;
+  background-color: #ffc2c2;
+  font-size: 1.2rem;
+}
+.category-point > td:first-child {
+  text-align: left;
+}
+
+.half-year-avarage {
+  background-color: #fff;
+  border-radius: 4px;
+  color: black;
+  font-size: inherit;
+  font-weight: 900;
+  padding: 0.5rem 2rem;
+  display: inline-block;
+}
+
+.category-name-and-perc {
+  display: flex;
+  justify-content: space-between;
+}
+.category-name-and-perc > p > span {
+  font-weight: normal;
+  margin-right: 3px
+  /* font-size: 1rem; */
 }
 </style>

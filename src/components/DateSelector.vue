@@ -72,7 +72,7 @@ h1 {
   /*margin-top: 0.5rem;*/
   background: white;
   padding: 0.5rem 3rem;
-  border-radius: 1rem;
+  border-radius: 4px;
   margin: auto 2rem;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.5rem;
@@ -93,6 +93,6 @@ button:hover {
 }
 button:active {
   background: var(--bg-semidark);
-  box-shadow: inset 0px 0px 7px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0px 0px 7px 1px #990F0F);
 }
 </style>

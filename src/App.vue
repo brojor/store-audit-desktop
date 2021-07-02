@@ -33,9 +33,9 @@ export default {
 :root {
   --bg-light: #fde6d8;
   --bg-mid: #fcdcc5;
-  --bg-semidark: #f9b07c;
+  --bg-semidark: #FF3333;
   --bg-dark: #f47920;
-  --bg-main: #333;
+  --bg-main: #969696;
 }
 
 html {
