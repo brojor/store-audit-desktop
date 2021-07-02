@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <AuditStoreHeader />
-    <DateRange />
-    <DesktopView />
     <TableView />
+    <DesktopView />
   </div>
 </template>
 
@@ -11,7 +10,6 @@
 import AuditStoreHeader from '@/components/AuditStoreHeader.vue';
 import DesktopView from './components/DesktopView.vue';
 import TableView from './components/TableView.vue';
-import DateRange from './components/DateRange.vue';
 
 export default {
   name: 'App',
@@ -19,7 +17,6 @@ export default {
     DesktopView,
     TableView,
     AuditStoreHeader,
-    DateRange,
   },
 };
 </script>

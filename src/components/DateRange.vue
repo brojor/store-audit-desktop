@@ -25,13 +25,17 @@ export default {
   },
   methods: {
     next() {
-      this.range = rangeMaker.getNext();
+      this.$store.dispatch('nextDateRange');
     },
     prev() {
-      this.range = rangeMaker.getPrev();
+      this.$store.dispatch('prevDateRange');
     },
     send() {
-      Api.getAudits(this.range);
+      Api.getAudits(this.range)
+        .then(({ data }) => {
+          this.$store.commit('SET_AUDITS_DATA', data);
+        })
+        .catch((err) => console.log(err));
     },
   },
   created() {
@@ -39,10 +43,7 @@ export default {
   },
   computed: {
     formatDate() {
-      return (date) => {
-        const [, month, year] = date.toLocaleDateString().split('. ');
-        return `${month.padStart(2, '0')}/${year}`;
-      };
+      return this.$store.getters.formatDate;
     },
   },
 };

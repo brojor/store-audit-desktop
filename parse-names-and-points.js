@@ -1,4 +1,4 @@
-const { katNames, pointNames, weights } = require("./names");
+const { katNames, pointNames, weights } = require('./names');
 
 console.log(katNames);
 
@@ -11,9 +11,9 @@ for (kat in katNames) {
   for (point in points) {
     const pointName = points[point];
     const pointWeight = weights[kat][point];
-    items.push({ name: pointName, weight: pointWeight })
+    items.push({ name: pointName, weight: pointWeight });
     // console.log();
   }
-//   console.log("-----");
-    console.log({name: katName, items });
+  //   console.log("-----");
+  console.log({ name: katName, items });
 }

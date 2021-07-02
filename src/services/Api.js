@@ -20,7 +20,7 @@ const axiosInstance = axios.create({
 // );
 
 function getAudits(dateRange) {
-  axiosInstance.post('/audits', { dateRange });
+  return axiosInstance.post('/audits', { dateRange });
 }
 
 export default {

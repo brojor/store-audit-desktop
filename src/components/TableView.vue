@@ -2,22 +2,22 @@
   <table>
     <thead>
       <tr>
-        <td>prodejna 1015</td>
-        <td>{{ store1910[0].date }}</td>
-        <td>{{ store1910[1].date }}</td>
-        <td>{{ store1910[2].date }}</td>
-        <td>{{ store1910[3].date }}</td>
-        <td>{{ store1910[4].date }}</td>
-        <td>{{ store1910[5].date }}</td>
+        <td><DateSelector /></td>
+        <td>{{ formatDate(audits[0].date) }}</td>
+        <td>{{ formatDate(audits[1].date) }}</td>
+        <td>{{ formatDate(audits[2].date) }}</td>
+        <td>{{ formatDate(audits[3].date) }}</td>
+        <td>{{ formatDate(audits[4].date) }}</td>
+        <td>{{ formatDate(audits[5].date) }}</td>
       </tr>
       <tr>
-        <td>Celkem celkově</td>
-        <td>{{ store1910[0].totalPerc.toFixed(1) }}%</td>
-        <td>{{ store1910[1].totalPerc.toFixed(1) }}%</td>
-        <td>{{ store1910[2].totalPerc.toFixed(1) }}%</td>
-        <td>{{ store1910[3].totalPerc.toFixed(1) }}%</td>
-        <td>{{ store1910[4].totalPerc.toFixed(1) }}%</td>
-        <td>{{ store1910[5].totalPerc.toFixed(1) }}%</td>
+        <td>Celkem za pololetí {{halfYearAvaragePerc.toFixed(1)}}%</td>
+        <td>{{ audits[0].totalPerc.toFixed(1) }}%</td>
+        <td>{{ audits[1].totalPerc.toFixed(1) }}%</td>
+        <td>{{ audits[2].totalPerc.toFixed(1) }}%</td>
+        <td>{{ audits[3].totalPerc.toFixed(1) }}%</td>
+        <td>{{ audits[4].totalPerc.toFixed(1) }}%</td>
+        <td>{{ audits[5].totalPerc.toFixed(1) }}%</td>
       </tr>
     </thead>
     <tbody
@@ -27,13 +27,13 @@
       class="category"
     >
       <tr>
-        <th>{{ category.name }}</th>
-        <th>{{ store1910[1].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ store1910[0].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ store1910[2].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ store1910[3].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ store1910[4].categories[catIndex].totalPerc.toFixed(1) }}%</th>
-        <th>{{ store1910[5].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <th>{{ category.name }} [{{ $store.getters.averagePerc(catIndex) }}]</th>
+        <th>{{ audits[1].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <th>{{ audits[0].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <th>{{ audits[2].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <th>{{ audits[3].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <th>{{ audits[4].categories[catIndex].totalPerc.toFixed(1) }}%</th>
+        <th>{{ audits[5].categories[catIndex].totalPerc.toFixed(1) }}%</th>
       </tr>
       <tr
         v-for="(categoryPoint, catPointIndex) in category.categoryPoints"
@@ -41,28 +41,44 @@
         class="category-point"
       >
         <td>{{ categoryPoint.name }}</td>
-        <td>{{ store1910[0].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ store1910[1].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ store1910[2].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ store1910[3].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ store1910[4].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
-        <td>{{ store1910[5].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td>{{ audits[0].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td>{{ audits[1].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td>{{ audits[2].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td>{{ audits[3].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td>{{ audits[4].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
+        <td>{{ audits[5].categories[catIndex].categoryPoints[catPointIndex].accepted }}</td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
+import DateSelector from '@/components/DateSelector.vue';
 import categories from './categories.json';
-import store1910 from './1910.json';
 
 export default {
   name: 'TableView',
+  components: {
+    DateSelector,
+  },
   data() {
     return {
       categories,
-      store1910,
     };
+  },
+  computed: {
+    audits() {
+      return this.$store.state.audits;
+    },
+    formatDate() {
+      return this.$store.getters.formatDate;
+    },
+    halfYearAvaragePerc() {
+      return this.$store.getters.halfYearAvaragePerc;
+    },
+  },
+  created() {
+    this.$store.dispatch('getAudits');
   },
 };
 </script>

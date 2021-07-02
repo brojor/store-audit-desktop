@@ -76,14 +76,14 @@
         </div>
       </div>
     </div>
-    <HideScreen></HideScreen>
+    <!-- <HideScreen></HideScreen> -->
   </main>
 </template>
 
 <script>
 import StoreSelector from '@/components/StoreSelector.vue';
 import MySvg from '@/components/MySvg.vue';
-import HideScreen from '@/components/HideScreen.vue';
+// import HideScreen from '@/components/HideScreen.vue';
 import dataStore from '../../dataStore';
 import store1015 from '../../1015';
 import store1016 from '../../1016';
@@ -93,7 +93,7 @@ import { katNames, pointNames, weights } from '../../names';
 
 export default {
   name: 'DesktopView',
-  components: { MySvg, StoreSelector, HideScreen },
+  components: { MySvg, StoreSelector },
 
   data() {
     return {
