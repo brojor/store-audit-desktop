@@ -30,15 +30,11 @@
       class="category"
     >
       <tr class="category-heading">
-        <!-- <th>{{ category.name }} [{{ $store.getters.averagePerc(catIndex) }}]</th> -->
         <th>
           <div class="category-name-and-perc">
             <p>{{ category.name }}</p>
-            <p>
-              <span>Ø </span>
-              {{ showIfValid($store.getters.averagePerc(catIndex)) }}({{
-                $store.getters.averagePerc(catIndex)
-              }})
+            <p v-show="$store.getters.averagePerc(catIndex) >= 0">
+              Ø {{ $store.getters.averagePerc(catIndex).toFixed(1) }} %
             </p>
           </div>
         </th>
