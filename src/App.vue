@@ -2,21 +2,26 @@
   <div id="app">
     <AuditStoreHeader />
     <TableView />
-    <DesktopView />
+    <LoginComponent v-if="!userIsLogged" />
   </div>
 </template>
 
 <script>
 import AuditStoreHeader from '@/components/AuditStoreHeader.vue';
-import DesktopView from './components/DesktopView.vue';
+import LoginComponent from './components/Login.vue';
 import TableView from './components/TableView.vue';
 
 export default {
   name: 'App',
   components: {
-    DesktopView,
+    LoginComponent,
     TableView,
     AuditStoreHeader,
+  },
+  computed: {
+    userIsLogged() {
+      return this.$store.getters.userIsLogged;
+    },
   },
 };
 </script>
@@ -33,7 +38,7 @@ export default {
 :root {
   --bg-light: #fde6d8;
   --bg-mid: #fcdcc5;
-  --bg-semidark: #FF3333;
+  --bg-semidark: #ff3333;
   --bg-dark: #f47920;
   --bg-main: #969696;
 }

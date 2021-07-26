@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'StoreSelector',
+  name: 'DateSelector',
 
   data() {
     return {};
@@ -93,6 +93,6 @@ button:hover {
 }
 button:active {
   background: var(--bg-semidark);
-  box-shadow: inset 0px 0px 7px 1px #990F0F);
+  box-shadow: inset 0px 0px 7px 1px rgba(255, 255, 255, 0.5);
 }
 </style>

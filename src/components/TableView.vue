@@ -12,9 +12,8 @@
       </tr>
       <tr>
         <td>
-          <h5 class="half-year-avarage">
-            Celkem: {{ showIfValid(halfYearAvaragePerc) }}
-          </h5>
+          <StoreSelector />
+          <h5 class="half-year-avarage">Celkem: {{ showIfValid(halfYearAvaragePerc) }}</h5>
         </td>
         <td>{{ showIfValid(audits[0].totalPerc) }}</td>
         <td>{{ showIfValid(audits[1].totalPerc) }}</td>
@@ -37,7 +36,9 @@
             <p>{{ category.name }}</p>
             <p>
               <span>Ø </span>
-              {{ showIfValid($store.getters.averagePerc(catIndex)) }}
+              {{ showIfValid($store.getters.averagePerc(catIndex)) }}({{
+                $store.getters.averagePerc(catIndex)
+              }})
             </p>
           </div>
         </th>
@@ -67,6 +68,7 @@
 
 <script>
 import DateSelector from '@/components/DateSelector.vue';
+import StoreSelector from '@/components/StoreSelector.vue';
 import MySvg from '@/components/MySvg.vue';
 import categories from './categories.json';
 
@@ -74,6 +76,7 @@ export default {
   name: 'TableView',
   components: {
     DateSelector,
+    StoreSelector,
     MySvg,
   },
   data() {
@@ -96,6 +99,7 @@ export default {
     },
   },
   created() {
+    this.$store.commit('SET_SELECTED_STORE', this.$store.state.stores[0].id);
     this.$store.dispatch('getAudits');
   },
 };
@@ -163,7 +167,7 @@ thead {
 }
 .category-name-and-perc > p > span {
   font-weight: normal;
-  margin-right: 3px
+  margin-right: 3px;
   /* font-size: 1rem; */
 }
 </style>

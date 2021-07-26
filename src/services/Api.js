@@ -8,6 +8,11 @@ const axiosInstance = axios.create({
   },
 });
 
+// axiosInstance.interceptors.request.use((request) => {
+//   console.log('Starting Request', JSON.stringify(request, null, 2));
+//   return request;
+// });
+
 // axiosInstance.interceptors.response.use(
 //   (response) => response,
 //   (error) => {
@@ -19,10 +24,4 @@ const axiosInstance = axios.create({
 //   },
 // );
 
-function getAudits(dateRange) {
-  return axiosInstance.post('/audits', { dateRange });
-}
-
-export default {
-  getAudits,
-};
+export default axiosInstance;

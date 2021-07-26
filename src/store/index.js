@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import auth from './modules/auth';
+
 import RangeMaker from '../utils/RangeMaker';
-import Api from '../services/Api';
+import AuditsService from '../services/AuditsService';
 
 const rangeMaker = new RangeMaker();
 
@@ -10,8 +12,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    selectedStoreId: '',
     dateRange: rangeMaker.getRange(),
     audits: [],
+    stores: JSON.parse(localStorage.getItem('stores')) || [],
   },
   mutations: {
     SET_AUDITS_DATA(state, data) {
@@ -20,10 +24,28 @@ export default new Vuex.Store({
     SET_DATE_RANGE(state, dateRange) {
       state.dateRange = dateRange;
     },
+    SET_STORES(state, stores) {
+      state.stores = stores;
+      // eslint-disable-next-line prefer-destructuring
+      state.selectedStoreId = stores[0].id;
+      localStorage.setItem('stores', JSON.stringify(stores));
+    },
+    SET_SELECTED_STORE(state, selectedStoreId) {
+      state.selectedStoreId = selectedStoreId;
+    },
   },
   actions: {
+    getStores({ commit, dispatch }) {
+      AuditsService.getStores()
+        .then(({ data }) => {
+          console.log('get stores action: ', { data });
+          commit('SET_STORES', data.stores);
+          dispatch('getAudits');
+        })
+        .catch((err) => console.log(err));
+    },
     getAudits({ commit, state }) {
-      Api.getAudits(state.dateRange)
+      AuditsService.getAudits(state.dateRange, state.selectedStoreId)
         .then(({ data }) => {
           commit('SET_AUDITS_DATA', data);
         })
@@ -57,7 +79,7 @@ export default new Vuex.Store({
     },
     averagePerc: (state) => (catIndex) => {
       const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.categories[catIndex].totalPerc > 0) {
+        if (audit.categories[catIndex].totalPerc >= 0) {
           acc.push(audit.categories[catIndex].totalPerc);
         }
         return acc;
@@ -83,5 +105,7 @@ export default new Vuex.Store({
       };
     },
   },
-  modules: {},
+  modules: {
+    auth,
+  },
 });
