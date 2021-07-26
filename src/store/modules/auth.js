@@ -18,7 +18,6 @@ const mutations = {
   SET_TOKEN(state, token) {
     state.token = token;
     localStorage.setItem('token', token);
-    console.log({ Api });
     Api.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
 };
@@ -28,13 +27,16 @@ const actions = {
       .then(({ data }) => {
         console.log('actions-token', data.token);
         commit('SET_TOKEN', data.token);
-        console.log("dispTCHUJU V vuex/auth");
+        console.log('dispTCHUJU V vuex/auth');
         dispatch('getStores');
       })
       .catch((err) => {
         console.log(err);
         // console.log(err.response.data);
       });
+  },
+  logout({ commit }) {
+    commit('SET_TOKEN', null);
   },
 };
 

@@ -1,17 +1,21 @@
 <template>
   <div class="header">
-    <img class="logo" src="@/assets/logo-small.png" alt="logo" />
-    <h1>STORE AUDIT</h1>
+    <div class="container">
+      <div class="flex items-center">
+        <img class="logo" src="@/assets/logo-small.png" alt="logo" />
+        <h1>STORE AUDIT</h1>
+      </div>
+        <LogOut class="logout-icon" @click.native="$store.dispatch('logout')" />
+    </div>
   </div>
 </template>
 
 <script>
+import LogOut from '@/components/icons/logout.vue';
+
 export default {
   name: 'AuditStoreHeader',
-
-  data() {
-    return {};
-  },
+  components: { LogOut },
 };
 </script>
 
@@ -23,9 +27,6 @@ img {
   margin-top: 4px;
 }
 div.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0.5rem;
   width: 100vw;
   background: #292929;
@@ -35,9 +36,15 @@ div.header {
   border-bottom: 1px solid black;
   color: #fff;
 }
+.container {
+  margin-left: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .header h1 {
-  margin-left: 0.75rem;
-  margin-top: 2px;
+  /* margin-top: 2px; */
+  margin-left: 0.5rem;
   font-family: 'Orbitron', sans-serif;
   font-family: 'Sarpanch', sans-serif;
   font-style: italic;
@@ -47,5 +54,15 @@ div.header {
 .header h1 span {
   font-family: 'Orbitron', sans-serif;
   font-size: 3.5rem;
+}
+.logout-icon {
+  fill: #e60001;
+  width:2.5rem;
+  height: auto;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+.logout-icon:hover {
+  fill: #da5252;
 }
 </style>

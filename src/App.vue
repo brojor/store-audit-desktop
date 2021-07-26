@@ -65,4 +65,11 @@ html {
   justify-content: center;
   align-items: center;
 }
+/* universal */
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
 </style>
