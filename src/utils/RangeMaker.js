@@ -8,14 +8,14 @@ module.exports = class RangeMaker {
   getRange() {
     if (this.nthHalf === 1) {
       return {
-        start: new Date(this.year, 2, 1),
-        stop: new Date(new Date(this.year, 8, 1).getTime() - 1),
+        start: new Date(Date.UTC(this.year, 2, 1)),
+        stop: new Date(new Date(Date.UTC(this.year, 8, 1)).getTime() - 1),
       };
     }
     // if (this.nthHalf === 2)
     return {
-      start: new Date(this.year, 8, 1),
-      stop: new Date(new Date(this.year + 1, 2, 1).getTime() - 1),
+      start: new Date(Date.UTC(this.year, 8, 1)),
+      stop: new Date(new Date(Date.UTC(this.year + 1, 2, 1)).getTime() - 1),
     };
   }
 
