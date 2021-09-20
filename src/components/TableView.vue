@@ -13,8 +13,10 @@
         </tr>
         <tr>
           <td>
-            <StoreSelector />
-            <h5 class="half-year-avarage">Celkem: {{ showIfValid(halfYearAvaragePerc) }}</h5>
+            <div class="selected-store-and-score">
+              <StoreSelector />
+              <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
+            </div>
           </td>
           <td>{{ showIfValid(audits[0].totalPerc) }}</td>
           <td>{{ showIfValid(audits[1].totalPerc) }}</td>
@@ -154,10 +156,13 @@ thead {
   background-color: #fff;
   border-radius: 4px;
   color: black;
-  font-size: inherit;
-  font-weight: 900;
-  padding: 0.5rem 2rem;
-  display: inline-block;
+  width: 6rem;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  margin-left: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
 
 .category-name-and-perc {
@@ -168,5 +173,8 @@ thead {
   font-weight: normal;
   margin-right: 3px;
   /* font-size: 1rem; */
+}
+.selected-store-and-score {
+  display: flex;
 }
 </style>

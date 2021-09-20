@@ -26,11 +26,14 @@ export default {
 
 <style scoped>
 select {
-  width: 250px;
-  height: 3rem;
+  flex-grow: 1;
+  padding: 0.5rem;
   border-radius: 4px;
-  margin-right: 2rem;
-  border: 1px solid #444;
+  margin: 0.5rem 0;
   outline: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  border: none  ;
+  text-align: center;
 }
 </style>
