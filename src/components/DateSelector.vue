@@ -82,16 +82,19 @@ export default {
   width: 60%;
   height: 3rem;
   background: white;
-  padding: 0.5rem 3rem;
+  padding: 0 1rem;
   border-radius: 4px;
   margin: auto 2rem;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
   color: black;
 }
 
