@@ -54,7 +54,11 @@
           class="category-point"
         >
           <td>{{ categoryPoint.name }}</td>
-          <td v-for="(audit, index) in audits" :key="index">
+          <td
+            v-for="(audit, index) in audits"
+            :key="index"
+            :comment="audits[index].categories[catIndex].categoryPoints[catPointIndex].comment"
+          >
             <MySvg
               :status="audits[index].categories[catIndex].categoryPoints[catPointIndex].accepted"
               :size="16"
@@ -176,5 +180,53 @@ thead {
 }
 .selected-store-and-score {
   display: flex;
+}
+
+td[comment] {
+  background-color: #fff3c6;
+  position: relative;
+}
+
+td[comment]::before,
+td[comment]::after {
+  --scale: 0;
+  --arrow-size: 10px;
+  --tooltip-color: #e60001;
+
+  position: absolute;
+  top: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+  transition: 150ms transform;
+  transform-origin: bottom center;
+}
+
+td[comment]::before {
+  --translate-y: calc(-100% - var(--arrow-size) + 5px);
+  content: attr(comment);
+  color: #000;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  width: auto;
+  /* min-width: 300px; */
+  width: max-content;
+  max-width: 300px;
+  background-color: #fff;
+  border: 3px solid var(--tooltip-color);
+}
+
+td[comment]:hover::before,
+td[comment]:hover::after {
+  --scale: 1;
+}
+
+td[comment]::after {
+  --translate-y: calc(-1 * var(--arrow-size) + 5px);
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-top-color: var(--tooltip-color);
+  transform-origin: top center;
 }
 </style>
