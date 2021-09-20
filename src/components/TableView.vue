@@ -185,6 +185,7 @@ thead {
 td[comment] {
   background-color: #fff3c6;
   position: relative;
+  animation: blinking-background normal 1s infinite ease-in-out;
 }
 
 td[comment]::before,
@@ -228,5 +229,14 @@ td[comment]::after {
   border: var(--arrow-size) solid transparent;
   border-top-color: var(--tooltip-color);
   transform-origin: top center;
+}
+
+@-webkit-keyframes blinking-background {
+  0% {
+    background-color: rgb(255, 243, 198, 1);
+  }
+  100% {
+    background-color: #ffebeb;
+  }
 }
 </style>
