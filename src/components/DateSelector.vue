@@ -17,7 +17,11 @@
         ></path>
       </svg>
     </button>
-    <h1>{{ dateRange }}</h1>
+    <div class="date-range-wrapper">
+      <spinner v-if="loading" />
+      <h1 v-else>{{ dateRange }}</h1>
+    </div>
+
     <button @click="next">
       <svg
         width="32px"
@@ -39,7 +43,10 @@
 </template>
 
 <script>
+import Spinner from './Spinner.vue';
+
 export default {
+  components: { Spinner },
   name: 'DateSelector',
 
   data() {
@@ -58,6 +65,9 @@ export default {
     dateRange() {
       return this.$store.getters.dateRange;
     },
+    loading() {
+      return this.$store.state.loading;
+    },
   },
 };
 </script>
@@ -68,12 +78,17 @@ export default {
   justify-content: center !important;
 }
 
-h1 {
-  /*margin-top: 0.5rem;*/
+.date-range-wrapper {
+  width: 60%;
+  height: 3rem;
   background: white;
   padding: 0.5rem 3rem;
   border-radius: 4px;
   margin: auto 2rem;
+  color: black;
+}
+
+h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 3px;

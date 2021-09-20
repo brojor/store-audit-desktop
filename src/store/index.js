@@ -16,6 +16,7 @@ export default new Vuex.Store({
     dateRange: rangeMaker.getRange(),
     audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
+    loading: false,
   },
   mutations: {
     SET_AUDITS_DATA(state, data) {
@@ -33,6 +34,9 @@ export default new Vuex.Store({
     SET_SELECTED_STORE(state, selectedStoreId) {
       state.selectedStoreId = selectedStoreId;
     },
+    SET_LOADING_STATE(state, loading) {
+      state.loading = loading;
+    },
   },
   actions: {
     getStores({ commit, dispatch }) {
@@ -45,9 +49,11 @@ export default new Vuex.Store({
         .catch((err) => console.log(err));
     },
     getAudits({ commit, state }) {
+      commit('SET_LOADING_STATE', true);
       AuditsService.getAudits(state.dateRange, state.selectedStoreId)
         .then(({ data }) => {
           commit('SET_AUDITS_DATA', data);
+          commit('SET_LOADING_STATE', false);
         })
         .catch((err) => console.log(err));
     },
