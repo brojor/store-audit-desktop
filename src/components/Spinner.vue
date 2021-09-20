@@ -26,7 +26,7 @@ export default {
   animation-name: 'pulseStretchDelay';
   animation-duration: 0.75s;
   animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(.2,.68,.18,1.08);
+  animation-timing-function: cubic-bezier(0.2, 0.68, 0.18, 1.08);
   animation-fill-mode: both;
 }
 .spinner-delay1 {

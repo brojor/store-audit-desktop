@@ -1,11 +1,16 @@
 <template>
   <div class="header">
     <div class="container">
-      <div class="flex items-center">
-        <img class="logo" src="@/assets/logo-small.png" alt="logo" />
-        <h1>STORE AUDIT</h1>
+      <div class="header-left">
+        <div class="flex items-center">
+          <img class="logo" src="@/assets/logo-small.png" alt="logo" />
+          <h1>STORE AUDIT</h1>
+        </div>
       </div>
+      <div class="header-right">
+        <span class="header-user-name">{{ fullName }}</span>
         <LogOut class="logout-icon" @click.native="$store.dispatch('logout')" />
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +21,11 @@ import LogOut from '@/components/icons/logout.vue';
 export default {
   name: 'AuditStoreHeader',
   components: { LogOut },
+  computed: {
+    fullName() {
+      return this.$store.state.auth.userFullName;
+    },
+  },
 };
 </script>
 
@@ -27,7 +37,7 @@ img {
   margin-top: 4px;
 }
 div.header {
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   width: 100vw;
   background: #292929;
   /* background: #002927; */
@@ -37,7 +47,8 @@ div.header {
   color: #fff;
 }
 .container {
-  margin-left: 8rem;
+  margin: 0 auto;
+  max-width: 1140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,12 +68,20 @@ div.header {
 }
 .logout-icon {
   fill: #e60001;
-  width:2.5rem;
+  width: 2.5rem;
   height: auto;
-  margin-right: 2rem;
   cursor: pointer;
 }
 .logout-icon:hover {
   fill: #da5252;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.header-user-name {
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  margin-right: 2rem;
 }
 </style>

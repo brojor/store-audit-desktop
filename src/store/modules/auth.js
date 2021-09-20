@@ -5,6 +5,7 @@ import Api from '@/services/Api';
 
 const state = {
   token: localStorage.getItem('token') || null,
+  userFullName: localStorage.getItem('userFullName') || '',
 };
 const getters = {
   userIsLogged: (state) => {
@@ -20,6 +21,10 @@ const mutations = {
     localStorage.setItem('token', token);
     Api.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
+  SET_USER_FULLNAME(state, fullName) {
+    state.userFullName = fullName;
+    localStorage.setItem('userFullName', fullName);
+  },
 };
 const actions = {
   login({ commit, dispatch }, credentials) {
@@ -27,6 +32,7 @@ const actions = {
       .then(({ data }) => {
         console.log('actions-token', data.token);
         commit('SET_TOKEN', data.token);
+        commit('SET_USER_FULLNAME', data.fullName);
         console.log('dispTCHUJU V vuex/auth');
         dispatch('getStores');
       })
@@ -37,6 +43,7 @@ const actions = {
   },
   logout({ commit }) {
     commit('SET_TOKEN', null);
+    commit('SET_USER_FULLNAME', '');
   },
 };
 
