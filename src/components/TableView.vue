@@ -201,6 +201,9 @@ td[comment]::after {
   transition: 150ms transform;
   transform-origin: bottom center;
 }
+td:last-child[comment]::before {
+  transform: translateX(-85%) translateY(var(--translate-y, 0)) scale(var(--scale));
+}
 
 td[comment]::before {
   --translate-y: calc(-100% - var(--arrow-size) + 5px);
@@ -230,8 +233,12 @@ td[comment]::after {
   border-top-color: var(--tooltip-color);
   transform-origin: top center;
 }
+td:last-child[comment]::after {
+  transform-origin: left top;
+  transition: transform 75ms;
+}
 
-@-webkit-keyframes blinking-background {
+@keyframes blinking-background {
   0% {
     background-color: rgb(255, 243, 198, 1);
   }
