@@ -28,18 +28,14 @@ const mutations = {
 };
 const actions = {
   login({ commit, dispatch }, credentials) {
-    return AuthService.login(credentials)
-      .then(({ data }) => {
-        console.log('actions-token', data.token);
-        commit('SET_TOKEN', data.token);
-        commit('SET_USER_FULLNAME', data.fullName);
-        console.log('dispTCHUJU V vuex/auth');
-        dispatch('getStores');
-      })
-      .catch((err) => {
-        console.log(err);
-        // console.log(err.response.data);
-      });
+    return AuthService.login(credentials).then(({ data }) => {
+      console.log('dataaa:', { data });
+      console.log('actions-token', data.token);
+      commit('SET_TOKEN', data.token);
+      commit('SET_USER_FULLNAME', data.fullName);
+      console.log('dispTCHUJU V vuex/auth');
+      dispatch('getStores');
+    });
   },
   logout({ commit }) {
     commit('SET_TOKEN', null);

@@ -20,9 +20,11 @@
           name="password"
           v-model="password"
           placeholder="Heslo"
+          @keyup.enter="submit"
         />
       </label>
-      <button @click="submit" class="rectangle submit">Přihlásit se</button>
+      <p class="error-message">{{ message }}</p>
+      <button type="submit" @click="submit" class="rectangle submit">Přihlásit se</button>
     </div>
   </div>
 </template>
@@ -37,14 +39,20 @@ export default {
     return {
       username: '',
       password: '',
+      message: null,
     };
   },
   methods: {
     submit() {
-      this.$store.dispatch('login', {
-        username: this.username,
-        password: this.password,
-      });
+      this.$store
+        .dispatch('login', {
+          username: this.username,
+          password: this.password,
+        })
+        .catch((err) => {
+          const { message } = err.response.data;
+          this.message = message;
+        });
     },
   },
 };
@@ -57,7 +65,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -69,7 +77,7 @@ export default {
   background-color: #001414;
   border-radius: 1rem;
   max-width: 700px;
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -128,5 +136,13 @@ button.submit {
   font-family: 'Avenir Next', 'Avenir', sans-serif;
   font-weight: 700;
   width: 85%;
+}
+.error-message {
+  /* border: 1px solid yellow; */
+  width: 85%;
+  text-align: center;
+  font-size: 1.4em;
+  color: #e60001;
+  margin-top: 1rem;
 }
 </style>
