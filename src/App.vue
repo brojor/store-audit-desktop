@@ -1,27 +1,17 @@
 <template>
   <div id="app">
     <AuditStoreHeader />
-    <TableView />
-    <LoginComponent v-if="!userIsLogged" />
+    <router-view />
   </div>
 </template>
 
 <script>
-import AuditStoreHeader from '@/components/AuditStoreHeader.vue';
-import LoginComponent from './components/Login.vue';
-import TableView from './components/TableView.vue';
+import AuditStoreHeader from './components/AuditStoreHeader.vue';
 
 export default {
   name: 'App',
   components: {
-    LoginComponent,
-    TableView,
     AuditStoreHeader,
-  },
-  computed: {
-    userIsLogged() {
-      return this.$store.getters.userIsLogged;
-    },
   },
 };
 </script>

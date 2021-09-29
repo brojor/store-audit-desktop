@@ -8,7 +8,7 @@ const state = {
   userFullName: localStorage.getItem('userFullName') || '',
 };
 const getters = {
-  userIsLogged: (state) => {
+  isAuthenticated: (state) => {
     if (state.token) {
       return true;
     }

@@ -3,7 +3,6 @@ import Vuex from 'vuex';
 
 import auth from './modules/auth';
 
-import RangeMaker from '../utils/RangeMaker';
 import { getStores, getAudits } from '../services/AuditsService';
 
 Vue.use(Vuex);
@@ -36,13 +35,10 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getStores({ commit, dispatch }) {
+    getStores({ commit }) {
       getStores()
         .then(({ data }) => {
-          const currentRange = new RangeMaker().getRange();
-          console.log('get stores action: ', { data });
           commit('SET_STORES', data.stores);
-          dispatch('getAudits', currentRange);
         })
         .catch((err) => console.log(err));
     },
