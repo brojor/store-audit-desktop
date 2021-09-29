@@ -6,14 +6,11 @@ import auth from './modules/auth';
 import RangeMaker from '../utils/RangeMaker';
 import { getStores, getAudits } from '../services/AuditsService';
 
-const rangeMaker = new RangeMaker();
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     selectedStoreId: '',
-    dateRange: rangeMaker.getRange(),
     audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
     loading: false,
@@ -42,30 +39,21 @@ export default new Vuex.Store({
     getStores({ commit, dispatch }) {
       getStores()
         .then(({ data }) => {
+          const currentRange = new RangeMaker().getRange();
           console.log('get stores action: ', { data });
           commit('SET_STORES', data.stores);
-          dispatch('getAudits');
+          dispatch('getAudits', currentRange);
         })
         .catch((err) => console.log(err));
     },
-    getAudits({ commit, state }) {
+    getAudits({ commit, state }, dateRange) {
       commit('SET_LOADING_STATE', true);
-      getAudits(state.dateRange, state.selectedStoreId)
+      getAudits(dateRange, state.selectedStoreId)
         .then(({ data }) => {
           commit('SET_AUDITS_DATA', data);
           commit('SET_LOADING_STATE', false);
         })
         .catch((err) => console.log(err));
-    },
-    nextDateRange({ commit, dispatch }) {
-      const dateRange = rangeMaker.getNext();
-      commit('SET_DATE_RANGE', dateRange);
-      dispatch('getAudits');
-    },
-    prevDateRange({ commit, dispatch }) {
-      const dateRange = rangeMaker.getPrev();
-      commit('SET_DATE_RANGE', dateRange);
-      dispatch('getAudits');
     },
   },
   getters: {

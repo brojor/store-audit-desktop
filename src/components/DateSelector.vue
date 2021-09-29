@@ -19,7 +19,7 @@
     </button>
     <div class="date-range-wrapper">
       <spinner v-if="loading" />
-      <h1 v-else>{{ dateRange }}</h1>
+      <h1 v-else>{{ formatedString }}</h1>
     </div>
 
     <button @click="next">
@@ -44,29 +44,39 @@
 
 <script>
 import Spinner from './Spinner.vue';
+import RangeMaker from '../utils/RangeMaker';
+
+const rangeMaker = new RangeMaker();
 
 export default {
   components: { Spinner },
   name: 'DateSelector',
-
   data() {
-    return {};
+    return {
+      dateRange: rangeMaker.getRange(),
+    };
   },
-
   methods: {
     next() {
-      this.$store.dispatch('nextDateRange');
+      this.dateRange = rangeMaker.getNext();
+      this.$emit('change', this.dateRange);
     },
     prev() {
-      this.$store.dispatch('prevDateRange');
+      this.dateRange = rangeMaker.getPrev();
+      this.$emit('change', this.dateRange);
+    },
+    formatDate(date) {
+      const dateObj = new Date(date);
+      const [, month, year] = dateObj.toLocaleDateString().split('. ');
+      return `${month.padStart(2, '0')}/${year}`;
     },
   },
   computed: {
-    dateRange() {
-      return this.$store.getters.dateRange;
-    },
     loading() {
       return this.$store.state.loading;
+    },
+    formatedString() {
+      return `${this.formatDate(this.dateRange.start)} - ${this.formatDate(this.dateRange.stop)}`;
     },
   },
 };

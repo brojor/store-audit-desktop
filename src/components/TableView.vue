@@ -3,7 +3,11 @@
     <table>
       <thead>
         <tr>
-          <td><DateSelector /></td>
+          <td>
+            <DateSelector
+              @change="$store.dispatch('getAudits', $event)"
+            />
+          </td>
           <td>{{ formatDate(audits[0].date) }}</td>
           <td>{{ formatDate(audits[1].date) }}</td>
           <td>{{ formatDate(audits[2].date) }}</td>
