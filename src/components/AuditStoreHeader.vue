@@ -9,7 +9,7 @@
       </div>
       <div class="header-right">
         <span class="header-user-name">{{ fullName }}</span>
-        <LogOut class="logout-icon" @click.native="$store.dispatch('logout')" />
+        <LogOut class="logout-icon" @click.native="logout" />
       </div>
     </div>
   </div>
@@ -24,6 +24,13 @@ export default {
   computed: {
     fullName() {
       return this.$store.state.auth.userFullName;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push({ name: 'Login' });
+      });
     },
   },
 };
