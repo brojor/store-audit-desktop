@@ -2,15 +2,14 @@ import axiosInstance from './Api';
 
 const qs = require('qs');
 
-export default {
-  getAudits(dateRange, storeId) {
-    const queryString = qs.stringify(dateRange);
-    console.log({ queryString });
-    console.log({ storeId });
-
-    return axiosInstance.get(`/audits/${storeId}?${queryString}`);
-  },
-  getStores() {
-    return axiosInstance.get('/stores');
-  },
-};
+export function getAudits(dateRange, storeId) {
+  const queryString = qs.stringify(dateRange);
+  return axiosInstance.get(`/audits/${storeId}?${queryString}`);
+}
+export function getStores() {
+  return axiosInstance.get('/stores');
+}
+export function getSummaryIndividualy(dateRange) {
+  const queryString = qs.stringify(dateRange);
+  return axiosInstance.get(`/summary/individualy?${queryString}`);
+}

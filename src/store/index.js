@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 import auth from './modules/auth';
 
 import RangeMaker from '../utils/RangeMaker';
-import AuditsService from '../services/AuditsService';
+import { getStores, getAudits } from '../services/AuditsService';
 
 const rangeMaker = new RangeMaker();
 
@@ -40,7 +40,7 @@ export default new Vuex.Store({
   },
   actions: {
     getStores({ commit, dispatch }) {
-      AuditsService.getStores()
+      getStores()
         .then(({ data }) => {
           console.log('get stores action: ', { data });
           commit('SET_STORES', data.stores);
@@ -50,7 +50,7 @@ export default new Vuex.Store({
     },
     getAudits({ commit, state }) {
       commit('SET_LOADING_STATE', true);
-      AuditsService.getAudits(state.dateRange, state.selectedStoreId)
+      getAudits(state.dateRange, state.selectedStoreId)
         .then(({ data }) => {
           commit('SET_AUDITS_DATA', data);
           commit('SET_LOADING_STATE', false);
