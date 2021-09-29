@@ -67,8 +67,11 @@ export default {
     },
     formatDate(date) {
       const dateObj = new Date(date);
-      const [, month, year] = dateObj.toLocaleDateString().split('. ');
-      return `${month.padStart(2, '0')}/${year}`;
+      const [year, month] = dateObj
+        .toISOString()
+        .slice(0, 10)
+        .split('-');
+      return `${month}/${year}`;
     },
   },
   computed: {
