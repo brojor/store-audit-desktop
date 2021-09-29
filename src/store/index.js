@@ -4,12 +4,13 @@ import Vuex from 'vuex';
 import auth from './modules/auth';
 
 import { getStores, getAudits } from '../services/AuditsService';
+// import RangeMaker from '../utils/RangeMaker';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    selectedStoreId: '',
+    selectedStoreId: JSON.parse(localStorage.getItem('stores'))[0].id || '',
     audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
     loading: false,
@@ -36,15 +37,17 @@ export default new Vuex.Store({
   },
   actions: {
     getStores({ commit }) {
-      getStores()
+      return getStores()
         .then(({ data }) => {
           commit('SET_STORES', data.stores);
+          commit('SET_SELECTED_STORE', data.stores[0].id);
+          // dispatch('getAudits', new RangeMaker().getRange());
         })
         .catch((err) => console.log(err));
     },
     getAudits({ commit, state }, dateRange) {
       commit('SET_LOADING_STATE', true);
-      getAudits(dateRange, state.selectedStoreId)
+      return getAudits(dateRange, state.selectedStoreId)
         .then(({ data }) => {
           commit('SET_AUDITS_DATA', data);
           commit('SET_LOADING_STATE', false);

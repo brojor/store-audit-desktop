@@ -4,7 +4,7 @@ import AuthService from '@/services/AuthService';
 import Api from '@/services/Api';
 
 const state = {
-  token: localStorage.getItem('token') || null,
+  token: localStorage.getItem('token') || '',
   userFullName: localStorage.getItem('userFullName') || '',
 };
 const getters = {
@@ -29,12 +29,9 @@ const mutations = {
 const actions = {
   login({ commit, dispatch }, credentials) {
     return AuthService.login(credentials).then(({ data }) => {
-      console.log('dataaa:', { data });
-      console.log('actions-token', data.token);
       commit('SET_TOKEN', data.token);
       commit('SET_USER_FULLNAME', data.fullName);
-      console.log('dispTCHUJU V vuex/auth');
-      dispatch('getStores');
+      return dispatch('getStores');
     });
   },
   logout({ commit }) {

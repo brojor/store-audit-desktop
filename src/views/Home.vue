@@ -4,9 +4,7 @@
       <thead>
         <tr>
           <td>
-            <DateSelector
-              @change="$store.dispatch('getAudits', $event)"
-            />
+            <DateSelector @change="$store.dispatch('getAudits', $event)" />
           </td>
           <td>{{ formatDate(audits[0].date) }}</td>
           <td>{{ formatDate(audits[1].date) }}</td>
@@ -107,8 +105,7 @@ export default {
       return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
     },
   },
-  created() {
-    this.$store.commit('SET_SELECTED_STORE', this.$store.state.stores[0].id);
+  mounted() {
     this.$store.dispatch('getAudits', new RangeMaker().getRange());
   },
 };
