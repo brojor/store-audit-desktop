@@ -44,25 +44,38 @@
 
 <script>
 import Spinner from './Spinner.vue';
-import RangeMaker from '../utils/RangeMaker';
 
-const rangeMaker = new RangeMaker();
+const now = new Date();
 
 export default {
   components: { Spinner },
   name: 'DateSelector',
   data() {
     return {
-      dateRange: rangeMaker.getRange(),
+      dateRange: {
+        start: this.isFirstSemester(now)
+          ? new Date(Date.UTC(now.getFullYear(), 2, 1))
+          : new Date(Date.UTC(now.getFullYear(), 8, 1)),
+        stop: this.isFirstSemester(now)
+          ? new Date(Date.UTC(now.getFullYear(), 8, 1) - 1)
+          : new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
+      },
     };
   },
   methods: {
+    isFirstSemester(date) {
+      return date.getMonth() <= 7;
+    },
     next() {
-      this.dateRange = rangeMaker.getNext();
+      const { start, stop } = this.dateRange;
+      this.dateRange.start = new Date(start.setMonth(start.getMonth() + 6));
+      this.dateRange.stop = new Date(stop.setMonth(stop.getMonth() + 6));
       this.$emit('change', this.dateRange);
     },
     prev() {
-      this.dateRange = rangeMaker.getPrev();
+      const { start, stop } = this.dateRange;
+      this.dateRange.start = new Date(start.setMonth(start.getMonth() - 6));
+      this.dateRange.stop = new Date(stop.setMonth(stop.getMonth() - 6));
       this.$emit('change', this.dateRange);
     },
     formatDate(date) {
