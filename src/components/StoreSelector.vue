@@ -17,7 +17,8 @@ export default {
       },
       set(newValue) {
         this.$store.commit('SET_SELECTED_STORE', newValue);
-        this.$store.dispatch('getAudits');
+        // this.$store.dispatch('getAudits');
+        this.$emit('change');
       },
     },
   },
@@ -33,7 +34,7 @@ select {
   outline: none;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.2rem;
-  border: none  ;
+  border: none;
   text-align: center;
 }
 </style>

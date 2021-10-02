@@ -16,7 +16,7 @@
         <tr>
           <td>
             <div class="selected-store-and-score">
-              <StoreSelector />
+              <StoreSelector @change="storeIdChanged" />
               <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
             </div>
           </td>
@@ -89,7 +89,13 @@ export default {
   data() {
     return {
       categories,
+      dateRange: new RangeMaker().getRange(),
     };
+  },
+  methods: {
+    storeIdChanged() {
+      this.$store.dispatch('getAudits', this.dateRange);
+    },
   },
   computed: {
     audits() {
@@ -106,7 +112,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('getAudits', new RangeMaker().getRange());
+    this.$store.dispatch('getAudits', this.dateRange);
   },
 };
 </script>
