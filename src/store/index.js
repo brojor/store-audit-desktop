@@ -59,8 +59,8 @@ export default new Vuex.Store({
   getters: {
     halfYearAvaragePerc(state) {
       const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.totalPerc > 0) {
-          acc.push(audit.totalPerc);
+        if (audit.totalScore.perc > 0) {
+          acc.push(audit.totalScore.perc);
         }
         return acc;
       }, []);
@@ -73,8 +73,8 @@ export default new Vuex.Store({
     },
     averagePerc: (state) => (catIndex) => {
       const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.categories[catIndex].totalPerc >= 0) {
-          acc.push(audit.categories[catIndex].totalPerc);
+        if (audit.categories[catIndex].score.perc >= 0) {
+          acc.push(audit.categories[catIndex].score.perc);
         }
         return acc;
       }, []);

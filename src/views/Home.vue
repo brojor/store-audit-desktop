@@ -20,12 +20,12 @@
               <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
             </div>
           </td>
-          <td>{{ showIfValid(audits[0].totalPerc) }}</td>
-          <td>{{ showIfValid(audits[1].totalPerc) }}</td>
-          <td>{{ showIfValid(audits[2].totalPerc) }}</td>
-          <td>{{ showIfValid(audits[3].totalPerc) }}</td>
-          <td>{{ showIfValid(audits[4].totalPerc) }}</td>
-          <td>{{ showIfValid(audits[5].totalPerc) }}</td>
+          <td>{{ showIfValid(audits[0].totalScore.perc)}}</td>
+          <td>{{ showIfValid(audits[1].totalScore.perc) }}</td>
+          <td>{{ showIfValid(audits[2].totalScore.perc) }}</td>
+          <td>{{ showIfValid(audits[3].totalScore.perc) }}</td>
+          <td>{{ showIfValid(audits[4].totalScore.perc) }}</td>
+          <td>{{ showIfValid(audits[5].totalScore.perc) }}</td>
         </tr>
       </thead>
       <tbody
@@ -43,12 +43,12 @@
               </p>
             </div>
           </th>
-          <th>{{ showIfValid(audits[0].categories[catIndex].totalPerc) }}</th>
-          <th>{{ showIfValid(audits[1].categories[catIndex].totalPerc) }}</th>
-          <th>{{ showIfValid(audits[2].categories[catIndex].totalPerc) }}</th>
-          <th>{{ showIfValid(audits[3].categories[catIndex].totalPerc) }}</th>
-          <th>{{ showIfValid(audits[4].categories[catIndex].totalPerc) }}</th>
-          <th>{{ showIfValid(audits[5].categories[catIndex].totalPerc) }}</th>
+          <th>{{ showIfValid(audits[0].categories[catIndex].score.perc) }}</th>
+          <th>{{ showIfValid(audits[1].categories[catIndex].score.perc) }}</th>
+          <th>{{ showIfValid(audits[2].categories[catIndex].score.perc) }}</th>
+          <th>{{ showIfValid(audits[3].categories[catIndex].score.perc) }}</th>
+          <th>{{ showIfValid(audits[4].categories[catIndex].score.perc) }}</th>
+          <th>{{ showIfValid(audits[5].categories[catIndex].score.perc) }}</th>
         </tr>
         <tr
           v-for="(categoryPoint, catPointIndex) in category.categoryPoints"
