@@ -60,6 +60,7 @@
             v-for="(audit, index) in audits"
             :key="index"
             :comment="audits[index].categories[catIndex].categoryPoints[catPointIndex].comment"
+            :rep="audits[index].categories[catIndex].categoryPoints[catPointIndex].unacceptedInARow"
           >
             <MySvg
               :status="audits[index].categories[catIndex].categoryPoints[catPointIndex].accepted"
@@ -193,6 +194,12 @@ thead {
 td[comment] {
   /* background-color: #fff3c6; */
   position: relative;
+}
+td[rep] {
+  background-color: #cfbebe;
+}
+td[rep='1'] {
+  background-color: #ffebeb;
 }
 
 td[comment]::before,
