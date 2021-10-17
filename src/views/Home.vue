@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <td>
-            <DateSelector @change="$store.dispatch('getAudits', $event)" />
+            <DateSelector @change="dateChanged($event)" />
           </td>
           <td>{{ formatDate(audits[0].date) }}</td>
           <td>{{ formatDate(audits[1].date) }}</td>
@@ -88,8 +88,10 @@ import DateSelector from '@/components/DateSelector.vue';
 import StoreSelector from '@/components/StoreSelector.vue';
 import MySvg from '@/components/MySvg.vue';
 import categories from '../components/categories.json';
-import RangeMaker from '../utils/RangeMaker';
+// import RangeMaker from '../utils/RangeMaker';
 import { toggleResult } from '../services/AuditsService';
+
+const now = new Date();
 
 export default {
   name: 'TableView',
@@ -101,15 +103,28 @@ export default {
   data() {
     return {
       categories,
-      dateRange: new RangeMaker().getRange(),
+      // dateRange: new RangeMaker().getRange(),
+      dateRange:
+        now.getMonth() <= 7
+          ? {
+            start: new Date(Date.UTC(now.getFullYear(), 2, 1)),
+            stop: new Date(Date.UTC(now.getFullYear(), 8, 1) - 1),
+          }
+          : {
+            start: new Date(Date.UTC(now.getFullYear(), 8, 1)),
+            stop: new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
+          },
     };
   },
   methods: {
+    dateChanged(newRange) {
+      this.dateRange = newRange;
+      this.$store.dispatch('getAudits', this.dateRange);
+    },
     storeIdChanged() {
       this.$store.dispatch('getAudits', this.dateRange);
     },
     changeResult(auditId, categoryPointId) {
-      console.log({ auditId }, { categoryPointId });
       toggleResult(auditId, categoryPointId).then(({ data }) => {
         if (data.success) {
           this.$store.dispatch('getAudits', this.dateRange);
