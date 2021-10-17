@@ -13,3 +13,6 @@ export function getSummaryIndividualy(dateRange) {
   const queryString = qs.stringify(dateRange);
   return axiosInstance.get(`/summary/individualy?${queryString}`);
 }
+export function toggleResult(auditId, categoryPointId) {
+  return axiosInstance.post(`/audits/${auditId}`, { categoryPointId });
+}

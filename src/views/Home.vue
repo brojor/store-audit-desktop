@@ -20,7 +20,7 @@
               <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
             </div>
           </td>
-          <td>{{ showIfValid(audits[0].totalScore.perc)}}</td>
+          <td>{{ showIfValid(audits[0].totalScore.perc) }}</td>
           <td>{{ showIfValid(audits[1].totalScore.perc) }}</td>
           <td>{{ showIfValid(audits[2].totalScore.perc) }}</td>
           <td>{{ showIfValid(audits[3].totalScore.perc) }}</td>
@@ -57,13 +57,23 @@
         >
           <td>{{ categoryPoint.name }}</td>
           <td
-            v-for="(audit, index) in audits"
-            :key="index"
-            :comment="audits[index].categories[catIndex].categoryPoints[catPointIndex].comment"
-            :rep="audits[index].categories[catIndex].categoryPoints[catPointIndex].unacceptedInARow"
+            v-for="(audit, auditIndex) in audits"
+            @click.shift="
+              changeResult(
+                audit._id,
+                audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].id,
+              )
+            "
+            :key="auditIndex"
+            :comment="audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].comment"
+            :rep="
+              audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].unacceptedInARow
+            "
           >
             <MySvg
-              :status="audits[index].categories[catIndex].categoryPoints[catPointIndex].accepted"
+              :status="
+                audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].accepted
+              "
               :size="16"
             ></MySvg>
           </td>
@@ -79,6 +89,7 @@ import StoreSelector from '@/components/StoreSelector.vue';
 import MySvg from '@/components/MySvg.vue';
 import categories from '../components/categories.json';
 import RangeMaker from '../utils/RangeMaker';
+import { toggleResult } from '../services/AuditsService';
 
 export default {
   name: 'TableView',
@@ -96,6 +107,14 @@ export default {
   methods: {
     storeIdChanged() {
       this.$store.dispatch('getAudits', this.dateRange);
+    },
+    changeResult(auditId, categoryPointId) {
+      console.log({ auditId }, { categoryPointId });
+      toggleResult(auditId, categoryPointId).then(({ data }) => {
+        if (data.success) {
+          this.$store.dispatch('getAudits', this.dateRange);
+        }
+      });
     },
   },
   computed: {
