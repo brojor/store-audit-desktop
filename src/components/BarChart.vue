@@ -71,7 +71,7 @@ export default {
       data: {
         datasets: [
           {
-            label: 'My First Dataset',
+            label: 'Počet nedostatků',
             data: this.chartData,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',

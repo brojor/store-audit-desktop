@@ -36,6 +36,9 @@ function formatLabel(str, maxwidth) {
 
 const options = {
   responsive: true,
+  layout: {
+    padding: 30,
+  },
   parsing: {
     xAxisKey: 'id',
     yAxisKey: 'deficiencies',
@@ -43,7 +46,7 @@ const options = {
   datasets: {
     bar: {
       backgroundColor: '#ff0000',
-      hoverBackgroundColor: '#00FF00',
+      hoverBackgroundColor: '#A30000',
     },
   },
   plugins: {
@@ -58,6 +61,11 @@ const options = {
           return formatLabel(label, 75);
         },
       },
+    },
+  },
+  scales: {
+    xAxis: {
+      display: false,
     },
   },
 };
