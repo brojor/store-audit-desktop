@@ -60,6 +60,8 @@ Chart.register(
   SubTitle,
 );
 
+let myBarChart;
+
 export default {
   name: 'BarChart',
   props: ['chartData'],
@@ -80,16 +82,15 @@ export default {
       options,
     };
   },
+
   mounted() {
     const ctx = document.getElementById('myChart');
-    // eslint-disable-next-line no-new
-    new Chart(ctx, this.$data);
+    myBarChart = new Chart(ctx, this.$data);
   },
   watch: {
     chartData() {
-      const ctx = document.getElementById('myChart');
-      // eslint-disable-next-line no-new
-      new Chart(ctx, this.$data);
+      myBarChart.data.datasets[0].data = this.chartData;
+      myBarChart.update();
     },
   },
 };

@@ -8,13 +8,13 @@
         <div class="right">prodejny</div>
       </header>
       <div class="chart-wrapper">
-        <bar-chart v-if="chartData.length" :chartData="chartData" />
+        <bar-chart :chartData="chartData" />
       </div>
     </div>
   </main>
 </template>
 <script>
-import axios from 'axios';
+import categoryPointsDeficiencies from '../services/chartService';
 import DateSelector from '../components/DateSelector.vue';
 import BarChart from '../components/BarChart.vue';
 
@@ -45,10 +45,8 @@ export default {
       this.fetchData();
     },
     fetchData() {
-      return axios
-        .get('http://localhost:5000/summary')
+      categoryPointsDeficiencies(this.dateRange)
         .then(({ data }) => {
-          console.log(data);
           this.chartData = data;
         })
         .catch((err) => console.log(err));
@@ -69,7 +67,7 @@ main {
 .container {
   margin-top: 2rem;
   width: 80vw;
-  height: 80vh;
+  /* height: 80vh; */
   border: 2px solid black;
   border-radius: 1rem;
   display: flex;
