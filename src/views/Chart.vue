@@ -1,36 +1,57 @@
 <template>
-  <div>
-    <h1>chartt</h1>
-    <bar-chart-base :chartdata="chartData" />
-  </div>
+  <main>
+    <div class="container">
+      <header>
+        <div class="left">
+          <date-selector />
+        </div>
+        <div class="right">prodejny</div>
+      </header>
+      <div class="chart-wrapper">
+        neco
+      </div>
+    </div>
+  </main>
 </template>
 <script>
-import BarChartBase from '../components/BarChartBase.vue';
+import DateSelector from '../components/DateSelector.vue';
 
 export default {
-  components: { BarChartBase },
-  data() {
-    return {
-      chartData: {
-        labels: ['lefen', 'unor', 'březen', 'duven'],
-        datasets: [
-          {
-            label: 'Dataset 1',
-            data: [11, 8, 9, 4],
-            borderColor: '#023436 ',
-            backgroundColor: '#03B5AA',
-          },
-          {
-            label: 'Dataset 2',
-            data: [14, 3, 9, 10],
-            borderColor: '#493657',
-            backgroundColor: '#CE7DA5',
-          },
-        ],
-      },
-    };
-  },
+  name: 'ChartView',
+  components: { DateSelector },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin-top: 2rem;
+  width: 80vw;
+  height: 80vh;
+  border: 2px solid black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  align-items: stretch;
+  background-color: #e60001;
+}
+
+.left {
+  width: 50%;
+  padding: 1rem;
+}
+
+.chart-wrapper {
+  background-color: #fff;
+flex-grow: 1;
+}
+</style>

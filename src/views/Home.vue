@@ -58,7 +58,7 @@
           <td>{{ categoryPoint.name }}</td>
           <td
             v-for="(audit, auditIndex) in audits"
-            @click.shift="
+            @click.alt="
               changeResult(
                 audit._id,
                 audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].id,
