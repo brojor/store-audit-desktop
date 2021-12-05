@@ -57,11 +57,11 @@ const options = {
       },
     },
   },
-  scales: {
-    xAxis: {
-      display: false,
-    },
-  },
+  // scales: {
+  //   xAxis: {
+  //     display: false,
+  //   },
+  // },
 };
 
 export default options;

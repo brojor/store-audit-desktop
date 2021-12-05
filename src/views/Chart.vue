@@ -5,10 +5,16 @@
         <div class="left">
           <date-selector @change="dateChanged($event)" />
         </div>
-        <div class="right">prodejny</div>
+        <div class="right">
+          <button @click="colorize">test</button>
+          <input type="radio" id="byCategories" value="categories" v-model="chartDetail" />
+          <label for="byCategories">Kategorie</label>
+          <input type="radio" id="byPoints" value="points" v-model="chartDetail" />
+          <label for="byPoints">Body</label>
+        </div>
       </header>
       <div class="chart-wrapper">
-        <bar-chart :chartData="chartData" />
+        <bar-chart :chartData="chartData" :colors="colors" />
       </div>
     </div>
   </main>
@@ -25,6 +31,7 @@ export default {
   components: { DateSelector, BarChart },
   data() {
     return {
+      chartDetail: 'categories',
       dateRange:
         // prettier-ignore
         now.getMonth() <= 7
@@ -37,7 +44,13 @@ export default {
             stop: new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
           },
       chartData: [],
+      colors: '#FF0000',
     };
+  },
+  watch: {
+    chartDetail() {
+      this.fetchData();
+    },
   },
   methods: {
     dateChanged(newRange) {
@@ -45,7 +58,7 @@ export default {
       this.fetchData();
     },
     fetchData() {
-      categoryPointsDeficiencies(this.dateRange)
+      categoryPointsDeficiencies(this.dateRange, this.chartDetail)
         .then(({ data }) => {
           this.chartData = data;
         })
@@ -67,7 +80,7 @@ export default {
         '#8C1084',
       ];
       function setColors() {
-        const counts = [6, 10, 8, 9, 3, 5, 5, 11, 7, 6, 10];
+        const counts = [6, 8, 10, 5, 7, 10, 6, 5, 9, 3, 11];
         return counts.reduce((arr, count, i) => {
           const color = colors[i];
           [...Array(count)].forEach(() => arr.push(color));
