@@ -43,12 +43,6 @@ const options = {
     xAxisKey: 'id',
     yAxisKey: 'deficiencies',
   },
-  datasets: {
-    bar: {
-      backgroundColor: '#ff0000',
-      hoverBackgroundColor: '#A30000',
-    },
-  },
   plugins: {
     tooltip: {
       titleAlign: 'center',

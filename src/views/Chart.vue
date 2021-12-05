@@ -51,6 +51,32 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+    colorize() {
+      console.log('coloruji');
+      const colors = [
+        '#FFCD4F',
+        '#F2501A',
+        '#84FF00',
+        '#8C3FFF',
+        '#5BD35B',
+        '#4DFFEA',
+        '#C00202',
+        '#31A6FF',
+        '#133C88',
+        '#FF4FED',
+        '#8C1084',
+      ];
+      function setColors() {
+        const counts = [6, 10, 8, 9, 3, 5, 5, 11, 7, 6, 10];
+        return counts.reduce((arr, count, i) => {
+          const color = colors[i];
+          [...Array(count)].forEach(() => arr.push(color));
+          return arr;
+        }, []);
+      }
+
+      this.colors = setColors(colors);
+    },
   },
   mounted() {
     this.fetchData();

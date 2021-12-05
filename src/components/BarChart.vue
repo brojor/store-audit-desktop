@@ -64,7 +64,7 @@ let myBarChart;
 
 export default {
   name: 'BarChart',
-  props: ['chartData'],
+  props: ['chartData', 'colors'],
   data() {
     return {
       type: 'bar',
@@ -75,6 +75,7 @@ export default {
             data: this.chartData,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: this.colors,
             tension: 0.1,
           },
         ],
@@ -90,6 +91,10 @@ export default {
   watch: {
     chartData() {
       myBarChart.data.datasets[0].data = this.chartData;
+      myBarChart.update();
+    },
+    colors() {
+      myBarChart.data.datasets[0].backgroundColor = this.colors;
       myBarChart.update();
     },
   },
