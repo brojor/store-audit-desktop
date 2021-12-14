@@ -6,15 +6,24 @@
           <date-selector @change="dateChanged($event)" />
         </div>
         <div class="right">
-          <button @click="colorize">test</button>
-          <input type="radio" id="byCategories" value="categories" v-model="chartDetail" />
-          <label for="byCategories">Celé kategorie</label>
-          <input type="radio" id="byPoints" value="points" v-model="chartDetail" />
-          <label for="byPoints">Jednotlivé body</label>
-          <input type="radio" id="byId" value="id" v-model="sort" />
-          <label for="byCategories">Podle jména</label>
-          <input type="radio" id="byDeficiencies" value="deficiencies" v-model="sort" />
-          <label for="byPoints">Podle nedostatků</label>
+          <div class="filter-category">
+            <div class="filter-name">Zobrazit:</div>
+            <div class="filter-options">
+              <input type="radio" id="byCategories" value="categories" v-model="chartDetail" />
+              <label for="byCategories">Celé kategorie</label>
+              <input type="radio" id="byPoints" value="points" v-model="chartDetail" />
+              <label for="byPoints">Jednotlivé body</label>
+            </div>
+          </div>
+          <div class="filter-category">
+            <div class="filter-name">Řadit dle:</div>
+            <div class="filter-options">
+              <input type="radio" id="byId" value="id" v-model="sort" />
+              <label for="byId">Podle jména</label>
+              <input type="radio" id="byDeficiencies" value="deficiencies" v-model="sort" />
+              <label for="byDeficiencies">Podle nedostatků</label>
+            </div>
+          </div>
         </div>
       </header>
       <div class="chart-wrapper">
@@ -106,6 +115,38 @@ export default {
 </script>
 
 <style scoped>
+.right {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  align-items: center;
+  /* background-color: rgb(168, 168, 168); */
+}
+.filter-category {
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filter-name {
+  font-size: 1.4rem;
+  margin-right: 1rem;
+  font-weight: 800;
+  /* padding: 0.5rem; */
+}
+.filter-options {
+  background-color: #fff;
+  height: 3rem;
+  padding: 0 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+label{
+  margin: 0.25rem;
+}
+
 main {
   display: flex;
   justify-content: center;
