@@ -8,9 +8,13 @@
         <div class="right">
           <button @click="colorize">test</button>
           <input type="radio" id="byCategories" value="categories" v-model="chartDetail" />
-          <label for="byCategories">Kategorie</label>
+          <label for="byCategories">Celé kategorie</label>
           <input type="radio" id="byPoints" value="points" v-model="chartDetail" />
-          <label for="byPoints">Body</label>
+          <label for="byPoints">Jednotlivé body</label>
+          <input type="radio" id="byId" value="id" v-model="sort" />
+          <label for="byCategories">Podle jména</label>
+          <input type="radio" id="byDeficiencies" value="deficiencies" v-model="sort" />
+          <label for="byPoints">Podle nedostatků</label>
         </div>
       </header>
       <div class="chart-wrapper">
@@ -32,6 +36,7 @@ export default {
   data() {
     return {
       chartDetail: 'categories',
+      sort: 'id',
       dateRange:
         // prettier-ignore
         now.getMonth() <= 7
@@ -51,6 +56,9 @@ export default {
     chartDetail() {
       this.fetchData();
     },
+    sort() {
+      this.fetchData();
+    },
   },
   methods: {
     dateChanged(newRange) {
@@ -58,7 +66,7 @@ export default {
       this.fetchData();
     },
     fetchData() {
-      categoryPointsDeficiencies(this.dateRange, this.chartDetail)
+      categoryPointsDeficiencies(this.dateRange, this.chartDetail, this.sort)
         .then(({ data }) => {
           this.chartData = data;
         })
