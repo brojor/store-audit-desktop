@@ -58,7 +58,7 @@ export default {
             stop: new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
           },
       chartData: [],
-      colors: '#FF0000',
+      colors: '#e6000140',
     };
   },
   watch: {
