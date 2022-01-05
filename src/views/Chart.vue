@@ -27,7 +27,11 @@
         </div>
       </header>
       <div class="chart-wrapper">
-        <bar-chart :chartData="chartData" :colors="colors" :xAxisFontSize="xAxisFontSize" />
+        <bar-chart
+          :chartData="chartData"
+          :levelOfDetail="chartDetail"
+          :colors="colors"
+        />
       </div>
     </div>
   </main>

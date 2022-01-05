@@ -64,7 +64,7 @@ let myBarChart;
 
 export default {
   name: 'BarChart',
-  props: ['chartData', 'colors', 'xAxisFontSize'],
+  props: ['chartData', 'colors', 'levelOfDetail'],
   data() {
     return {
       type: 'bar',
@@ -98,9 +98,12 @@ export default {
       myBarChart.data.datasets[0].backgroundColor = this.colors;
       myBarChart.update();
     },
-    xAxisFontSize() {
-      myBarChart.options.scales.xAxis.ticks.font.size = this.xAxisFontSize;
+    levelOfDetail() {
+      // eslint-disable-next-line operator-linebreak
+      myBarChart.options.scales.xAxis.ticks.font.size =
+        this.levelOfDetail === 'categories' ? 12 : 10;
       myBarChart.update();
+      myBarChart.options.parsing.xAxisKey = this.levelOfDetail === 'categories' ? 'label' : 'id';
     },
   },
 };

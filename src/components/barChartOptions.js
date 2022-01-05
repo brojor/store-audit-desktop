@@ -20,7 +20,7 @@ const options = {
     padding: 30,
   },
   parsing: {
-    xAxisKey: 'id',
+    xAxisKey: 'label',
     yAxisKey: 'deficiencies',
   },
   plugins: {
@@ -40,8 +40,8 @@ const options = {
   scales: {
     xAxis: {
       ticks: {
-        callback(value) {
-          const label = this.getLabelForValue(value);
+        callback(value, index) {
+          const label = this.getLabelForValue(index);
           return splitStringToRows(label, 8);
         },
         autoSkip: false,
