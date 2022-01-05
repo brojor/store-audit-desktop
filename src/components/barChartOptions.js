@@ -57,11 +57,16 @@ const options = {
       },
     },
   },
-  // scales: {
-  //   xAxis: {
-  //     display: false,
-  //   },
-  // },
+  scales: {
+    xAxis: {
+      ticks: {
+        autoSkip: false,
+        font: {
+          size: 12,
+        },
+      },
+    },
+  },
 };
 
 export default options;

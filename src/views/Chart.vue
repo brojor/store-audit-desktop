@@ -27,7 +27,7 @@
         </div>
       </header>
       <div class="chart-wrapper">
-        <bar-chart :chartData="chartData" :colors="colors" />
+        <bar-chart :chartData="chartData" :colors="colors" :xAxisFontSize="xAxisFontSize" />
       </div>
     </div>
   </main>
@@ -60,6 +60,11 @@ export default {
       chartData: [],
       colors: '#e6000140',
     };
+  },
+  computed: {
+    xAxisFontSize() {
+      return this.chartDetail === 'categories' ? 12 : 10;
+    },
   },
   watch: {
     chartDetail() {
@@ -143,7 +148,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
-label{
+label {
   margin: 0.25rem;
 }
 

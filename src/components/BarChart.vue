@@ -64,7 +64,7 @@ let myBarChart;
 
 export default {
   name: 'BarChart',
-  props: ['chartData', 'colors'],
+  props: ['chartData', 'colors', 'xAxisFontSize'],
   data() {
     return {
       type: 'bar',
@@ -96,6 +96,10 @@ export default {
     },
     colors() {
       myBarChart.data.datasets[0].backgroundColor = this.colors;
+      myBarChart.update();
+    },
+    xAxisFontSize() {
+      myBarChart.options.scales.xAxis.ticks.font.size = this.xAxisFontSize;
       myBarChart.update();
     },
   },
