@@ -1,37 +1,17 @@
-function formatLabel(str, maxwidth) {
-  const sections = [];
-  const words = str.split(' ');
-  let temp = '';
-
-  words.forEach((item, index) => {
-    if (temp.length > 0) {
-      const concat = `${temp} ${item}`;
-
-      if (concat.length > maxwidth) {
-        sections.push(temp);
-        temp = '';
-      } else if (index === words.length - 1) {
-        sections.push(concat);
-        return;
-      } else {
-        temp = concat;
-        return;
-      }
+function splitStringToRows(input, rowLength) {
+  let curr = rowLength;
+  let prev = 0;
+  const output = [];
+  while (input[curr]) {
+    // eslint-disable-next-line no-plusplus
+    if (input[curr++] === ' ') {
+      output.push(input.substring(prev, curr - 1));
+      prev = curr;
+      curr += rowLength;
     }
-
-    if (index === words.length - 1) {
-      sections.push(item);
-      return;
-    }
-
-    if (item.length < maxwidth) {
-      temp = item;
-    } else {
-      sections.push(item);
-    }
-  });
-
-  return sections;
+  }
+  output.push(input.substring(prev));
+  return output;
 }
 
 const options = {
@@ -52,7 +32,7 @@ const options = {
         label(context) {
           const { dataIndex } = context;
           const { label } = context.dataset.data[dataIndex];
-          return formatLabel(label, 75);
+          return splitStringToRows(label, 75);
         },
       },
     },
@@ -60,6 +40,10 @@ const options = {
   scales: {
     xAxis: {
       ticks: {
+        callback(value) {
+          const label = this.getLabelForValue(value);
+          return splitStringToRows(label, 8);
+        },
         autoSkip: false,
         font: {
           size: 12,
