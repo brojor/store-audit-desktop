@@ -32,8 +32,22 @@ const options = {
         label(context) {
           const { dataIndex } = context;
           const { label } = context.dataset.data[dataIndex];
+          // eslint-disable-next-line no-underscore-dangle
+          if (context.chart.config._config.options.parsing.xAxisKey === 'label') {
+            return null;
+          }
           return splitStringToRows(label, 75);
         },
+        // title(context) {
+        //   // eslint-disable-next-line no-underscore-dangle
+        //   if (context[0].chart.config._config.options.parsing.xAxisKey === 'label') {
+        //     const { dataIndex } = context[0];
+        //     console.log('title: ', { dataIndex });
+        //     return `Kategorie ${Number(dataIndex) + 1}`;
+        //   }
+        //   console.log(context[0]);
+        //   return context[0].label;
+        // },
       },
     },
   },
