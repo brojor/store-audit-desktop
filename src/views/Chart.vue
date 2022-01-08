@@ -6,48 +6,30 @@
           <date-selector @change="dateChanged($event)" />
         </div>
         <div class="right">
-          <div class="filter-category">
-            <div class="filter-name">Zobrazit:</div>
-            <div class="filter-options">
-              <input type="radio" id="byCategories" value="categories" v-model="chartDetail" />
-              <label for="byCategories">Celé kategorie</label>
-              <input type="radio" id="byPoints" value="points" v-model="chartDetail" />
-              <label for="byPoints">Jednotlivé body</label>
-            </div>
-          </div>
-          <div class="filter-category">
-            <div class="filter-name">Řadit dle:</div>
-            <div class="filter-options">
-              <input type="radio" id="byId" value="id" v-model="sort" />
-              <label for="byId">Podle jména</label>
-              <input type="radio" id="byDeficiencies" value="deficiencies" v-model="sort" />
-              <label for="byDeficiencies">Podle nedostatků</label>
-            </div>
-          </div>
+          <universal-selector :options="storeOptions" @change="storesFilter = $event" />
         </div>
       </header>
       <div class="chart-wrapper">
-        <bar-chart
-          :chartData="chartData"
-          :levelOfDetail="chartDetail"
-          :colors="colors"
-        />
+        <bar-chart :chartData="chartData" :levelOfDetail="chartDetail" :colors="colors" />
       </div>
     </div>
   </main>
 </template>
 <script>
-import categoryPointsDeficiencies from '../services/chartService';
+import { categoryPointsDeficiencies, getStoresFilterOptions } from '../services/chartService';
 import DateSelector from '../components/DateSelector.vue';
 import BarChart from '../components/BarChart.vue';
+import UniversalSelector from '../components/universalSelector.vue';
 
 const now = new Date();
 
 export default {
   name: 'ChartView',
-  components: { DateSelector, BarChart },
+  components: { DateSelector, BarChart, UniversalSelector },
   data() {
     return {
+      storesFilter: {},
+      storeOptions: [],
       chartDetail: 'categories',
       sort: 'id',
       dateRange:
@@ -119,6 +101,9 @@ export default {
   },
   mounted() {
     this.fetchData();
+    getStoresFilterOptions().then(({ data }) => {
+      this.storeOptions = data;
+    });
   },
 };
 </script>
@@ -129,6 +114,8 @@ export default {
   justify-content: center;
   width: 50%;
   align-items: center;
+
+  padding: 0 4rem;
   /* background-color: rgb(168, 168, 168); */
 }
 .filter-category {
