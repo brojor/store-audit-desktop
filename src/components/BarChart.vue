@@ -60,13 +60,14 @@ Chart.register(
   SubTitle,
 );
 
-let myBarChart;
+// let myBarChart;
 
 export default {
   name: 'BarChart',
   props: ['chartData', 'colors', 'levelOfDetail'],
   data() {
     return {
+      myBarChart: null,
       type: 'bar',
       data: {
         datasets: [
@@ -87,23 +88,27 @@ export default {
 
   mounted() {
     const ctx = document.getElementById('myChart');
-    myBarChart = new Chart(ctx, this.$data);
+    this.myBarChart = new Chart(ctx, this.$data);
+  },
+  beforeDestroy() {
+    this.myBarChart.destroy();
   },
   watch: {
     chartData() {
-      myBarChart.data.datasets[0].data = this.chartData;
-      myBarChart.update();
+      this.myBarChart.data.datasets[0].data = this.chartData;
+      this.myBarChart.update();
     },
     colors() {
-      myBarChart.data.datasets[0].backgroundColor = this.colors;
-      myBarChart.update();
+      this.myBarChart.data.datasets[0].backgroundColor = this.colors;
+      this.myBarChart.update();
     },
     levelOfDetail() {
       // eslint-disable-next-line operator-linebreak
-      myBarChart.options.scales.xAxis.ticks.font.size =
+      this.myBarChart.options.scales.xAxis.ticks.font.size =
         this.levelOfDetail === 'categories' ? 12 : 10;
-      myBarChart.update();
-      myBarChart.options.parsing.xAxisKey = this.levelOfDetail === 'categories' ? 'label' : 'id';
+      this.myBarChart.update();
+      this.myBarChart.options.parsing.xAxisKey =
+        this.levelOfDetail === 'categories' ? 'label' : 'id';
     },
   },
 };
