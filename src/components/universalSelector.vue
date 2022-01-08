@@ -1,0 +1,38 @@
+<template>
+  <select name="selector" id="selector" v-model="selectedItemId" @change="handleChange">
+    <option v-for="option in options" :key="option.id" :value="option.id"
+      >{{ option.title }}
+    </option>
+  </select>
+</template>
+
+<script>
+export default {
+  name: 'UniversalSelector',
+  props: ['options'],
+  data() {
+    return {
+      selectedItemId: '',
+    };
+  },
+  methods: {
+    handleChange() {
+      const selectedObj = this.options.find((item) => item.id === this.selectedItemId);
+      this.$emit('change', selectedObj);
+    },
+  },
+  watch: {
+    options() {
+      this.selectedItemId = this.options[0].id;
+    },
+  },
+};
+</script>
+
+<style scoped>
+select {
+  flex-grow: 1;
+  height: 3rem;
+  border-radius: 4px;
+}
+</style>
