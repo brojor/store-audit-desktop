@@ -6,11 +6,11 @@
           <date-selector @change="dateChanged($event)" />
         </div>
         <div class="right">
-          <universal-selector :options="storeOptions" @change="storesFilter = $event" />
+          <universal-selector :options="storeOptions" @change="filter.storesFilter = $event" />
         </div>
       </header>
       <div class="chart-wrapper">
-        <bar-chart :chartData="chartData" :levelOfDetail="chartDetail" :colors="colors" />
+        <bar-chart :chartData="chartData" :levelOfDetail="filter.detailLevel" :colors="colors" />
       </div>
     </div>
   </main>
@@ -28,10 +28,15 @@ export default {
   components: { DateSelector, BarChart, UniversalSelector },
   data() {
     return {
-      storesFilter: {},
+      filter: {
+        detailLevel: 'categories',
+        sortBy: 'id',
+        storesFilter: {
+          type: '',
+          id: '',
+        },
+      },
       storeOptions: [],
-      chartDetail: 'categories',
-      sort: 'id',
       dateRange:
         // prettier-ignore
         now.getMonth() <= 7
@@ -49,24 +54,20 @@ export default {
   },
   computed: {
     xAxisFontSize() {
-      return this.chartDetail === 'categories' ? 12 : 10;
+      return this.filter.detailLevel === 'categories' ? 12 : 10;
     },
   },
   watch: {
-    chartDetail() {
-      this.fetchData();
-    },
-    sort() {
-      this.fetchData();
+    filter: {
+      deep: true,
+      handler() {
+        console.log('watch - jdu stáhnout data');
+      },
     },
   },
   methods: {
-    dateChanged(newRange) {
-      this.dateRange = newRange;
-      this.fetchData();
-    },
     fetchData() {
-      categoryPointsDeficiencies(this.dateRange, this.chartDetail, this.sort)
+      categoryPointsDeficiencies(this.filter)
         .then(({ data }) => {
           this.chartData = data;
         })
@@ -100,9 +101,10 @@ export default {
     },
   },
   mounted() {
-    this.fetchData();
+    // this.fetchData(); // zavolá watcher
     getStoresFilterOptions().then(({ data }) => {
       this.storeOptions = data;
+      [this.filter.storesFilter] = data;
     });
   },
 };
