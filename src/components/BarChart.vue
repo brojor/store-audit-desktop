@@ -1,5 +1,5 @@
 <template>
-  <canvas id="myChart"></canvas>
+  <canvas id="myChart" ref="myChart"></canvas>
 </template>
 
 <script>
@@ -60,14 +60,13 @@ Chart.register(
   SubTitle,
 );
 
-// let myBarChart;
+let myBarChart;
 
 export default {
   name: 'BarChart',
   props: ['chartData', 'colors', 'levelOfDetail'],
   data() {
     return {
-      myBarChart: null,
       type: 'bar',
       data: {
         datasets: [
@@ -87,28 +86,24 @@ export default {
   },
 
   mounted() {
-    const ctx = document.getElementById('myChart');
-    this.myBarChart = new Chart(ctx, this.$data);
-  },
-  beforeDestroy() {
-    this.myBarChart.destroy();
+    const ctx = this.$refs.myChart;
+    myBarChart = new Chart(ctx, this.$data);
   },
   watch: {
     chartData() {
-      this.myBarChart.data.datasets[0].data = this.chartData;
-      this.myBarChart.update();
+      myBarChart.data.datasets[0].data = this.chartData;
+      myBarChart.update();
     },
     colors() {
-      this.myBarChart.data.datasets[0].backgroundColor = this.colors;
-      this.myBarChart.update();
+      myBarChart.data.datasets[0].backgroundColor = this.colors;
+      myBarChart.update();
     },
     levelOfDetail() {
       // eslint-disable-next-line operator-linebreak
-      this.myBarChart.options.scales.xAxis.ticks.font.size =
+      myBarChart.options.scales.xAxis.ticks.font.size =
         this.levelOfDetail === 'categories' ? 12 : 10;
-      this.myBarChart.update();
-      this.myBarChart.options.parsing.xAxisKey =
-        this.levelOfDetail === 'categories' ? 'label' : 'id';
+      myBarChart.update();
+      myBarChart.options.parsing.xAxisKey = this.levelOfDetail === 'categories' ? 'label' : 'id';
     },
   },
 };

@@ -62,12 +62,17 @@ export default {
       deep: true,
       handler() {
         console.log('watch - jdu stáhnout data');
+        this.fetchData();
       },
     },
   },
   methods: {
+    dateChanged(newRange) {
+      this.dateRange = newRange;
+      this.fetchData();
+    },
     fetchData() {
-      categoryPointsDeficiencies(this.filter)
+      categoryPointsDeficiencies(this.dateRange, this.filter.detailLevel, this.filter.sortBy)
         .then(({ data }) => {
           this.chartData = data;
         })

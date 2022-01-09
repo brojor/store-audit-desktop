@@ -1,30 +1,46 @@
 import { mount } from '@vue/test-utils';
-import Chart from '../../src/views/Chart.vue';
+import { nextTick } from 'vue';
+import MockAdapter from 'axios-mock-adapter';
+import axiosInstance from '../../src/services/Api';
 
+import 'jest-canvas-mock';
+
+import Chart from '../../src/views/Chart.vue';
 import myStore from '../../src/store';
+import response from './storesFilterResponse.json';
+import deficiens from './deficiens.json';
 
 describe('Chart.vue', () => {
-  it('Component is loaded', () => {
-    const wrapper = mount(Chart, { store: myStore });
-    expect(wrapper).toBeTruthy();
-    wrapper.destroy();
-  });
-  it('Nějaký popisek', () => {
-    const wrapper = mount(Chart, { store: myStore });
-    console.log(wrapper.html());
+  const mock = new MockAdapter(axiosInstance);
+  mock.onGet('/chart/store-filter-options').reply(200, response);
+  mock
+    .onGet(
+      '/summary?after=2022-03-01T00%3A00%3A00.000Z&before=2022-08-31T23%3A59%3A59.999Z&detail=categories&sort=id',
+    )
+    .reply(200, deficiens);
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mount(Chart, { store: myStore });
   });
 
-  // it('load component', () => {
-  //   const wrapper = mount(Chart, {
-  //     mocks: {
-  //       $store: {
-  //         state: {
-  //           loading: false,
-  //         },
-  //       },
-  //     },
-  //   });
-  //   console.log(wrapper.html());
-  //   // expect(wrapper.exists()).toBe(true);
-  // });
+  afterEach(() => {
+    wrapper.destroy();
+  });
+
+  it.only('Component is loaded', async () => {
+    await nextTick();
+    expect(wrapper).toBeTruthy();
+  });
+
+  it('The first option is loaded in the selector', async () => {
+    await nextTick();
+    const select = wrapper.find('#selector');
+    expect(select.element.value).toBe(response[0].id);
+  });
+  it('Select component has right number of options', async () => {
+    await nextTick();
+    const options = wrapper.findAll('option');
+    expect(options.length).toBe(response.length);
+  });
 });

@@ -1,0 +1,57 @@
+[
+    {
+        "deficiencies": 107,
+        "id": "Kategorie 1",
+        "label": "Před prodejnou, vstup do prodejny"
+    },
+    {
+        "deficiencies": 138,
+        "id": "Kategorie 2",
+        "label": "V prodejně"
+    },
+    {
+        "deficiencies": 202,
+        "id": "Kategorie 3",
+        "label": "Sklad, zázemí, kancelář"
+    },
+    {
+        "deficiencies": 115,
+        "id": "Kategorie 4",
+        "label": "Layout, POS a MKT označení"
+    },
+    {
+        "deficiencies": 140,
+        "id": "Kategorie 5",
+        "label": "Prezentace"
+    },
+    {
+        "deficiencies": 191,
+        "id": "Kategorie 6",
+        "label": "Provoz"
+    },
+    {
+        "deficiencies": 122,
+        "id": "Kategorie 7",
+        "label": "Stav zásob, \"díry\""
+    },
+    {
+        "deficiencies": 111,
+        "id": "Kategorie 8",
+        "label": "Doplněnost"
+    },
+    {
+        "deficiencies": 180,
+        "id": "Kategorie 9",
+        "label": "Ceny, označení zboží"
+    },
+    {
+        "deficiencies": 63,
+        "id": "Kategorie 10",
+        "label": "Expirace"
+    },
+    {
+        "deficiencies": 217,
+        "id": "Kategorie 11",
+        "label": "Personál"
+    }
+]

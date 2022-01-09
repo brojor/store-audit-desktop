@@ -14,7 +14,7 @@ export function categoryPointsDeficiencies(dateRange, detail, sort) {
     sort,
   });
   console.log(queryString);
-  return axiosInstance.get(`http://localhost:5000/summary?${queryString}`);
+  return axiosInstance.get(`/summary?${queryString}`);
 }
 
 export function getStoresFilterOptions() {
