@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <button @click="prev">
+    <button @click="prev" data-test="get-prev">
       <svg
         width="32px"
         height="32px"
