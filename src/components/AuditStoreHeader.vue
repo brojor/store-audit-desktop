@@ -3,9 +3,13 @@
     <div class="container">
       <div class="header-left">
         <div class="flex items-center">
-          <img class="logo" src="@/assets/logo-small.png" alt="logo" @click="handleClickOnLogo" />
+          <img class="logo" src="@/assets/logo-small.png" alt="logo" />
           <h1>STORE AUDIT</h1>
         </div>
+      </div>
+      <div class="routes">
+        <router-link class="icon" to="/"><icon-table /></router-link>
+        <router-link class="icon" to="/chart"><icon-bar-chart /></router-link>
       </div>
       <div class="header-right">
         <span class="header-user-name">{{ fullName }}</span>
@@ -17,10 +21,12 @@
 
 <script>
 import LogOut from '@/components/icons/logout.vue';
+import IconTable from './icons/iconTable.vue';
+import IconBarChart from './icons/iconBarChart.vue';
 
 export default {
   name: 'AuditStoreHeader',
-  components: { LogOut },
+  components: { LogOut, IconTable, IconBarChart },
   computed: {
     fullName() {
       return this.$store.state.auth.userFullName;
@@ -32,9 +38,6 @@ export default {
         this.$router.push({ name: 'Login' });
       });
     },
-    handleClickOnLogo() {
-      this.$router.push({ name: 'Chart' });
-    },
   },
 };
 </script>
@@ -42,6 +45,9 @@ export default {
 <style lang="css" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sarpanch:wght@700&display=swap');
 
+.icon {
+  margin: 0 0.5rem;
+}
 img {
   height: 3rem;
   margin-top: 4px;

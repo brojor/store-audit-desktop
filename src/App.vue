@@ -44,6 +44,16 @@ html {
   text-align: center;
 }
 
+.router-link-active {
+  color: inherit;
+}
+.router-link-exact-active {
+  color: #e60001;
+}
+a {
+  color: inherit;
+}
+
 .flex {
   display: flex;
 }
