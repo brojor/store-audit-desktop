@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header-left">
         <div class="flex items-center">
-          <img class="logo" src="@/assets/logo-small.png" alt="logo" />
+          <img class="logo" src="@/assets/logo-small.png" alt="logo" @click="handleClickOnLogo" />
           <h1>STORE AUDIT</h1>
         </div>
       </div>
@@ -31,6 +31,9 @@ export default {
       this.$store.dispatch('logout').then(() => {
         this.$router.push({ name: 'Login' });
       });
+    },
+    handleClickOnLogo() {
+      this.$router.push({ name: 'Chart' });
     },
   },
 };
