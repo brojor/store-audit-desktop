@@ -42,6 +42,9 @@
         </div>
       </header>
       <div class="chart-wrapper">
+        <div v-if="loading" class="backdrop">
+          <circle-loader color="#444" size="100px" />
+        </div>
         <bar-chart :chartData="chartData" :levelOfDetail="filter.detailLevel" :colors="colors" />
       </div>
     </div>
@@ -52,14 +55,21 @@ import { deficiencies, getStoresFilterOptions } from '../services/chartService';
 import DateSelector from '../components/DateSelector.vue';
 import BarChart from '../components/BarChart.vue';
 import UniversalSelector from '../components/universalSelector.vue';
+import CircleLoader from '../components/circleLoader.vue';
 
 const now = new Date();
 
 export default {
   name: 'ChartView',
-  components: { DateSelector, BarChart, UniversalSelector },
+  components: {
+    DateSelector,
+    BarChart,
+    UniversalSelector,
+    CircleLoader,
+  },
   data() {
     return {
+      loading: false,
       filter: {
         detailLevel: 'categories',
         sortBy: 'id',
@@ -104,9 +114,11 @@ export default {
       this.fetchData();
     },
     fetchData() {
+      this.loading = true;
       deficiencies(this.dateRange, this.filter)
         .then(({ data }) => {
           this.chartData = data;
+          this.loading = false;
         })
         .catch((err) => console.log(err));
     },
@@ -148,6 +160,22 @@ export default {
 </script>
 
 <style scoped>
+.backdrop {
+  transition: background-color 0.5s ease-in-out;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(46, 46, 46, 0.144);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  /* background-color: rgba(255, 255, 255, 0.418);
+  width: 15rem;
+  height: 15rem; */
+  border-radius: 3rem;
+}
 .right {
   display: flex;
   justify-content: center;
@@ -219,5 +247,6 @@ main {
 .chart-wrapper {
   background-color: #fff;
   flex-grow: 1;
+  position: relative;
 }
 </style>
