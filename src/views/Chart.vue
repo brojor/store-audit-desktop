@@ -2,11 +2,43 @@
   <main>
     <div class="container">
       <header>
-        <div class="left">
-          <date-selector @change="dateChanged($event)" />
+        <div class="header-row">
+          <div class="left">
+            <date-selector @change="dateChanged($event)" />
+          </div>
+          <div class="right">
+            <universal-selector :options="storeOptions" @change="filter.storesFilter = $event" />
+          </div>
         </div>
-        <div class="right">
-          <universal-selector :options="storeOptions" @change="filter.storesFilter = $event" />
+        <div class="header-row">
+          <div class="filter-category">
+            <div class="filter-name">Zobrazit:</div>
+            <div class="filter-options">
+              <input
+                type="radio"
+                id="byCategories"
+                value="categories"
+                v-model="filter.detailLevel"
+              />
+              <label for="byCategories">Celé kategorie</label>
+              <input type="radio" id="byPoints" value="points" v-model="filter.detailLevel" />
+              <label for="byPoints">Jednotlivé body</label>
+            </div>
+          </div>
+          <div class="filter-category">
+            <div class="filter-name">Řazení:</div>
+            <div class="filter-options">
+              <input type="radio" id="byId" value="id" v-model="filter.sortBy" />
+              <label for="byId">Podle jména</label>
+              <input
+                type="radio"
+                id="byDeficiencies"
+                value="deficiencies"
+                v-model="filter.sortBy"
+              />
+              <label for="byDeficiencies">Podle nedostatků</label>
+            </div>
+          </div>
         </div>
       </header>
       <div class="chart-wrapper">
@@ -132,14 +164,15 @@ export default {
   justify-content: center;
 }
 .filter-name {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
   margin-right: 1rem;
   font-weight: 800;
   /* padding: 0.5rem; */
 }
 .filter-options {
   background-color: #fff;
-  height: 3rem;
+  height: 1.5rem;
   padding: 0 1rem;
   border-radius: 4px;
   display: flex;
@@ -166,10 +199,16 @@ main {
   overflow: hidden;
 }
 
-header {
+.header-row {
   display: flex;
   align-items: stretch;
   background-color: #e60001;
+}
+.header-row:nth-child(2) {
+  background: #f1a0a0;
+  justify-content: space-evenly;
+  background-color: #fff;
+  border-bottom: 1px solid rgb(148, 148, 148);
 }
 
 .left {
