@@ -48,7 +48,7 @@
   </main>
 </template>
 <script>
-import { categoryPointsDeficiencies, getStoresFilterOptions } from '../services/chartService';
+import { deficiencies, getStoresFilterOptions } from '../services/chartService';
 import DateSelector from '../components/DateSelector.vue';
 import BarChart from '../components/BarChart.vue';
 import UniversalSelector from '../components/universalSelector.vue';
@@ -104,7 +104,7 @@ export default {
       this.fetchData();
     },
     fetchData() {
-      categoryPointsDeficiencies(this.dateRange, this.filter.detailLevel, this.filter.sortBy)
+      deficiencies(this.dateRange, this.filter)
         .then(({ data }) => {
           this.chartData = data;
         })

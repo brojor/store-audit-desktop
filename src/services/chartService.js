@@ -2,22 +2,21 @@ import axiosInstance from './Api';
 
 const qs = require('qs');
 
-export function categoryPointsDeficiencies(dateRange, detail, sort) {
-  // const after = dateRange.start;
-  // const before = dateRange.stop;
+export function deficiencies(dateRange, { detailLevel, sortBy, storesFilter }) {
+  const { id } = storesFilter;
+  const path = storesFilter.type === 'group' ? `/chart/aggregated/${id}` : `/chart/individual/${id}`;
   const { start: after, stop: before } = dateRange;
-  // const sort = 'deficiencies';
+
   const queryString = qs.stringify({
     after,
     before,
-    detail,
-    sort,
+    detailLevel,
+    sortBy,
   });
-  console.log(queryString);
-  return axiosInstance.get(`/summary?${queryString}`);
+
+  return axiosInstance.get(`${path}?${queryString}`);
 }
 
 export function getStoresFilterOptions() {
-  console.log('volám store filter endpoint');
   return axiosInstance.get('/chart/store-filter-options');
 }
