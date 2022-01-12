@@ -10,8 +10,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // selectedStoreId: JSON.parse(localStorage.getItem('stores'))[0].id || '',
-    selectedStoreId: '',
+    selectedStoreId: JSON.parse(localStorage.getItem('stores'))[0].id || '',
+    // selectedStoreId: '',
     audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
     loading: false,
