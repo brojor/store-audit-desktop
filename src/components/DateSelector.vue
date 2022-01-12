@@ -45,45 +45,51 @@
 <script>
 import Spinner from './Spinner.vue';
 
-const now = new Date();
-
 export default {
   components: { Spinner },
   name: 'DateSelector',
   data() {
     return {
-      dateRange: {
-        start: this.isFirstSemester(now)
-          ? new Date(Date.UTC(now.getFullYear(), 2, 1))
-          : new Date(Date.UTC(now.getFullYear(), 8, 1)),
-        stop: this.isFirstSemester(now)
-          ? new Date(Date.UTC(now.getFullYear(), 8, 1) - 1)
-          : new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
-      },
+      dateRange: this.getDateRange(),
     };
   },
   methods: {
+    getDateRange() {
+      const now = new Date();
+      const currentMonth = now.getUTCMonth();
+
+      const startMonth = this.isFirstSemester(now) ? 2 : 8;
+      const endMonth = this.isFirstSemester(now) ? 8 : 2;
+
+      const startYear = currentMonth < 2 ? now.getFullYear() - 1 : now.getFullYear();
+      const endYear = currentMonth < 8 ? now.getFullYear() : now.getFullYear() + 1;
+
+      return {
+        start: new Date(Date.UTC(startYear, startMonth, 1)),
+        stop: new Date(Date.UTC(endYear, endMonth, 1) - 1),
+      };
+    },
     isFirstSemester(date) {
       const month = date.getUTCMonth();
       return month <= 7 && month >= 2;
     },
     addMonths(date, months) {
-      const d = date.getDate();
+      const d = date.getUTCDate();
       date.setUTCMonth(date.getUTCMonth() + +months);
-      if (date.getDate() !== d) {
-        date.setDate(0);
+      if (date.getUTCDate() !== d) {
+        date.setUTCDate(0);
       }
-      return date;
+      return new Date(date);
     },
     next() {
-      this.dateRange.start = new Date(this.addMonths(this.dateRange.start, 6));
-      this.dateRange.stop = new Date(this.addMonths(this.dateRange.stop, 6));
+      this.dateRange.start = this.addMonths(this.dateRange.start, 6);
+      this.dateRange.stop = this.addMonths(this.dateRange.stop, 6);
 
       this.$emit('change', this.dateRange);
     },
     prev() {
-      this.dateRange.start = new Date(this.addMonths(this.dateRange.start, -6));
-      this.dateRange.stop = new Date(this.addMonths(this.dateRange.stop, -6));
+      this.dateRange.start = this.addMonths(this.dateRange.start, -6);
+      this.dateRange.stop = this.addMonths(this.dateRange.stop, -6);
 
       this.$emit('change', this.dateRange);
     },
@@ -102,6 +108,9 @@ export default {
     },
     formatedString() {
       return `${this.formatDate(this.dateRange.start)} - ${this.formatDate(this.dateRange.stop)}`;
+    },
+    debugDate() {
+      return `${this.dateRange.start.toISOString()} - ${this.dateRange.stop.toISOString()}`;
     },
   },
 };
