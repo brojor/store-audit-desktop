@@ -1,58 +1,22 @@
 <template>
   <div class="main">
-    <button @click="prev" data-test="get-prev">
-      <svg
-        width="32px"
-        height="32px"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        color="#000000"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0
-          01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-          clip-rule="evenodd"
-        ></path>
-      </svg>
-    </button>
+    <button @click="prev" data-test="get-prev"><arrow-left /></button>
     <div class="date-range-wrapper">
       <spinner v-if="loading" />
       <h1 v-else>{{ formatedString }}</h1>
     </div>
-
-    <button @click="next">
-      <svg
-        width="32px"
-        height="32px"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        color="#000000"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0
-          011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-          clip-rule="evenodd"
-        ></path>
-      </svg>
-    </button>
+    <button @click="next"><arrow-right /></button>
   </div>
 </template>
 
 <script>
 import Spinner from './Spinner.vue';
+import ArrowLeft from './icons/arrowLeft.vue';
+import ArrowRight from './icons/arrowRight.vue';
 
 export default {
-  components: { Spinner },
+  components: { Spinner, ArrowLeft, ArrowRight },
   name: 'DateSelector',
-  // data() {
-  //   return {
-  //     dateRange: this.getDateRange(),
-  //   };
-  // },
   props: ['dateRange'],
   methods: {
     addMonths(date, months) {
@@ -90,9 +54,6 @@ export default {
     },
     formatedString() {
       return `${this.formatDate(this.dateRange.start)} - ${this.formatDate(this.dateRange.stop)}`;
-    },
-    debugDate() {
-      return `${this.dateRange.start.toISOString()} - ${this.dateRange.stop.toISOString()}`;
     },
   },
 };
