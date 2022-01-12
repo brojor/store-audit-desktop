@@ -64,7 +64,8 @@ export default {
   },
   methods: {
     isFirstSemester(date) {
-      return date.getUTCMonth() <= 7;
+      const month = date.getUTCMonth();
+      return month <= 7 && month >= 2;
     },
     addMonths(date, months) {
       const d = date.getDate();
