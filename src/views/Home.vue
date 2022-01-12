@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrapper">
-    <table>
+    <table v-if="audits[0]">
       <thead>
         <tr>
           <td>

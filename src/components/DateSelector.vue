@@ -64,18 +64,26 @@ export default {
   },
   methods: {
     isFirstSemester(date) {
-      return date.getMonth() <= 7;
+      return date.getUTCMonth() <= 7;
+    },
+    addMonths(date, months) {
+      const d = date.getDate();
+      date.setUTCMonth(date.getUTCMonth() + +months);
+      if (date.getDate() !== d) {
+        date.setDate(0);
+      }
+      return date;
     },
     next() {
-      const { start, stop } = this.dateRange;
-      this.dateRange.start = new Date(start.setMonth(start.getMonth() + 6));
-      this.dateRange.stop = new Date(stop.setMonth(stop.getMonth() + 6));
+      this.dateRange.start = new Date(this.addMonths(this.dateRange.start, 6));
+      this.dateRange.stop = new Date(this.addMonths(this.dateRange.stop, 6));
+
       this.$emit('change', this.dateRange);
     },
     prev() {
-      const { start, stop } = this.dateRange;
-      this.dateRange.start = new Date(start.setMonth(start.getMonth() - 6));
-      this.dateRange.stop = new Date(stop.setMonth(stop.getMonth() - 6));
+      this.dateRange.start = new Date(this.addMonths(this.dateRange.start, -6));
+      this.dateRange.stop = new Date(this.addMonths(this.dateRange.stop, -6));
+
       this.$emit('change', this.dateRange);
     },
     formatDate(date) {
