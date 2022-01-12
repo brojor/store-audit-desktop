@@ -4,7 +4,7 @@
       <header>
         <div class="header-row">
           <div class="left">
-            <date-selector @change="dateChanged($event)" />
+            <date-selector :dateRange="dateRange" @change="dateChanged($event)" />
           </div>
           <div class="right">
             <universal-selector :options="storeOptions" @change="filter.storesFilter = $event" />
@@ -56,8 +56,7 @@ import DateSelector from '../components/DateSelector.vue';
 import BarChart from '../components/BarChart.vue';
 import UniversalSelector from '../components/universalSelector.vue';
 import CircleLoader from '../components/circleLoader.vue';
-
-const now = new Date();
+import { getDateRange } from '../utils/DateRange';
 
 export default {
   name: 'ChartView',
@@ -79,17 +78,7 @@ export default {
         },
       },
       storeOptions: [],
-      dateRange:
-        // prettier-ignore
-        now.getMonth() <= 7
-          ? {
-            start: new Date(Date.UTC(now.getFullYear(), 2, 1)),
-            stop: new Date(Date.UTC(now.getFullYear(), 8, 1) - 1),
-          }
-          : {
-            start: new Date(Date.UTC(now.getFullYear(), 8, 1)),
-            stop: new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
-          },
+      dateRange: getDateRange(),
       chartData: [],
       colors: '#e6000140',
     };

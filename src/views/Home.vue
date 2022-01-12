@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <td>
-            <DateSelector @change="dateChanged($event)" />
+            <DateSelector :dateRange="dateRange" @change="dateChanged($event)" />
           </td>
           <td>{{ formatDate(audits[0].date) }}</td>
           <td>{{ formatDate(audits[1].date) }}</td>
@@ -90,8 +90,7 @@ import MySvg from '@/components/MySvg.vue';
 import categories from '../components/categories.json';
 // import RangeMaker from '../utils/RangeMaker';
 import { toggleResult } from '../services/AuditsService';
-
-const now = new Date();
+import { getDateRange } from '../utils/DateRange';
 
 export default {
   name: 'TableView',
@@ -104,16 +103,7 @@ export default {
     return {
       categories,
       // dateRange: new RangeMaker().getRange(),
-      dateRange:
-        now.getMonth() <= 7
-          ? {
-            start: new Date(Date.UTC(now.getFullYear(), 2, 1)),
-            stop: new Date(Date.UTC(now.getFullYear(), 8, 1) - 1),
-          }
-          : {
-            start: new Date(Date.UTC(now.getFullYear(), 8, 1)),
-            stop: new Date(Date.UTC(now.getFullYear() + 1, 2, 1) - 1),
-          },
+      dateRange: getDateRange(),
     };
   },
   methods: {
