@@ -38,16 +38,11 @@ const options = {
           }
           return splitStringToRows(label, 75);
         },
-        // title(context) {
-        //   // eslint-disable-next-line no-underscore-dangle
-        //   if (context[0].chart.config._config.options.parsing.xAxisKey === 'label') {
-        //     const { dataIndex } = context[0];
-        //     console.log('title: ', { dataIndex });
-        //     return `Kategorie ${Number(dataIndex) + 1}`;
-        //   }
-        //   console.log(context[0]);
-        //   return context[0].label;
-        // },
+        title([context]) {
+          const { dataIndex, dataset } = context;
+          const { id } = dataset.data[dataIndex];
+          return `${id} (${context.formattedValue})`;
+        },
       },
     },
   },
