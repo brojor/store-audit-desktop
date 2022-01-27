@@ -8,9 +8,11 @@ import { getStores, getAudits } from '../services/AuditsService';
 
 Vue.use(Vuex);
 
+const storesInStorage = localStorage.getItem('stores');
+
 export default new Vuex.Store({
   state: {
-    selectedStoreId: JSON.parse(localStorage.getItem('stores'))[0].id || '',
+    selectedStoreId: storesInStorage ? JSON.parse(storesInStorage)[0].id : '',
     // selectedStoreId: '',
     audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
