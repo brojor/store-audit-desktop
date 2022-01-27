@@ -3,8 +3,8 @@ import axiosInstance from './Api';
 const qs = require('qs');
 
 export function deficiencies(dateRange, { detailLevel, sortBy, storesFilter }) {
-  const { id } = storesFilter;
-  const path = storesFilter.type === 'group' ? `/chart/aggregated/${id}` : `/chart/individual/${id}`;
+  const { id, type } = storesFilter;
+  const path = type === 'group' ? `/chart/aggregated/${id}` : `/chart/individual/${id}`;
   const { start: after, stop: before } = dateRange;
 
   const queryString = qs.stringify({
