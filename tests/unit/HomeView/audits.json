@@ -1,0 +1,2674 @@
+[
+    {
+        "_id": "61ab4d0a848a66a78537c3e6",
+        "auditor": "60c39ce6f48a0b1d51d3922d",
+        "date": "2021-09-12T07:50:00.000Z",
+        "storeId": "R4221",
+        "categories": [
+            {
+                "categoryId": 1,
+                "categoryPoints": [
+                    {
+                        "id": "C01P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P04",
+                        "accepted": false,
+                        "comment": "Skončil víkend: Kam se proboha poděla ta noc z pátka na neděli?!",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C01P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P06",
+                        "accepted": false,
+                        "comment": "Nikdy svého nepřítele nepřerušujte, když dělá chybu. – Napoleon Bonaparte",
+                        "unacceptedInARow": 1
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 46,
+                    "perc": 76.66666666666667
+                }
+            },
+            {
+                "categoryId": 2,
+                "categoryPoints": [
+                    {
+                        "id": "C02P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P08",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 80,
+                    "earned": 80,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 3,
+                "categoryPoints": [
+                    {
+                        "id": "C03P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P09",
+                        "accepted": false,
+                        "comment": "Nikdy jsem nedopustil, aby škola stála v cestě mému vzdělání. —  Mark Twain",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C03P10",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 93,
+                    "perc": 93
+                }
+            },
+            {
+                "categoryId": 4,
+                "categoryPoints": [
+                    {
+                        "id": "C04P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 50,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 5,
+                "categoryPoints": [
+                    {
+                        "id": "C05P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P07",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 70,
+                    "earned": 70,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 6,
+                "categoryPoints": [
+                    {
+                        "id": "C06P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P02",
+                        "accepted": false,
+                        "comment": "Výplata – Jeden z důkazů, že i zaměstnavatel má smysl pro humor.",
+                        "unacceptedInARow": 2
+                    },
+                    {
+                        "id": "C06P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P10",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 90,
+                    "perc": 90
+                }
+            },
+            {
+                "categoryId": 7,
+                "categoryPoints": [
+                    {
+                        "id": "C07P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P06",
+                        "accepted": false,
+                        "comment": "Optimismus je nejpříjemnější forma odvahy. - Anatole France",
+                        "unacceptedInARow": 3
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 46,
+                    "perc": 76.66666666666667
+                }
+            },
+            {
+                "categoryId": 8,
+                "categoryPoints": [
+                    {
+                        "id": "C08P01",
+                        "accepted": false,
+                        "comment": "Když mají manželé problémy tak za to můžou vždy obě strany. Jak manželka tak i tchýně.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C08P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 40,
+                    "perc": 80
+                }
+            },
+            {
+                "categoryId": 9,
+                "categoryPoints": [
+                    {
+                        "id": "C09P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P03",
+                        "accepted": false,
+                        "comment": "Ne všichni, kteří bloudí, jsou ztraceni. - John Ronald Reuel Tolkien",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C09P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P09",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 90,
+                    "earned": 78,
+                    "perc": 86.66666666666667
+                }
+            },
+            {
+                "categoryId": 10,
+                "categoryPoints": [
+                    {
+                        "id": "C10P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C10P02",
+                        "accepted": false,
+                        "comment": "Sliby jsou jako děti – dělat je je sranda, ale dotáhnout to pak do konce je často dost těžké.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C10P03",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 30,
+                    "earned": 20,
+                    "perc": 66.66666666666667
+                }
+            },
+            {
+                "categoryId": 11,
+                "categoryPoints": [
+                    {
+                        "id": "C11P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P05",
+                        "accepted": false,
+                        "comment": "Ne, děkuji, já si nevybojoval pozici na vrcholku potravní pyramidy jen proto, abych se stal veganem.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C11P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P09",
+                        "accepted": false,
+                        "comment": "Moje dlouhodobá paměť je krátkodobá, a krátkodobou mám dlouhodobě v p*deli. – Adelleide",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C11P10",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P11",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 110,
+                    "earned": 90,
+                    "perc": 81.81818181818181
+                }
+            }
+        ],
+        "totalScore": {
+            "available": 800,
+            "earned": 703,
+            "perc": 87.875
+        }
+    },
+    {
+        "_id": "61ab4d0a848a66a78537c40b",
+        "auditor": "60c39ce6f48a0b1d51d3922d",
+        "date": "2021-10-02T13:15:00.000Z",
+        "storeId": "R4221",
+        "categories": [
+            {
+                "categoryId": 1,
+                "categoryPoints": [
+                    {
+                        "id": "C01P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P06",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 60,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 2,
+                "categoryPoints": [
+                    {
+                        "id": "C02P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P08",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 80,
+                    "earned": 80,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 3,
+                "categoryPoints": [
+                    {
+                        "id": "C03P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P07",
+                        "accepted": false,
+                        "comment": "Nad alkoholem nelze zvítězit, jen Moraváci remizovali.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C03P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P10",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 90,
+                    "perc": 90
+                }
+            },
+            {
+                "categoryId": 4,
+                "categoryPoints": [
+                    {
+                        "id": "C04P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P03",
+                        "accepted": false,
+                        "comment": "Buďme vděčni zato, že existují blbci, bez nich bychom nemohli vyniknout. —  Mark Twain",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C04P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 40,
+                    "perc": 80
+                }
+            },
+            {
+                "categoryId": 5,
+                "categoryPoints": [
+                    {
+                        "id": "C05P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P07",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 70,
+                    "earned": 70,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 6,
+                "categoryPoints": [
+                    {
+                        "id": "C06P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P10",
+                        "accepted": false,
+                        "comment": "V každém okamžiku se rozhoduješ, kým jsi a budeš. Tvůj život je vždycky výsledkem tvých myšlenek. - Neale Donald Walsch",
+                        "unacceptedInARow": 1
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 89,
+                    "perc": 89
+                }
+            },
+            {
+                "categoryId": 7,
+                "categoryPoints": [
+                    {
+                        "id": "C07P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P05",
+                        "accepted": false,
+                        "comment": "Buďme vděčni zato, že existují blbci, bez nich bychom nemohli vyniknout. —  Mark Twain",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C07P06",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 53,
+                    "perc": 88.33333333333333
+                }
+            },
+            {
+                "categoryId": 8,
+                "categoryPoints": [
+                    {
+                        "id": "C08P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 50,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 9,
+                "categoryPoints": [
+                    {
+                        "id": "C09P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P04",
+                        "accepted": false,
+                        "comment": "Je těžké milovat ženu a současně dělat něco rozumného. — Lev Nikolajevič Tolstoj",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C09P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P06",
+                        "accepted": false,
+                        "comment": "Tak dlouho se chodí se džbánem pro pivo, až dojdou peníze!",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C09P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P09",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 90,
+                    "earned": 76,
+                    "perc": 84.44444444444444
+                }
+            },
+            {
+                "categoryId": 10,
+                "categoryPoints": [
+                    {
+                        "id": "C10P01",
+                        "accepted": false,
+                        "comment": "Tak dlouho se chodí se džbánem pro pivo, až dojdou peníze!",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C10P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C10P03",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 30,
+                    "earned": 19,
+                    "perc": 63.333333333333336
+                }
+            },
+            {
+                "categoryId": 11,
+                "categoryPoints": [
+                    {
+                        "id": "C11P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P10",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P11",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 110,
+                    "earned": 110,
+                    "perc": 100
+                }
+            }
+        ],
+        "totalScore": {
+            "available": 800,
+            "earned": 737,
+            "perc": 92.125
+        }
+    },
+    {
+        "_id": "61ab4d0a848a66a78537c431",
+        "auditor": "60c39ce6f48a0b1d51d3922d",
+        "date": "2021-11-09T14:05:00.000Z",
+        "storeId": "R4221",
+        "categories": [
+            {
+                "categoryId": 1,
+                "categoryPoints": [
+                    {
+                        "id": "C01P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P06",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 60,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 2,
+                "categoryPoints": [
+                    {
+                        "id": "C02P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P08",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 80,
+                    "earned": 80,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 3,
+                "categoryPoints": [
+                    {
+                        "id": "C03P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P03",
+                        "accepted": false,
+                        "comment": "Nikdy jsem nedopustil, aby škola stála v cestě mému vzdělání. —  Mark Twain",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C03P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P06",
+                        "accepted": false,
+                        "comment": "Nad alkoholem nelze zvítězit, jen Moraváci remizovali. ",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C03P07",
+                        "accepted": false,
+                        "comment": "Nepobývej v minulosti, nesni o budoucnosti, soustřeď mysl na přítomný okamžik. - Buddha",
+                        "unacceptedInARow": 2
+                    },
+                    {
+                        "id": "C03P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P10",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 70,
+                    "perc": 70
+                }
+            },
+            {
+                "categoryId": 4,
+                "categoryPoints": [
+                    {
+                        "id": "C04P01",
+                        "accepted": false,
+                        "comment": "Výplata – Jeden z důkazů, že i zaměstnavatel má smysl pro humor.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C04P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P05",
+                        "accepted": false,
+                        "comment": "Sliby jsou jako děti – dělat je je sranda, ale dotáhnout to pak do konce je často dost těžké.",
+                        "unacceptedInARow": 1
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 30,
+                    "perc": 60
+                }
+            },
+            {
+                "categoryId": 5,
+                "categoryPoints": [
+                    {
+                        "id": "C05P01",
+                        "accepted": false,
+                        "comment": "Sliby jsou jako děti – dělat je je sranda, ale dotáhnout to pak do konce je často dost těžké.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C05P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P07",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 70,
+                    "earned": 59,
+                    "perc": 84.28571428571429
+                }
+            },
+            {
+                "categoryId": 6,
+                "categoryPoints": [
+                    {
+                        "id": "C06P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P07",
+                        "accepted": false,
+                        "comment": "Pokud kradete materiál od jednoho autora, je to plagiátorství. Pokud kradete materiál od více autorů, je to výzkum. Wilson Mizner",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C06P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P10",
+                        "accepted": false,
+                        "comment": "Česko je nejkrásnější zemí na světě. Jen je škoda, že zde žijí Češi. —  Vlasta Burian",
+                        "unacceptedInARow": 2
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 77,
+                    "perc": 77
+                }
+            },
+            {
+                "categoryId": 7,
+                "categoryPoints": [
+                    {
+                        "id": "C07P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P06",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 60,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 8,
+                "categoryPoints": [
+                    {
+                        "id": "C08P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 50,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 9,
+                "categoryPoints": [
+                    {
+                        "id": "C09P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P09",
+                        "accepted": false,
+                        "comment": "Láska je bezproblémová jako vozidlo. Problematičtí jsou pouze řidiči, cestující a cesta. — Franz Kafka",
+                        "unacceptedInARow": 1
+                    }
+                ],
+                "score": {
+                    "available": 90,
+                    "earned": 77,
+                    "perc": 85.55555555555556
+                }
+            },
+            {
+                "categoryId": 10,
+                "categoryPoints": [
+                    {
+                        "id": "C10P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C10P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C10P03",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 30,
+                    "earned": 30,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 11,
+                "categoryPoints": [
+                    {
+                        "id": "C11P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P10",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P11",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 110,
+                    "earned": 110,
+                    "perc": 100
+                }
+            }
+        ],
+        "totalScore": {
+            "available": 800,
+            "earned": 703,
+            "perc": 87.875
+        }
+    },
+    {
+        "_id": "61ab4d0a848a66a78537c458",
+        "auditor": "60c39ce6f48a0b1d51d3922d",
+        "date": "2021-12-24T08:42:00.000Z",
+        "storeId": "R4221",
+        "categories": [
+            {
+                "categoryId": 1,
+                "categoryPoints": [
+                    {
+                        "id": "C01P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C01P06",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 60,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 2,
+                "categoryPoints": [
+                    {
+                        "id": "C02P01",
+                        "accepted": false,
+                        "comment": "Na čem stát nikdy nešetří? Na slibech.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C02P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C02P08",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 80,
+                    "earned": 68,
+                    "perc": 85
+                }
+            },
+            {
+                "categoryId": 3,
+                "categoryPoints": [
+                    {
+                        "id": "C03P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P04",
+                        "accepted": false,
+                        "comment": "Rozhodně se žeňte. Pokud získáte dobrou ženu, budete šťastní. Pokud získáte špatnou ženu, budete filozofem. – Socrates",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C03P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C03P10",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 87,
+                    "perc": 87
+                }
+            },
+            {
+                "categoryId": 4,
+                "categoryPoints": [
+                    {
+                        "id": "C04P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C04P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 50,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 5,
+                "categoryPoints": [
+                    {
+                        "id": "C05P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C05P07",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 70,
+                    "earned": 70,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 6,
+                "categoryPoints": [
+                    {
+                        "id": "C06P01",
+                        "accepted": false,
+                        "comment": "Přesně stanovený cíl už je napůl dosažen. - Abraham Lincoln",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C06P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C06P10",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 100,
+                    "earned": 91,
+                    "perc": 91
+                }
+            },
+            {
+                "categoryId": 7,
+                "categoryPoints": [
+                    {
+                        "id": "C07P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P02",
+                        "accepted": false,
+                        "comment": "Nepiju alkohol. Pouze dezinfikuji svoji duši.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C07P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C07P04",
+                        "accepted": false,
+                        "comment": "Nepřej si, aby to bylo snazší přej si, abys byl lepší. - Jim Rohn",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C07P05",
+                        "accepted": false,
+                        "comment": "Chtěl si se mnou hrát na doktora. Tak jsem ho nechala 3 hodiny čekat na chodbě.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C07P06",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 60,
+                    "earned": 31,
+                    "perc": 51.666666666666664
+                }
+            },
+            {
+                "categoryId": 8,
+                "categoryPoints": [
+                    {
+                        "id": "C08P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C08P05",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 50,
+                    "earned": 50,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 9,
+                "categoryPoints": [
+                    {
+                        "id": "C09P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P06",
+                        "accepted": false,
+                        "comment": "Nepiju alkohol. Pouze dezinfikuji svoji duši.",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C09P07",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C09P09",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 90,
+                    "earned": 83,
+                    "perc": 92.22222222222223
+                }
+            },
+            {
+                "categoryId": 10,
+                "categoryPoints": [
+                    {
+                        "id": "C10P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C10P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C10P03",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 30,
+                    "earned": 30,
+                    "perc": 100
+                }
+            },
+            {
+                "categoryId": 11,
+                "categoryPoints": [
+                    {
+                        "id": "C11P01",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P02",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P03",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P04",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P05",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P06",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P07",
+                        "accepted": false,
+                        "comment": "Pokud jsi včera upadl, dnes povstaň. - Herbert George Wells",
+                        "unacceptedInARow": 1
+                    },
+                    {
+                        "id": "C11P08",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P09",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P10",
+                        "accepted": true
+                    },
+                    {
+                        "id": "C11P11",
+                        "accepted": true
+                    }
+                ],
+                "score": {
+                    "available": 110,
+                    "earned": 100,
+                    "perc": 90.9090909090909
+                }
+            }
+        ],
+        "totalScore": {
+            "available": 800,
+            "earned": 720,
+            "perc": 90
+        }
+    },
+    {
+        "date": "2021-12-31T23:00:00.000Z",
+        "categories": [
+            {
+                "categoryNum": 1,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 2,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 3,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 10,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 4,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 5,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 6,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 10,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 7,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 8,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 9,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 10,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 11,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 10,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 11,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            }
+        ],
+        "totalScore": {
+            "perc": -1
+        }
+    },
+    {
+        "date": "2022-01-31T23:00:00.000Z",
+        "categories": [
+            {
+                "categoryNum": 1,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 2,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 3,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 10,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 4,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 5,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 6,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 10,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 7,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 8,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 9,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 10,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            },
+            {
+                "categoryNum": 11,
+                "categoryPoints": [
+                    {
+                        "categoryPoint": 1,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 2,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 3,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 4,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 5,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 6,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 7,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 8,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 9,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 10,
+                        "accepted": null
+                    },
+                    {
+                        "categoryPoint": 11,
+                        "accepted": null
+                    }
+                ],
+                "score": {
+                    "perc": -1
+                }
+            }
+        ],
+        "totalScore": {
+            "perc": -1
+        }
+    }
+]
