@@ -3,7 +3,7 @@
     <button @click="prev" data-test="get-prev"><arrow-left /></button>
     <div class="date-range-wrapper">
       <spinner v-if="loading" />
-      <h1 v-else>{{ formatedString }}</h1>
+      <h1 data-test="dateRange" v-else>{{ formatedString }}</h1>
     </div>
     <button @click="next"><arrow-right /></button>
   </div>
