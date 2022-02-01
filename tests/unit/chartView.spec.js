@@ -15,12 +15,12 @@ describe('Chart.vue', () => {
   mock.onGet('/chart/store-filter-options').reply(200, response);
   mock
     .onGet(
-      '/summary?after=2022-03-01T00%3A00%3A00.000Z&before=2022-08-31T23%3A59%3A59.999Z&detail=categories&sort=id',
+      '/chart/aggregated/all?after=2021-03-01T00%3A00%3A00.000Z&before=2021-08-28T23%3A59%3A59.999Z&detailLevel=categories&sortBy=id',
     )
     .reply(200, deficiens);
   mock
     .onGet(
-      '/summary?after=2021-08-31T23%3A00%3A00.000Z&before=2022-03-01T00%3A59%3A59.999Z&detail=categories&sort=id',
+      '/chart/aggregated/all?after=2021-09-01T00%3A00%3A00.000Z&before=2022-02-28T23%3A59%3A59.999Z&detailLevel=categories&sortBy=id',
     )
     .reply(200, []);
   let wrapper;
@@ -50,12 +50,12 @@ describe('Chart.vue', () => {
   });
   it('Date of semester is correct', async () => {
     await nextTick();
-    expect(wrapper.find('.date-range-wrapper').text()).toBe('03/2022 - 08/2022');
+    expect(wrapper.find('.date-range-wrapper').text()).toBe('09/2021 - 02/2022');
   });
   it('Date of semester changes properly', async () => {
     await nextTick();
     wrapper.get('[data-test=get-prev]').trigger('click');
     await nextTick();
-    expect(wrapper.find('.date-range-wrapper').text()).toBe('08/2021 - 03/2022');
+    expect(wrapper.find('.date-range-wrapper').text()).toBe('03/2021 - 08/2021');
   });
 });
