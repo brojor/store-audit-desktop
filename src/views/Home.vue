@@ -43,12 +43,7 @@
           <td>{{ categoryPoint.name }}</td>
           <td
             v-for="(audit, auditIndex) in audits"
-            @click.alt="
-              changeResult(
-                audit._id,
-                audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].id,
-              )
-            "
+            @click.alt="changeResult(audit, catIndex, catPointIndex)"
             :key="auditIndex"
             :comment="audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].comment"
             :rep="
@@ -69,6 +64,7 @@
 </template>
 
 <script>
+/* eslint-disable no-underscore-dangle */
 import DateSelector from '@/components/DateSelector.vue';
 import StoreSelector from '@/components/StoreSelector.vue';
 import MySvg from '@/components/MySvg.vue';
@@ -99,7 +95,10 @@ export default {
     storeIdChanged() {
       this.$store.dispatch('getAudits', this.dateRange);
     },
-    changeResult(auditId, categoryPointId) {
+    changeResult(audit, catIndex, catPointIndex) {
+      const auditId = audit._id;
+      const categoryPointId = audit.categories[catIndex].categoryPoints[catPointIndex].id;
+
       toggleResult(auditId, categoryPointId).then(({ data }) => {
         if (data.success) {
           this.$store.dispatch('getAudits', this.dateRange);
