@@ -6,12 +6,7 @@
           <td>
             <DateSelector :dateRange="dateRange" @change="dateChanged($event)" />
           </td>
-          <td>{{ formatDate(audits[0].date) }}</td>
-          <td>{{ formatDate(audits[1].date) }}</td>
-          <td>{{ formatDate(audits[2].date) }}</td>
-          <td>{{ formatDate(audits[3].date) }}</td>
-          <td>{{ formatDate(audits[4].date) }}</td>
-          <td>{{ formatDate(audits[5].date) }}</td>
+          <td v-for="audit in audits" :key="audit._id">{{ formatDate(audit.date) }}</td>
         </tr>
         <tr>
           <td>
@@ -20,12 +15,7 @@
               <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
             </div>
           </td>
-          <td>{{ showIfValid(audits[0].totalScore.perc) }}</td>
-          <td>{{ showIfValid(audits[1].totalScore.perc) }}</td>
-          <td>{{ showIfValid(audits[2].totalScore.perc) }}</td>
-          <td>{{ showIfValid(audits[3].totalScore.perc) }}</td>
-          <td>{{ showIfValid(audits[4].totalScore.perc) }}</td>
-          <td>{{ showIfValid(audits[5].totalScore.perc) }}</td>
+          <td v-for="audit in audits" :key="audit._id">{{ showIfValid(audit.totalScore.perc) }}</td>
         </tr>
       </thead>
       <tbody
@@ -43,12 +33,7 @@
               </p>
             </div>
           </th>
-          <th>{{ showIfValid(audits[0].categories[catIndex].score.perc) }}</th>
-          <th>{{ showIfValid(audits[1].categories[catIndex].score.perc) }}</th>
-          <th>{{ showIfValid(audits[2].categories[catIndex].score.perc) }}</th>
-          <th>{{ showIfValid(audits[3].categories[catIndex].score.perc) }}</th>
-          <th>{{ showIfValid(audits[4].categories[catIndex].score.perc) }}</th>
-          <th>{{ showIfValid(audits[5].categories[catIndex].score.perc) }}</th>
+          <th v-for="audit in audits" :key="audit._id">{{ categoryScore(audit, catIndex) }}</th>
         </tr>
         <tr
           v-for="(categoryPoint, catPointIndex) in category.categoryPoints"
@@ -134,6 +119,9 @@ export default {
     },
     showIfValid() {
       return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
+    },
+    categoryScore() {
+      return (audit, catIndex) => this.showIfValid(audit.categories[catIndex].score.perc);
     },
   },
   mounted() {
