@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'MySvg',
+  name: 'SuccesIcon',
 
   computed: {
     color() {
@@ -38,11 +38,5 @@ export default {
       default: 24,
     },
   },
-
-  data() {
-    return {};
-  },
 };
 </script>
-
-<style lang="css" scoped></style>

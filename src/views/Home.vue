@@ -41,22 +41,13 @@
           class="category-point"
         >
           <td>{{ categoryPoint.name }}</td>
-          <td
-            v-for="(audit, auditIndex) in audits"
-            @click.alt="changeResult(audit, catIndex, catPointIndex)"
-            :key="auditIndex"
-            :comment="audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].comment"
-            :rep="
-              audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].unacceptedInARow
-            "
-          >
-            <MySvg
-              :status="
-                audits[auditIndex].categories[catIndex].categoryPoints[catPointIndex].accepted
-              "
-              :size="16"
-            ></MySvg>
-          </td>
+          <SuccesIndicator
+            v-for="audit in audits"
+            :key="audit._id"
+            :audit="audit"
+            :catIndex="catIndex"
+            :catPointIndex="catPointIndex"
+          />
         </tr>
       </tbody>
     </table>
@@ -67,18 +58,18 @@
 /* eslint-disable no-underscore-dangle */
 import DateSelector from '@/components/DateSelector.vue';
 import StoreSelector from '@/components/StoreSelector.vue';
-import MySvg from '@/components/MySvg.vue';
 import categories from '../components/categories.json';
 // import RangeMaker from '../utils/RangeMaker';
 import { toggleResult } from '../services/AuditsService';
 import { getDateRange } from '../utils/DateRange';
+import SuccesIndicator from '../components/SuccesIndicator.vue';
 
 export default {
   name: 'TableView',
   components: {
     DateSelector,
     StoreSelector,
-    MySvg,
+    SuccesIndicator,
   },
   data() {
     return {
