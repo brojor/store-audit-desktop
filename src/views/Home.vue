@@ -18,38 +18,13 @@
           <td v-for="audit in audits" :key="audit._id">{{ showIfValid(audit.totalScore.perc) }}</td>
         </tr>
       </thead>
-      <tbody
+      <audit-category
         v-for="(category, catIndex) in categories"
         :key="category.num"
-        :id="`cat${category.num}`"
-        class="category"
-      >
-        <tr class="category-heading">
-          <th>
-            <div class="category-name-and-perc">
-              <p>{{ category.name }}</p>
-              <p v-show="$store.getters.averagePerc(catIndex) >= 0">
-                Ø {{ $store.getters.averagePerc(catIndex).toFixed(1) }} %
-              </p>
-            </div>
-          </th>
-          <th v-for="audit in audits" :key="audit._id">{{ categoryScore(audit, catIndex) }}</th>
-        </tr>
-        <tr
-          v-for="(categoryPoint, catPointIndex) in category.categoryPoints"
-          :key="categoryPoint.num"
-          class="category-point"
-        >
-          <td>{{ categoryPoint.name }}</td>
-          <SuccesIndicator
-            v-for="audit in audits"
-            :key="audit._id"
-            :audit="audit"
-            :catIndex="catIndex"
-            :catPointIndex="catPointIndex"
-          />
-        </tr>
-      </tbody>
+        :category="category"
+        :catIndex="catIndex"
+        :audits="audits"
+      />
     </table>
   </div>
 </template>
@@ -62,14 +37,14 @@ import categories from '../components/categories.json';
 // import RangeMaker from '../utils/RangeMaker';
 import { toggleResult } from '../services/AuditsService';
 import { getDateRange } from '../utils/DateRange';
-import SuccesIndicator from '../components/SuccesIndicator.vue';
+import AuditCategory from '../components/AuditCategory.vue';
 
 export default {
   name: 'TableView',
   components: {
     DateSelector,
     StoreSelector,
-    SuccesIndicator,
+    AuditCategory,
   },
   data() {
     return {
@@ -109,9 +84,6 @@ export default {
     },
     showIfValid() {
       return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
-    },
-    categoryScore() {
-      return (audit, catIndex) => this.showIfValid(audit.categories[catIndex].score.perc);
     },
   },
   mounted() {
