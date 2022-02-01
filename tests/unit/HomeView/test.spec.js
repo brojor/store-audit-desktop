@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import fs from 'fs';
 import HomeView from '../../../src/views/Home.vue';
 import store, { localVue } from './fakeStore';
 
@@ -96,7 +97,9 @@ describe('Home view', () => {
   // prettier-ignore
   it('Random results tests', () => {
     const accepted = 'M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z';
-    const rejected = 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z';
+    const rejected = `M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5
+    17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z`;
+
     expect(wrapper.get('#cat1 > tr:nth-child(2) > td:nth-child(2) > svg > path:nth-child(2)')
       .attributes('d')).toEqual(accepted);
     expect(wrapper.get('#cat1 > tr:nth-child(5) > td:nth-child(2) > svg > path:nth-child(2)')
@@ -105,5 +108,8 @@ describe('Home view', () => {
       .attributes('comment')).toEqual('Skončil víkend: Kam se proboha poděla ta noc z pátka na neděli?!');
     expect(wrapper.get('#cat3 > tr:nth-child(8) > td:nth-child(4)')
       .attributes('rep')).toEqual('2');
+  });
+  it('whole html content of table wrapper', () => {
+    expect(wrapper.get('.table-wrapper').html()).toEqual(fs.readFileSync('./tests/unit/HomeView/output.html', { encoding: 'utf-8' }));
   });
 });
