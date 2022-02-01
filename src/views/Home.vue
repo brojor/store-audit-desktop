@@ -1,23 +1,7 @@
 <template>
   <div class="table-wrapper">
-    <table v-if="audits[0]">
-      <thead>
-        <tr>
-          <td>
-            <DateSelector :dateRange="dateRange" @change="dateChanged($event)" />
-          </td>
-          <td v-for="audit in audits" :key="audit._id">{{ formatDate(audit.date) }}</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="selected-store-and-score">
-              <StoreSelector @change="storeIdChanged" />
-              <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
-            </div>
-          </td>
-          <td v-for="audit in audits" :key="audit._id">{{ showIfValid(audit.totalScore.perc) }}</td>
-        </tr>
-      </thead>
+    <table>
+      <table-header :audits="audits" />
       <audit-category
         v-for="(category, catIndex) in categories"
         :key="category.num"
@@ -31,36 +15,26 @@
 
 <script>
 /* eslint-disable no-underscore-dangle */
-import DateSelector from '@/components/DateSelector.vue';
-import StoreSelector from '@/components/StoreSelector.vue';
+
 import categories from '../components/categories.json';
 // import RangeMaker from '../utils/RangeMaker';
 import { toggleResult } from '../services/AuditsService';
-import { getDateRange } from '../utils/DateRange';
+
 import AuditCategory from '../components/AuditCategory.vue';
+import TableHeader from '../components/TableHeader.vue';
 
 export default {
   name: 'TableView',
   components: {
-    DateSelector,
-    StoreSelector,
     AuditCategory,
+    TableHeader,
   },
   data() {
     return {
       categories,
-      // dateRange: new RangeMaker().getRange(),
-      dateRange: getDateRange(),
     };
   },
   methods: {
-    dateChanged(newRange) {
-      this.dateRange = newRange;
-      this.$store.dispatch('getAudits', this.dateRange);
-    },
-    storeIdChanged() {
-      this.$store.dispatch('getAudits', this.dateRange);
-    },
     changeResult(audit, catIndex, catPointIndex) {
       const auditId = audit._id;
       const categoryPointId = audit.categories[catIndex].categoryPoints[catPointIndex].id;
@@ -79,15 +53,6 @@ export default {
     formatDate() {
       return this.$store.getters.formatDate;
     },
-    halfYearAvaragePerc() {
-      return this.$store.getters.halfYearAvaragePerc;
-    },
-    showIfValid() {
-      return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
-    },
-  },
-  mounted() {
-    this.$store.dispatch('getAudits', this.dateRange);
   },
 };
 </script>
