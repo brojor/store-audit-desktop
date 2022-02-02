@@ -23,7 +23,6 @@ import DateSelector from '@/components/DateSelector.vue';
 import StoreSelector from './StoreSelector.vue';
 
 export default {
-  props: ['audits'],
   components: {
     DateSelector,
     StoreSelector,
@@ -38,6 +37,9 @@ export default {
     },
   },
   computed: {
+    audits() {
+      return this.$store.state.audits;
+    },
     dateRange() {
       return this.$store.state.dateRange;
     },

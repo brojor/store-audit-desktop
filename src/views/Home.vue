@@ -1,13 +1,12 @@
 <template>
   <div class="table-wrapper">
     <table>
-      <table-header :audits="audits" />
+      <table-header />
       <audit-category
         v-for="(category, catIndex) in categories"
         :key="category.num"
         :category="category"
         :catIndex="catIndex"
-        :audits="audits"
       />
     </table>
   </div>
@@ -31,11 +30,7 @@ export default {
       categories,
     };
   },
-
   computed: {
-    audits() {
-      return this.$store.state.audits;
-    },
     formatDate() {
       return this.$store.getters.formatDate;
     },

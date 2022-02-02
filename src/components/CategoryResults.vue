@@ -15,9 +15,14 @@
 import SuccesIndicator from './SuccesIndicator.vue';
 
 export default {
-  props: ['audits', 'categoryPoint', 'catIndex', 'catPointIndex'],
+  props: ['categoryPoint', 'catIndex', 'catPointIndex'],
   components: {
     SuccesIndicator,
+  },
+  computed: {
+    audits() {
+      return this.$store.state.audits;
+    },
   },
 };
 </script>

@@ -14,13 +14,18 @@
 
 <script>
 export default {
-  props: ['audits', 'category', 'catIndex'],
+  props: ['category', 'catIndex'],
   methods: {
     categoryScore(audit, catIndex) {
       return this.showIfValid(audit.categories[catIndex].score.perc);
     },
     showIfValid(value) {
       return value >= 0 ? `${value.toFixed(1)}%` : '';
+    },
+  },
+  computed: {
+    audits() {
+      return this.$store.state.audits;
     },
   },
 };
