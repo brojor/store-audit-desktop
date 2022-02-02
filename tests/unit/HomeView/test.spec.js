@@ -1,7 +1,10 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import fs from 'fs';
 import HomeView from '../../../src/views/Home.vue';
 import store, { localVue } from './fakeStore';
+
+import * as AuditsService from '../../../src/services/AuditsService';
 
 describe('Home view', () => {
   let wrapper;
@@ -16,7 +19,7 @@ describe('Home view', () => {
   it('Component should be loaded', async () => {
     expect(wrapper).toBeTruthy();
   });
-  it('should load audit data from fake Vuex', () => {
+  it('should load audit data from Vuex store', () => {
     expect(wrapper.vm.audits).toHaveLength(6);
     expect(wrapper.vm.audits).toEqual(
       expect.arrayContaining([
@@ -31,7 +34,7 @@ describe('Home view', () => {
       ]),
     );
   });
-  it('should by proper date range', () => {
+  it('should display proper date range', () => {
     expect(wrapper.get('[data-test=dateRange').text()).toEqual('09/2021 - 02/2022');
   });
   it('The first row of the table should show the correct data', () => {
@@ -111,5 +114,16 @@ describe('Home view', () => {
   });
   it('whole html content of table wrapper', () => {
     expect(wrapper.get('.table-wrapper').html()).toEqual(fs.readFileSync('./tests/unit/HomeView/output.html', { encoding: 'utf-8' }));
+  });
+  it('when switching to the previous period, the date in dateSelector is correctly changed', async () => {
+    const getAudit = jest.spyOn(AuditsService, 'getAudits');
+    const prevBtn = wrapper.get('[data-test=get-prev]');
+
+    prevBtn.trigger('click');
+    await nextTick();
+
+    expect(wrapper.get('[data-test=dateRange').text()).toEqual('03/2021 - 08/2021');
+    expect(getAudit).toHaveBeenCalledTimes(1);
+    expect(getAudit).toHaveBeenCalledWith({ start: new Date('2021-03-01T00:00:00.000Z'), stop: new Date('2021-08-28T23:59:59.000Z') }, 'R4221');
   });
 });

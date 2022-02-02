@@ -2,6 +2,7 @@ import Vuex from 'vuex';
 import { createLocalVue } from '@vue/test-utils';
 import audits from './audits.json';
 import stores from './stores.json';
+import { getAudits } from '../../../src/services/AuditsService';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -23,10 +24,14 @@ export default new Vuex.Store({
     SET_SELECTED_STORE(state, selectedStoreId) {
       state.selectedStoreId = selectedStoreId;
     },
+    SET_DATE_RANGE(state, dateRange) {
+      state.dateRange = dateRange;
+    },
   },
   actions: {
-    getAudits() {
+    getAudits({ state }) {
       console.log('jakoby volám /audits');
+      return getAudits(state.dateRange, state.selectedStoreId);
     },
   },
   getters: {
