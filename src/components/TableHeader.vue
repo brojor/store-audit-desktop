@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <td>
-        <DateSelector :dateRange="dateRange" @change="dateChanged($event)" />
+        <DateSelector :dateRange="dateRange" @change="dateRangeChanged($event)" />
       </td>
       <td v-for="audit in audits" :key="audit._id">{{ formatDate(audit.date) }}</td>
     </tr>
@@ -20,8 +20,7 @@
 
 <script>
 import DateSelector from '@/components/DateSelector.vue';
-import StoreSelector from '@/components/StoreSelector.vue';
-import { getDateRange } from '../utils/DateRange';
+import StoreSelector from './StoreSelector.vue';
 
 export default {
   props: ['audits'],
@@ -29,21 +28,19 @@ export default {
     DateSelector,
     StoreSelector,
   },
-  data() {
-    return {
-      dateRange: getDateRange(),
-    };
-  },
   methods: {
-    dateChanged(newRange) {
-      this.dateRange = newRange;
-      this.$store.dispatch('getAudits', this.dateRange);
-    },
     storeIdChanged() {
       this.$store.dispatch('getAudits', this.dateRange);
     },
+    dateRangeChanged(dateRange) {
+      this.$store.commit('SET_DATE_RANGE', dateRange);
+      this.$store.dispatch('getAudits');
+    },
   },
   computed: {
+    dateRange() {
+      return this.$store.state.dateRange;
+    },
     formatDate() {
       return this.$store.getters.formatDate;
     },
@@ -55,7 +52,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('getAudits', this.dateRange);
+    this.$store.dispatch('getAudits');
   },
 };
 </script>

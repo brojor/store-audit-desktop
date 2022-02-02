@@ -14,11 +14,8 @@
 </template>
 
 <script>
-/* eslint-disable no-underscore-dangle */
-
 import categories from '../components/categories.json';
 // import RangeMaker from '../utils/RangeMaker';
-import { toggleResult } from '../services/AuditsService';
 
 import AuditCategory from '../components/AuditCategory.vue';
 import TableHeader from '../components/TableHeader.vue';
@@ -34,18 +31,7 @@ export default {
       categories,
     };
   },
-  methods: {
-    changeResult(audit, catIndex, catPointIndex) {
-      const auditId = audit._id;
-      const categoryPointId = audit.categories[catIndex].categoryPoints[catPointIndex].id;
 
-      toggleResult(auditId, categoryPointId).then(({ data }) => {
-        if (data.success) {
-          this.$store.dispatch('getAudits', this.dateRange);
-        }
-      });
-    },
-  },
   computed: {
     audits() {
       return this.$store.state.audits;

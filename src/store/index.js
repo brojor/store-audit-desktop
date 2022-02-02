@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 import auth from './modules/auth';
 
 import { getStores, getAudits } from '../services/AuditsService';
+import { getDateRange } from '../utils/DateRange';
+
 // import RangeMaker from '../utils/RangeMaker';
 
 Vue.use(Vuex);
@@ -17,6 +19,7 @@ export default new Vuex.Store({
     audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
     loading: false,
+    dateRange: getDateRange(),
   },
   mutations: {
     SET_AUDITS_DATA(state, data) {
@@ -48,9 +51,9 @@ export default new Vuex.Store({
         })
         .catch((err) => console.log(err));
     },
-    getAudits({ commit, state }, dateRange) {
+    getAudits({ commit, state }) {
       commit('SET_LOADING_STATE', true);
-      return getAudits(dateRange, state.selectedStoreId)
+      return getAudits(state.dateRange, state.selectedStoreId)
         .then(({ data }) => {
           commit('SET_AUDITS_DATA', data);
           commit('SET_LOADING_STATE', false);
