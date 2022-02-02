@@ -28,16 +28,16 @@ export default {
       return new Date(date);
     },
     next() {
-      this.dateRange.start = this.addMonths(this.dateRange.start, 6);
-      this.dateRange.stop = this.addMonths(this.dateRange.stop, 6);
+      const start = this.addMonths(this.dateRange.start, 6);
+      const stop = this.addMonths(this.dateRange.stop, 6);
 
-      this.$emit('change', this.dateRange);
+      this.$emit('change', { start, stop });
     },
     prev() {
-      this.dateRange.start = this.addMonths(this.dateRange.start, -6);
-      this.dateRange.stop = this.addMonths(this.dateRange.stop, -6);
+      const start = this.addMonths(this.dateRange.start, -6);
+      const stop = this.addMonths(this.dateRange.stop, -6);
 
-      this.$emit('change', this.dateRange);
+      this.$emit('change', { start, stop });
     },
     formatDate(date) {
       const dateObj = new Date(date);
