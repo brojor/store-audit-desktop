@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import DateSelector from '@/components/DateSelector.vue';
+import DateSelector from './DateSelector.vue';
 import StoreSelector from './StoreSelector.vue';
 
 export default {

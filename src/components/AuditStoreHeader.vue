@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import LogOut from '@/components/icons/logout.vue';
+import LogOut from './icons/logout.vue';
 import IconTable from './icons/iconTable.vue';
 import IconBarChart from './icons/iconBarChart.vue';
 
