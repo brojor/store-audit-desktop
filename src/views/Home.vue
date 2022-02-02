@@ -14,8 +14,6 @@
 
 <script>
 import categories from '../components/categories.json';
-// import RangeMaker from '../utils/RangeMaker';
-
 import AuditCategory from '../components/AuditCategory.vue';
 import TableHeader from '../components/TableHeader.vue';
 

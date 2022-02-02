@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex';
 import DateSelector from './DateSelector.vue';
 import StoreSelector from './StoreSelector.vue';
 
@@ -37,21 +38,11 @@ export default {
     },
   },
   computed: {
-    audits() {
-      return this.$store.state.audits;
-    },
-    dateRange() {
-      return this.$store.state.dateRange;
-    },
-    formatDate() {
-      return this.$store.getters.formatDate;
-    },
     showIfValid() {
       return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
     },
-    halfYearAvaragePerc() {
-      return this.$store.getters.halfYearAvaragePerc;
-    },
+    ...mapState(['audits', 'dateRange']),
+    ...mapGetters(['formatDate', 'halfYearAvaragePerc']),
   },
   mounted() {
     this.$store.dispatch('getAudits');

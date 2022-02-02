@@ -3,30 +3,26 @@
     <th>
       <div class="category-name-and-perc">
         <p>{{ category.name }}</p>
-        <p v-show="$store.getters.averagePerc(catIndex) >= 0">
-          Ø {{ $store.getters.averagePerc(catIndex).toFixed(1) }} %
-        </p>
+        <p v-show="averagePerc(catIndex) >= 0">Ø {{ averagePerc(catIndex).toFixed(1) }} %</p>
       </div>
     </th>
-    <th v-for="audit in audits" :key="audit._id">{{ categoryScore(audit, catIndex) }}</th>
+    <th v-for="audit in audits" :key="audit._id">{{ categoryScore(audit) }}</th>
   </tr>
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex';
+
 export default {
   props: ['category', 'catIndex'],
   methods: {
-    categoryScore(audit, catIndex) {
-      return this.showIfValid(audit.categories[catIndex].score.perc);
+    categoryScore(audit) {
+      return this.showIfValid(audit.categories[this.catIndex].score.perc);
     },
     showIfValid(value) {
       return value >= 0 ? `${value.toFixed(1)}%` : '';
     },
   },
-  computed: {
-    audits() {
-      return this.$store.state.audits;
-    },
-  },
+  computed: { ...mapGetters(['averagePerc']), ...mapState(['audits']) },
 };
 </script>
