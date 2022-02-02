@@ -11,34 +11,13 @@
           </div>
         </div>
         <div class="header-row">
-          <div class="filter-category">
-            <div class="filter-name">Zobrazit:</div>
-            <div class="filter-options">
-              <input
-                type="radio"
-                id="byCategories"
-                value="categories"
-                v-model="filter.detailLevel"
-              />
-              <label for="byCategories">Celé kategorie</label>
-              <input type="radio" id="byPoints" value="points" v-model="filter.detailLevel" />
-              <label for="byPoints">Jednotlivé body</label>
-            </div>
-          </div>
-          <div class="filter-category">
-            <div class="filter-name">Řazení:</div>
-            <div class="filter-options">
-              <input type="radio" id="byId" value="id" v-model="filter.sortBy" />
-              <label for="byId">Podle jména</label>
-              <input
-                type="radio"
-                id="byDeficiencies"
-                value="deficiencies"
-                v-model="filter.sortBy"
-              />
-              <label for="byDeficiencies">Podle nedostatků</label>
-            </div>
-          </div>
+          <chart-filter
+            v-for="(filter, i) in filters"
+            :key="`filter-${i}`"
+            :name="filter.name"
+            :options="filter.options"
+            @change="handleFilterChange(filter.type, $event)"
+          />
         </div>
       </header>
       <div class="chart-wrapper">
@@ -57,6 +36,7 @@ import BarChart from '../components/BarChart.vue';
 import UniversalSelector from '../components/universalSelector.vue';
 import CircleLoader from '../components/circleLoader.vue';
 import { getDateRange } from '../utils/DateRange';
+import ChartFilter from '../components/chartFilter.vue';
 
 export default {
   name: 'ChartView',
@@ -65,9 +45,28 @@ export default {
     BarChart,
     UniversalSelector,
     CircleLoader,
+    ChartFilter,
   },
   data() {
     return {
+      filters: [
+        {
+          name: 'zobrazit',
+          type: 'detailLevel',
+          options: [
+            { id: 'categories', title: 'Celé kategorie' },
+            { id: 'points', title: 'Jednotlivé body' },
+          ],
+        },
+        {
+          name: 'řazení',
+          type: 'sortBy',
+          options: [
+            { id: 'id', title: 'Podle jména' },
+            { id: 'deficiencies', title: 'Podle nedostatků' },
+          ],
+        },
+      ],
       loading: false,
       filter: {
         detailLevel: 'categories',
@@ -98,6 +97,9 @@ export default {
     },
   },
   methods: {
+    handleFilterChange(type, selected) {
+      this.filter[type] = selected;
+    },
     dateChanged(newRange) {
       this.dateRange = newRange;
       this.fetchData();
