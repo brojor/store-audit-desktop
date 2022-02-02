@@ -18,6 +18,8 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=Roboto&display=swap');
+
 *,
 *::after,
 *::before {

@@ -1,8 +1,7 @@
 <template>
   <select name="selector" id="selector" v-model="selectedItemId" @change="handleChange">
-    <option v-for="option in options" :key="option.id" :value="option.id"
-      >{{ option.title }}
-    </option>
+    <!-- eslint-disable-next-line max-len -->
+    <option v-for="option in options" :key="option.id" :value="option.id">{{ option.title }}</option>
   </select>
 </template>
 
@@ -12,7 +11,7 @@ export default {
   props: ['options'],
   data() {
     return {
-      selectedItemId: '',
+      selectedItemId: this.options.length ? this.options[0].id : '',
     };
   },
   methods: {
@@ -34,5 +33,14 @@ select {
   flex-grow: 1;
   height: 3rem;
   border-radius: 4px;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+
+  outline: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: none;
+  text-align: center;
 }
 </style>

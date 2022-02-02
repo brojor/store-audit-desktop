@@ -9,7 +9,7 @@
     <tr>
       <td>
         <div class="selected-store-and-score">
-          <StoreSelector @change="storeIdChanged" />
+          <universal-selector :options="options" @change="storeIdChanged($event)" />
           <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
         </div>
       </td>
@@ -21,16 +21,17 @@
 <script>
 import { mapGetters, mapState } from 'vuex';
 import DateSelector from './DateSelector.vue';
-import StoreSelector from './StoreSelector.vue';
+import UniversalSelector from './universalSelector.vue';
 
 export default {
   components: {
     DateSelector,
-    StoreSelector,
+    UniversalSelector,
   },
   methods: {
-    storeIdChanged() {
-      this.$store.dispatch('getAudits', this.dateRange);
+    storeIdChanged(store) {
+      this.$store.commit('SET_SELECTED_STORE', store.id);
+      this.$store.dispatch('getAudits');
     },
     dateRangeChanged(dateRange) {
       this.$store.commit('SET_DATE_RANGE', dateRange);
@@ -40,6 +41,9 @@ export default {
   computed: {
     showIfValid() {
       return (value) => (value >= 0 ? `${value.toFixed(1)}%` : '');
+    },
+    options() {
+      return this.$store.state.stores.map(({ name: title, id }) => ({ id, title }));
     },
     ...mapState(['audits', 'dateRange']),
     ...mapGetters(['formatDate', 'halfYearAvaragePerc']),
