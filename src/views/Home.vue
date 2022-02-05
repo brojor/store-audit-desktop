@@ -4,7 +4,7 @@
       <table-header />
       <audit-category
         v-for="(category, catIndex) in categories"
-        :key="category.num"
+        :key="category.key"
         :category="category"
         :catIndex="catIndex"
       />
@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import categories from '../components/categories.json';
 import AuditCategory from '../components/AuditCategory.vue';
 import TableHeader from '../components/TableHeader.vue';
+import axiosInstance from '../services/Api';
 
 export default {
   name: 'TableView',
@@ -25,13 +25,21 @@ export default {
   },
   data() {
     return {
-      categories,
+      categories: [],
     };
   },
   computed: {
     formatDate() {
       return this.$store.getters.formatDate;
     },
+  },
+  created() {
+    axiosInstance
+      .get('/category-names')
+      .then(({ data: categories }) => {
+        this.categories = categories;
+      })
+      .catch((err) => console.log(err));
   },
 };
 </script>
