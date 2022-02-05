@@ -1,25 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <header>
-        <div class="header-row">
-          <div class="left">
-            <date-selector :dateRange="dateRange" @change="dateChanged($event)" />
-          </div>
-          <div class="right">
-            <universal-selector :options="storeOptions" @change="filter.storesFilter = $event" />
-          </div>
-        </div>
-        <div class="header-row">
-          <chart-filter
-            v-for="(filter, i) in filters"
-            :key="`filter-${i}`"
-            :name="filter.name"
-            :options="filter.options"
-            @change="handleFilterChange(filter.type, $event)"
-          />
-        </div>
-      </header>
+      <chart-header @change="handleChange($event)" :dateRange="filter.dateRange" />
       <div class="chart-wrapper">
         <div v-if="loading" class="backdrop">
           <circle-loader color="#444" size="100px" />
@@ -29,46 +11,26 @@
     </div>
   </main>
 </template>
+
 <script>
-import { deficiencies, getStoresFilterOptions } from '../services/chartService';
-import DateSelector from '../components/DateSelector.vue';
 import BarChart from '../components/BarChart.vue';
-import UniversalSelector from '../components/universalSelector.vue';
 import CircleLoader from '../components/circleLoader.vue';
+import ChartHeader from '../components/ChartHeader.vue';
+import { deficiencies } from '../services/chartService';
 import { getDateRange } from '../utils/DateRange';
-import ChartFilter from '../components/chartFilter.vue';
 
 export default {
   name: 'ChartView',
   components: {
-    DateSelector,
     BarChart,
-    UniversalSelector,
     CircleLoader,
-    ChartFilter,
+    ChartHeader,
   },
   data() {
     return {
-      filters: [
-        {
-          name: 'zobrazit',
-          type: 'detailLevel',
-          options: [
-            { id: 'categories', title: 'Celé kategorie' },
-            { id: 'points', title: 'Jednotlivé body' },
-          ],
-        },
-        {
-          name: 'řazení',
-          type: 'sortBy',
-          options: [
-            { id: 'id', title: 'Podle jména' },
-            { id: 'deficiencies', title: 'Podle nedostatků' },
-          ],
-        },
-      ],
       loading: false,
       filter: {
+        dateRange: getDateRange(),
         detailLevel: 'categories',
         sortBy: 'id',
         storesFilter: {
@@ -76,8 +38,6 @@ export default {
           id: '',
         },
       },
-      storeOptions: [],
-      dateRange: getDateRange(),
       chartData: [],
       colors: '#e6000140',
     };
@@ -87,26 +47,15 @@ export default {
       return this.filter.detailLevel === 'categories' ? 12 : 10;
     },
   },
-  watch: {
-    filter: {
-      deep: true,
-      handler() {
-        console.log('watch - jdu stáhnout data');
-        this.fetchData();
-      },
-    },
-  },
+
   methods: {
-    handleFilterChange(type, selected) {
-      this.filter[type] = selected;
-    },
-    dateChanged(newRange) {
-      this.dateRange = newRange;
-      this.fetchData();
+    handleChange({ type, value }) {
+      console.log({ type, value });
+      this.filter[type] = value;
     },
     fetchData() {
       this.loading = true;
-      deficiencies(this.dateRange, this.filter)
+      deficiencies(this.filter)
         .then(({ data }) => {
           this.chartData = data;
           this.loading = false;
@@ -140,12 +89,14 @@ export default {
       this.colors = setColors(colors);
     },
   },
-  mounted() {
-    // this.fetchData(); // zavolá watcher
-    getStoresFilterOptions().then(({ data }) => {
-      this.storeOptions = data;
-      [this.filter.storesFilter] = data;
-    });
+  watch: {
+    filter: {
+      deep: true,
+      handler() {
+        console.log('watch - jdu stáhnout data');
+        this.fetchData();
+      },
+    },
   },
 };
 </script>
@@ -167,15 +118,7 @@ export default {
   height: 15rem; */
   border-radius: 3rem;
 }
-.right {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  align-items: center;
 
-  padding: 0 4rem;
-  /* background-color: rgb(168, 168, 168); */
-}
 .filter-category {
   margin: 0.5rem;
   display: flex;
@@ -216,23 +159,6 @@ main {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
-
-.header-row {
-  display: flex;
-  align-items: stretch;
-  background-color: #e60001;
-}
-.header-row:nth-child(2) {
-  background: #f1a0a0;
-  justify-content: space-evenly;
-  background-color: #fff;
-  border-bottom: 1px solid rgb(148, 148, 148);
-}
-
-.left {
-  width: 50%;
-  padding: 1rem;
 }
 
 .chart-wrapper {
