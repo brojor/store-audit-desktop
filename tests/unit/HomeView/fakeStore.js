@@ -31,7 +31,9 @@ export default new Vuex.Store({
   actions: {
     getAudits({ state }) {
       console.log('jakoby volám /audits');
-      return getAudits(state.dateRange, state.selectedStoreId);
+      return getAudits(state.dateRange, state.selectedStoreId).catch(() => {
+        console.log('FakeVUEX api call error');
+      });
     },
   },
   getters: {
