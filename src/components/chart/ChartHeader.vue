@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import { getStoresFilterOptions } from '../services/chartService';
-import DateSelector from './DateSelector.vue';
-import UniversalSelector from './universalSelector.vue';
-import ChartFilter from './chartFilter.vue';
+import { getStoresFilterOptions } from '../../services/chartService';
+import DateSelector from '../DateSelector.vue';
+import UniversalSelector from '../UniversalSelector.vue';
+import ChartFilter from './ChartFilter.vue';
 
 export default {
   props: ['dateRange'],

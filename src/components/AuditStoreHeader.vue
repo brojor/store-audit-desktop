@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="routes">
-        <router-link class="icon" to="/"><icon-table /></router-link>
+        <router-link class="icon" to="/"><table-icon /></router-link>
         <router-link class="icon" to="/chart"><icon-bar-chart /></router-link>
       </div>
       <div class="header-right">
@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import LogOut from './icons/logout.vue';
-import IconTable from './icons/iconTable.vue';
-import IconBarChart from './icons/iconBarChart.vue';
+import LogOut from './icons/LogoutIcon.vue';
+import TableIcon from './icons/TableIcon.vue';
+import IconBarChart from './icons/BarChartIcon.vue';
 
 export default {
   name: 'AuditStoreHeader',
-  components: { LogOut, IconTable, IconBarChart },
+  components: { LogOut, TableIcon, IconBarChart },
   computed: {
     fullName() {
       return this.$store.state.auth.userFullName;

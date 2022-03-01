@@ -10,8 +10,8 @@
 
 <script>
 /* eslint-disable no-underscore-dangle */
-import { toggleResult } from '../services/AuditsService';
-import SuccesIcon from './SuccesIcon.vue';
+import { toggleResult } from '../../services/AuditsService';
+import SuccesIcon from '../icons/SuccesIcon.vue';
 
 export default {
   props: ['audit', 'catIndex', 'catPointIndex'],

@@ -13,8 +13,9 @@
 </template>
 
 <script>
-import AuditCategory from '../components/AuditCategory.vue';
-import TableHeader from '../components/TableHeader.vue';
+
+import AuditCategory from '../components/table/AuditCategory.vue';
+import TableHeader from '../components/table/TableHeader.vue';
 import axiosInstance from '../services/Api';
 
 export default {

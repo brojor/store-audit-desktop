@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import ChartHeader from '../components/ChartHeader.vue';
+import ChartHeader from '../components/chart/ChartHeader.vue';
 import { deficiencies } from '../services/chartService';
 import { getDateRange } from '../utils/DateRange';
-import ChartBody from '../components/ChartBody.vue';
+import ChartBody from '../components/chart/ChartBody.vue';
 
 export default {
   name: 'ChartView',

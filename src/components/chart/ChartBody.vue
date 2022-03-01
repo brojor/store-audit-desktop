@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CircleLoader from './circleLoader.vue';
+import CircleLoader from './CircleLoader.vue';
 import BarChart from './BarChart.vue';
 
 export default {

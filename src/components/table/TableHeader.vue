@@ -20,8 +20,8 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
-import DateSelector from './DateSelector.vue';
-import UniversalSelector from './universalSelector.vue';
+import DateSelector from '../DateSelector.vue';
+import UniversalSelector from '../UniversalSelector.vue';
 
 export default {
   components: {

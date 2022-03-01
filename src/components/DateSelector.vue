@@ -11,8 +11,8 @@
 
 <script>
 import Spinner from './Spinner.vue';
-import ArrowLeft from './icons/arrowLeft.vue';
-import ArrowRight from './icons/arrowRight.vue';
+import ArrowLeft from './icons/ArrowLeft.vue';
+import ArrowRight from './icons/ArrowRight.vue';
 
 export default {
   components: { Spinner, ArrowLeft, ArrowRight },
