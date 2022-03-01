@@ -3,7 +3,7 @@
     <div v-if="loading" class="backdrop">
       <circle-loader color="#444" size="100px" />
     </div>
-    <bar-chart :chartData="chartData" :levelOfDetail="levelOfDetail" :colors="'#e6000140'" />
+    <bar-chart :chartData="chartData" :levelOfDetail="levelOfDetail" />
   </div>
 </template>
 

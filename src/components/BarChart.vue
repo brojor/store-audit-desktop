@@ -5,66 +5,23 @@
 <script>
 import {
   Chart,
-  // ArcElement,
-  // LineElement,
   BarElement,
-  // PointElement,
   BarController,
-  // BubbleController,
-  // DoughnutController,
-  // LineController,
-  // PieController,
-  // PolarAreaController,
-  // RadarController,
-  // ScatterController,
   CategoryScale,
   LinearScale,
-  // LogarithmicScale,
-  // RadialLinearScale,
-  // TimeScale,
-  // TimeSeriesScale,
-  // Decimation,
-  // Filler,
-  // Legend,
   Title,
   Tooltip,
-  // SubTitle,
 } from 'chart.js';
 
 import options from './barChartOptions';
 
-Chart.register(
-  // ArcElement,
-  // LineElement,
-  BarElement,
-  // PointElement,
-  BarController,
-  // BubbleController,
-  // DoughnutController,
-  // LineController,
-  // PieController,
-  // PolarAreaController,
-  // RadarController,
-  // ScatterController,
-  CategoryScale,
-  LinearScale,
-  // LogarithmicScale,
-  // RadialLinearScale,
-  // TimeScale,
-  // TimeSeriesScale,
-  // Decimation,
-  // Filler,
-  // Legend,
-  Title,
-  Tooltip,
-  // SubTitle,
-);
+Chart.register(BarElement, BarController, CategoryScale, LinearScale, Title, Tooltip);
 
 let myBarChart;
 
 export default {
   name: 'BarChart',
-  props: ['chartData', 'colors', 'levelOfDetail'],
+  props: ['chartData', 'levelOfDetail'],
   data() {
     return {
       type: 'bar',
@@ -73,11 +30,9 @@ export default {
           {
             label: 'Počet nedostatků',
             data: this.chartData,
-            // fill: false,
             borderColor: '#e60001',
             borderWidth: 1,
-            backgroundColor: this.colors,
-            // tension: 0.1,
+            backgroundColor: '#e6000140',
           },
         ],
       },
@@ -92,10 +47,6 @@ export default {
   watch: {
     chartData() {
       myBarChart.data.datasets[0].data = this.chartData;
-      myBarChart.update();
-    },
-    colors() {
-      myBarChart.data.datasets[0].backgroundColor = this.colors;
       myBarChart.update();
     },
     levelOfDetail() {
