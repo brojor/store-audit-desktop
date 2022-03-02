@@ -3,7 +3,7 @@
     <th>
       <div class="category-name-and-perc">
         <p>{{ category.name }}</p>
-        <p v-show="averagePerc(catIndex) >= 0">Ø {{ averagePerc(catIndex).toFixed(1) }} %</p>
+        <p v-show="avarageScorePerc(catIndex) >= 0">Ø {{ avarageScorePerc(catIndex).toFixed(1) }} %</p>
       </div>
     </th>
     <th v-for="audit in audits" :key="audit._id">{{ categoryScore(audit) }}</th>
@@ -23,6 +23,6 @@ export default {
       return value >= 0 ? `${value.toFixed(1)}%` : '';
     },
   },
-  computed: { ...mapGetters(['averagePerc']), ...mapState(['audits']) },
+  computed: { ...mapGetters(['avarageScorePerc']), ...mapState(['audits']) },
 };
 </script>

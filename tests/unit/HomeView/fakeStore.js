@@ -9,6 +9,8 @@ localVue.use(Vuex);
 
 export { localVue };
 
+const countAvarage = (values) => values.reduce((a, b) => a + b, 0) / values.length;
+
 export default new Vuex.Store({
   state: {
     audits,
@@ -37,33 +39,17 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    halfYearAvaragePerc(state) {
-      const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.totalScore.perc > 0) {
-          acc.push(audit.totalScore.perc);
-        }
-        return acc;
-      }, []);
-
-      if (validValues.length) {
-        const average = validValues.reduce((a, b) => a + b, 0) / validValues.length;
-        return average;
-      }
-      return -1;
+    avarageScorePerc: ({ audits }) => (catIndex) => {
+      const values = catIndex !== undefined
+        ? audits.map((audit) => audit.categories[catIndex].score.perc)
+        : audits.map((audit) => audit.totalScore.perc);
+      const validValues = values.filter((val) => val > 0);
+      return validValues.length ? countAvarage(validValues) : -1;
     },
-    averagePerc: (state) => (catIndex) => {
-      const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.categories[catIndex].score.perc >= 0) {
-          acc.push(audit.categories[catIndex].score.perc);
-        }
-        return acc;
-      }, []);
-
-      if (validValues.length) {
-        const average = validValues.reduce((a, b) => a + b, 0) / validValues.length;
-        return average;
-      }
-      return -1;
+    dateRange(state, getters) {
+      return `${getters.formatDate(state.dateRange.start)} - ${getters.formatDate(
+        state.dateRange.stop,
+      )}`;
     },
     formatDate() {
       return (date) => {

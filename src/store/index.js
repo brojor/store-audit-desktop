@@ -1,23 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
 import auth from './modules/auth';
 
 import { getStores, getAudits } from '../services/AuditsService';
 import { getDateRange } from '../utils/DateRange';
 
-// import RangeMaker from '../utils/RangeMaker';
-
 Vue.use(Vuex);
 
 const storesInStorage = localStorage.getItem('stores');
 
+const countAvarage = (values) => values.reduce((a, b) => a + b, 0) / values.length;
+
 export default new Vuex.Store({
   state: {
-    selectedStoreId: storesInStorage ? JSON.parse(storesInStorage)[0].id : '',
-    // selectedStoreId: '',
-    audits: [],
     stores: JSON.parse(localStorage.getItem('stores')) || [],
+    selectedStoreId: storesInStorage ? JSON.parse(storesInStorage)[0].id : '',
+    audits: [],
     loading: false,
     dateRange: getDateRange(),
   },
@@ -30,7 +28,6 @@ export default new Vuex.Store({
     },
     SET_STORES(state, stores) {
       state.stores = stores;
-      // eslint-disable-next-line prefer-destructuring
       state.selectedStoreId = stores[0].id;
       localStorage.setItem('stores', JSON.stringify(stores));
     },
@@ -47,7 +44,6 @@ export default new Vuex.Store({
         .then(({ data }) => {
           commit('SET_STORES', data.stores);
           commit('SET_SELECTED_STORE', data.stores[0].id);
-          // dispatch('getAudits', new RangeMaker().getRange());
         })
         .catch((err) => console.log(err));
     },
@@ -62,40 +58,18 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    halfYearAvaragePerc(state) {
-      const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.totalScore.perc > 0) {
-          acc.push(audit.totalScore.perc);
-        }
-        return acc;
-      }, []);
-
-      if (validValues.length) {
-        const average = validValues.reduce((a, b) => a + b, 0) / validValues.length;
-        return average;
-      }
-      return -1;
-    },
-    averagePerc: (state) => (catIndex) => {
-      const validValues = state.audits.reduce((acc, audit) => {
-        if (audit.categories[catIndex].score.perc >= 0) {
-          acc.push(audit.categories[catIndex].score.perc);
-        }
-        return acc;
-      }, []);
-
-      if (validValues.length) {
-        const average = validValues.reduce((a, b) => a + b, 0) / validValues.length;
-        return average;
-      }
-      return -1;
+    avarageScorePerc: ({ audits }) => (catIndex) => {
+      const values = catIndex !== undefined
+        ? audits.map((audit) => audit.categories[catIndex].score.perc)
+        : audits.map((audit) => audit.totalScore.perc);
+      const validValues = values.filter((val) => val > 0);
+      return validValues.length ? countAvarage(validValues) : -1;
     },
     dateRange(state, getters) {
       return `${getters.formatDate(state.dateRange.start)} - ${getters.formatDate(
         state.dateRange.stop,
       )}`;
     },
-
     formatDate() {
       return (date) => {
         const dateObj = new Date(date);

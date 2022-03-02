@@ -10,7 +10,7 @@
       <td>
         <div class="selected-store-and-score">
           <universal-selector :options="options" @change="storeIdChanged($event)" />
-          <h5 class="half-year-avarage">{{ showIfValid(halfYearAvaragePerc) }}</h5>
+          <h5 class="half-year-avarage">{{ showIfValid(avarageScorePerc()) }}</h5>
         </div>
       </td>
       <td v-for="audit in audits" :key="audit._id">{{ showIfValid(audit.totalScore.perc) }}</td>
@@ -46,7 +46,7 @@ export default {
       return this.$store.state.stores.map(({ name: title, id }) => ({ id, title }));
     },
     ...mapState(['audits', 'dateRange']),
-    ...mapGetters(['formatDate', 'halfYearAvaragePerc']),
+    ...mapGetters(['formatDate', 'avarageScorePerc']),
   },
   mounted() {
     this.$store.dispatch('getAudits');
