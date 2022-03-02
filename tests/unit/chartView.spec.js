@@ -50,12 +50,12 @@ describe('Chart.vue', () => {
   });
   it('Date of semester is correct', async () => {
     await nextTick();
-    expect(wrapper.find('.date-range-wrapper').text()).toBe('09/2021 - 02/2022');
+    expect(wrapper.find('.date-range-wrapper').text()).toBe('03/2022 - 08/2022');
   });
   it('Date of semester changes properly', async () => {
     await nextTick();
     wrapper.get('[data-test=get-prev]').trigger('click');
     await nextTick();
-    expect(wrapper.find('.date-range-wrapper').text()).toBe('03/2021 - 08/2021');
+    expect(wrapper.find('.date-range-wrapper').text()).toBe('09/2021 - 02/2022');
   });
 });

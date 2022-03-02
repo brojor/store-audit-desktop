@@ -18,6 +18,7 @@ describe('Home view', () => {
 
   beforeEach(async () => {
     wrapper = mount(HomeView, { store, localVue });
+    await nextTick();
   });
   afterEach(() => {
     wrapper.destroy();
@@ -26,21 +27,6 @@ describe('Home view', () => {
   it('Component should be loaded', async () => {
     expect(wrapper).toBeTruthy();
   });
-  // it('should load audit data from Vuex store', () => {
-  //   expect(wrapper.vm.audits).toHaveLength(6);
-  //   expect(wrapper.vm.audits).toEqual(
-  //     expect.arrayContaining([
-  //       expect.objectContaining({
-  //         _id: expect.any(String),
-  //         auditor: expect.any(String),
-  //         storeId: expect.any(String),
-  //         date: expect.any(String),
-  //         totalScore: expect.any(Object),
-  //         categories: expect.any(Array),
-  //       }),
-  //     ]),
-  //   );
-  // });
   it('should display proper date range', () => {
     expect(wrapper.get('[data-test=dateRange').text()).toEqual('09/2021 - 02/2022');
   });
@@ -66,6 +52,7 @@ describe('Home view', () => {
   });
   // prettier-ignore
   it('Category names should be correct', () => {
+
     const categories = wrapper.findAll('.category-name-and-perc');
     expect((categories).at(0).get('p').text()).toEqual('Před prodejnou, vstup do prodejny');
     expect((categories).at(1).get('p').text()).toEqual('V prodejně');

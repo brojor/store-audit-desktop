@@ -1,0 +1,388 @@
+[
+    {
+        "name": "Před prodejnou, vstup do prodejny",
+        "key": 1,
+        "categoryPoints": [
+            {
+                "name": "Výlohy jsou čisté",
+                "key": "C01P01"
+            },
+            {
+                "name": "Ve výlohách jsou umístěny pouze informace a POS materiály dle instrukcí marketingu nebo vedení maloobchodu (případně vedení OC), na výloze není nic přilepené (mimo MKT samolepek příp. platností probíhajících akcí)",
+                "key": "C01P02"
+            },
+            {
+                "name": "Vstup je průchodný, uklizený, rohož (čistící zóna) je uklizená, nepoškozená, nepokrčená",
+                "key": "C01P03"
+            },
+            {
+                "name": "Ve výlohách na figurínách prezentujeme aktuální sestavy zboží dle instrukcí merchandisingera",
+                "key": "C01P04"
+            },
+            {
+                "name": "Prostor ve výlohách je čistý, přehledný a upravený, příp. stojany jsou kompletně doplněné",
+                "key": "C01P05"
+            },
+            {
+                "name": "Logo nad vstupem je čisté a svítí",
+                "key": "C01P06"
+            }
+        ]
+    },
+    {
+        "name": "V prodejně",
+        "key": 2,
+        "categoryPoints": [
+            {
+                "name": "Pokladny jsou čisté, uklizené, věci nepotřebné k práci jsou schované před zraky zákazníků pod pokladnami, kde je také čisto a věci jsou srovnané, na pokladně není žádné jídlo ani pití, na prodejním pultu nejsou žádné POS materiály, letáčky, magazíny, letáky (pokud není předepsáno centrálou), pokud je pokladna uzavřena, je označena informačním stojánkem, na pokladně jsou umístěny informační nálepky k EET a akceptací platebních karet, odpadkový koš je vynesený",
+                "key": "C02P01"
+            },
+            {
+                "name": "Na pokladně je prezentována ZÓNA a aktuální akce (ve stojánku), stojánky jsou v reprezentativním stavu",
+                "key": "C02P02"
+            },
+            {
+                "name": "Lightboxy a jiné osvětlené regály v provozní době svítí",
+                "key": "C02P03"
+            },
+            {
+                "name": "Stojany, regály, police i poličky na prodejně jsou a čisté, bez prachu a nečistot. Jsou správně rozmístěné dle instrukcí VED.",
+                "key": "C02P04"
+            },
+            {
+                "name": "Prodejní pult a zrcadla jsou čistá, vyleštěná",
+                "key": "C02P05"
+            },
+            {
+                "name": "Kabinky jsou čisté a není v nich žádné zboží ani ramínka, pokud je u kabinky/v kabince umístěn klip rám je v něm aktuální plakát dle instrukcí MKT, stěny jsou čisté, nepolepené",
+                "key": "C02P06"
+            },
+            {
+                "name": "Podlaha je čistá včetně prostoru pod stojany, stírá se mimo otevírací dobu (vyjma aktuálních nečistot)",
+                "key": "C02P07"
+            },
+            {
+                "name": "Rádio a TV jsou zapnuté a nehrají nahlas (TV má aktuální videa)",
+                "key": "C02P08"
+            }
+        ]
+    },
+    {
+        "name": "Sklad, zázemí, kancelář",
+        "key": 3,
+        "categoryPoints": [
+            {
+                "name": "Dveře do skladu/zázemí jsou vždy zavřené (pokud nejsou dveře, tak je zatažen závěs)",
+                "key": "C03P01"
+            },
+            {
+                "name": "Ve skladu i v kanceláři je uklizeno, čisto a pořádek",
+                "key": "C03P02"
+            },
+            {
+                "name": "Zboží je roztříděno sortimentně pokud možno v regálech, není poškozováno špatným skladováním",
+                "key": "C03P03"
+            },
+            {
+                "name": "Pokud je uvedena expirace, uloženo dle FEFO (první expiruje, první ven)",
+                "key": "C03P04"
+            },
+            {
+                "name": "Odpad je likvidován, kartony jsou rozložené a poskládané, v kanceláři/v zázemí/ve skladu nejsou staré nepotřebné věci, odpadkové koše jsou vynesené",
+                "key": "C03P05"
+            },
+            {
+                "name": "Prošlé zboží, zboží na vratku, II. jakost, zboží pro e-shop a zboží na reklamaci je na odděleném místě, a připraveno k odvozu (sortimentně roztříděno)",
+                "key": "C03P06"
+            },
+            {
+                "name": "Zboží aktuálně rezervované zákazníkem přes e-shop na prodejně je připravené, řádně zabalené a označené (jméno, cena, do kdy atd.), na odděleném místě (maximálně 48 hodin nebo dle dohody se zákazníkem)",
+                "key": "C03P07"
+            },
+            {
+                "name": "Rezervace zákazníků (telefon, e-mail, osobně) jsou řádně označené jménem, do kdy atd., nejsou uložené žádné neaktuální",
+                "key": "C03P08"
+            },
+            {
+                "name": "Nástěnka a aktuální instrukce personálu jsou jasné a přehledné",
+                "key": "C03P09"
+            },
+            {
+                "name": "Zázemí (šatny, WC, kuchyňka, chodbičky), sklad i kancelář jsou čisté a uklizené - žádné rozjedené jídlo bez \"strávníka\", umyté nádobí, mikrovlnná trouba i lednice jsou čisté i zevnitř (bez nepoživatelných potravin), na stolech je čisto, bez zboží, lékárnička je aktuálně zásobená.",
+                "key": "C03P10"
+            }
+        ]
+    },
+    {
+        "name": "Layout, POS a MKT označení",
+        "key": 4,
+        "categoryPoints": [
+            {
+                "name": "Je přesně dodržen layout prodejny",
+                "key": "C04P01"
+            },
+            {
+                "name": "Na prodejně nejsou žádné nepovolené stojany atd.",
+                "key": "C04P02"
+            },
+            {
+                "name": "Na prodejně není žádná komunikace prodejny směrem k zákazníkovi kromě komunikace schválené MKT nebo VED - žádné ručně psané ani tištěné nápisy, žádné nepovolené POS materiály externích dodavatelů",
+                "key": "C04P03"
+            },
+            {
+                "name": "Ve vnitřních plakátovacích modulech a light-boxech jsou aktuální materiály apod.",
+                "key": "C04P04"
+            },
+            {
+                "name": "Jsou používány jen aktuální materiály schválené MKT",
+                "key": "C04P05"
+            }
+        ]
+    },
+    {
+        "name": "Prezentace",
+        "key": 5,
+        "categoryPoints": [
+            {
+                "name": "Zboží je vyrovnané (pokud možno přední stranou k zákazníkovi), čisté, zabezpečené, vyndané z obalu, upravené dle standardů (tzn. zapnuté zipy, tkaničky zavázané/schované, porovnané kapuce atd.)",
+                "key": "C05P01"
+            },
+            {
+                "name": "Je dodrženo vystavení akce",
+                "key": "C05P02"
+            },
+            {
+                "name": "Zboží na prodejně je rozmístěno dle aktuální sezóny, příp. dle MKT",
+                "key": "C05P03"
+            },
+            {
+                "name": "V boxech/koších je prezentován max. 1 druh zboží (čepice, rukavice apod.)",
+                "key": "C05P04"
+            },
+            {
+                "name": "Prezentace zboží/výprodejů je tématická, sortimentně roztříděná",
+                "key": "C05P05"
+            },
+            {
+                "name": "Při prezentaci je dodržené rozdělení pánské, dámské a dětské kolekce se seskupením podobných stylů k sobě (příp. dodržení koncepce SiSů)",
+                "key": "C05P06"
+            },
+            {
+                "name": "Pokud jsou na prodejně využívána ramínka s brandingem, jsou použity jen na danou značku bez jiných typů",
+                "key": "C05P07"
+            }
+        ]
+    },
+    {
+        "name": "Provoz",
+        "key": 6,
+        "categoryPoints": [
+            {
+                "name": "Na prodejně jsou založené jen aktuální směrnice",
+                "key": "C06P01"
+            },
+            {
+                "name": "Aktuální směrnice jsou podepsané všemi zaměstnanci (vybranné směrnice i brigádníky)",
+                "key": "C06P02"
+            },
+            {
+                "name": "Směrnice zápůjčky - tabulka zápůjček je aktuální a doplňovaná",
+                "key": "C06P03"
+            },
+            {
+                "name": "Prodejna má zapsané průchody, denní tržby a počty účtenek do tabulky na S:/ (max. 7 dnů starý zápis v den kontroly)",
+                "key": "C06P04"
+            },
+            {
+                "name": "Všechny světla na prodejně i ve skladu svítí - vyměněné všechny prasklé žárovky/zářivky",
+                "key": "C06P05"
+            },
+            {
+                "name": "U nefunkčních světel došlo k nahlášení závady (kdy a komu)",
+                "key": "C06P06"
+            },
+            {
+                "name": "Na pokladnách nejsou nepřiměřeně velké zůstatky a jsou průběžně odváděny do trezoru",
+                "key": "C06P07"
+            },
+            {
+                "name": "Každodenní odvody hotovosti do banky",
+                "key": "C06P08"
+            },
+            {
+                "name": "Na prodejně jsou na uzamčeném místě uložené kopie smluv a dohod jen aktuálních zaměstnanců",
+                "key": "C06P09"
+            },
+            {
+                "name": "Na prodejně jsou evidované všechny klíče (příp. i čipy) od prodejny a od trezoru ve formě předávacích protokolů",
+                "key": "C06P10"
+            }
+        ]
+    },
+    {
+        "name": "Stav zásob, \"díry\"",
+        "key": 7,
+        "categoryPoints": [
+            {
+                "name": "Prodejna (případně pověřená osoba) provádí denně kontrolu a doplnění odprodaných artiklů",
+                "key": "C07P01"
+            },
+            {
+                "name": "Pokud na prodejně nějaké zboží chybí, zná personál důvod",
+                "key": "C07P02"
+            },
+            {
+                "name": "Objednávky chybějícího zboží provádí pověřená osoba průběžně",
+                "key": "C07P03"
+            },
+            {
+                "name": "Průběžná kontrola doplňování (automatu) dle odprodaného zboží",
+                "key": "C07P04"
+            },
+            {
+                "name": "Prodejna pravidelně provádí kontrolu stavu zásob i na ostatních artiklech, ne jen na artiklech chybějících na prodejně",
+                "key": "C07P05"
+            },
+            {
+                "name": "Pokud u zboží nesouhlasí účetní stav s fyzickým, vedoucí (příp. jiná kompetentní osoba) má provedenou kontrolu a řeší okamžitě bez zbytečného odkladu – důležité vzhledem k aktuální skladové zásobě vůči e-shopu",
+                "key": "C07P06"
+            }
+        ]
+    },
+    {
+        "name": "Doplněnost",
+        "key": 8,
+        "categoryPoints": [
+            {
+                "name": "Zboží je doplňováno s ohledem na zákazníka - na prodejní plochu nesmí být zavezena paleta, na prodejně neleží žádné krabice, doplňovací vozík či štendr není ponechán prázdný ani bez dozoru na prodejně",
+                "key": "C08P01"
+            },
+            {
+                "name": "Na prodejně je dostatek zboží, plné regály, plné stojany = zboží není ve skladu",
+                "key": "C08P02"
+            },
+            {
+                "name": "Akční zboží je v dostatečném množství na prodejně = zboží není ve skladu",
+                "key": "C08P03"
+            },
+            {
+                "name": "Prodejna má zajištěné dostatečné množství akčního zboží, v případě marketingové podpory dodavatele je průběžně kontrolován a redukován stav zásob",
+                "key": "C08P04"
+            },
+            {
+                "name": "Na prodejní ploše nejsou žádné prázdné háčky, \"vodopády\", tyče atd.",
+                "key": "C08P05"
+            }
+        ]
+    },
+    {
+        "name": "Ceny, označení zboží",
+        "key": 9,
+        "categoryPoints": [
+            {
+                "name": "Veškeré zboží je označeno cenou a ceny jsou správné",
+                "key": "C09P01"
+            },
+            {
+                "name": "Cenovky jsou tištěné z portálu SAP (žádné rukou psané či škrtané, tištěné etiketovacími kleštěmi apod.), je dodržen správný druh štítků",
+                "key": "C09P02"
+            },
+            {
+                "name": "Zboží je označeno pouze jednou cenovkou",
+                "key": "C09P03"
+            },
+            {
+                "name": "Výprodejové zboží nebo nová kolekce je označena aktuální visačkou na ramínku",
+                "key": "C09P04"
+            },
+            {
+                "name": "Ve výloze a v čelních pozicích na prodejně jsou schované produktové visačky se správnou cenou",
+                "key": "C09P05"
+            },
+            {
+                "name": "Přecenění zboží je provedeno do 24 hodin od přijetí pokynu k přecenění (email o přecenění) bez zbytečného odkladu",
+                "key": "C09P06"
+            },
+            {
+                "name": "V průběhu každé akce prezentované ve výlohách je aktuální informace o době trvání umístěna alespoň v 1 výloze",
+                "key": "C09P07"
+            },
+            {
+                "name": "Na zboží bez českých popisků materiálového složení je štítek s překladem aktuálně používaných materiálů (musí být pevně spojeno se zbožím)",
+                "key": "C09P08"
+            },
+            {
+                "name": "Zboží je opatřeno českými návody jak používat atd. (týká se zboží, které ze své podstaty návod vyžadují)",
+                "key": "C09P09"
+            }
+        ]
+    },
+    {
+        "name": "Expirace",
+        "key": 10,
+        "categoryPoints": [
+            {
+                "name": "Na prodejně není proexpirované zboží",
+                "key": "C10P01"
+            },
+            {
+                "name": "Pokud je uvedena expirace, zboží je doplňováno a uloženo dle FEFO (první expiruje, první ven)",
+                "key": "C10P02"
+            },
+            {
+                "name": "Personál prodejny pravidelně kontroluje expiraci a vede evidenci expirace",
+                "key": "C10P03"
+            }
+        ]
+    },
+    {
+        "name": "Personál",
+        "key": 11,
+        "categoryPoints": [
+            {
+                "name": "Je oblečen a upraven dle pravidel",
+                "key": "C11P01"
+            },
+            {
+                "name": "Oslovuje zákazníky, aktivně prodává, dodržuje standard obsluhy zákazníků (pravidla chování k zákazníkovi)",
+                "key": "C11P02"
+            },
+            {
+                "name": "Umí založit ZÓNA kartu, zná všechny výhody klubu",
+                "key": "C11P03"
+            },
+            {
+                "name": "Aktivně nabízí doplňkový sortiment",
+                "key": "C11P04"
+            },
+            {
+                "name": "Aktivně nabízí akční zboží",
+                "key": "C11P05"
+            },
+            {
+                "name": "Zvládá řešit vzniklé situace (např. vyřízení reklamace - správnou komunikaci se zákazníkem, sepsání protokolu, výměnu zboží, apod.)",
+                "key": "C11P06"
+            },
+            {
+                "name": "Plní všechny činnosti dle popisu pracovních pozic a pracovního řádu",
+                "key": "C11P07"
+            },
+            {
+                "name": "Vykonává všechny činnosti z náplně práce - kromě výše zmíněného prodeje i doplňování zboží, kontrolu cen, péči o zboží a prodejnu, předává zpětnou vazbu nadřízenému, plní zadané úkoly a pokyny",
+                "key": "C11P08"
+            },
+            {
+                "name": "Nabízí ZÓNA kartu, aktuální akční nabídky, prodej poukázek, přijímá platby poukázkami, ptá se zákazníka zda je potřeba taška k nákupu - pokud ano, vkládá zakoupené zboží s účtenkou zákazníkovi do tašky, loučí se a zve na další návštěvu, nezapomíná na oční kontakt",
+                "key": "C11P09"
+            },
+            {
+                "name": "Dodržuje bezpečnostní opatření na pokladnách, na vyžádání dokáže provést kontrolu pokladní hotovosti a stavu trezoru",
+                "key": "C11P10"
+            },
+            {
+                "name": "Ke každému prodeji zboží dává automaticky informace o údržbě zboží (v podobě kartičky \"Symboly pro ošetřování výrobků\")",
+                "key": "C11P11"
+            }
+        ]
+    }
+]
