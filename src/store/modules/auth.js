@@ -19,7 +19,11 @@ const mutations = {
   SET_TOKEN(state, token) {
     state.token = token;
     localStorage.setItem('token', token);
-    Api.defaults.headers.common.Authorization = `Bearer ${token}`;
+    if (token.length) {
+      Api.defaults.headers.common.Authorization = `Bearer ${token}`;
+    } else {
+      delete Api.defaults.headers.common.Authorization;
+    }
   },
   SET_USER_FULLNAME(state, fullName) {
     state.userFullName = fullName;
