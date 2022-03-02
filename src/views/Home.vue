@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
 import AuditCategory from '../components/table/AuditCategory.vue';
 import TableHeader from '../components/table/TableHeader.vue';
 import axiosInstance from '../services/Api';
@@ -103,6 +102,7 @@ thead {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1rem;
   letter-spacing: 1px;
+  line-height: 19px;
 }
 
 .category-name-and-perc {
