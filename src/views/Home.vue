@@ -28,11 +28,6 @@ export default {
       categories: [],
     };
   },
-  computed: {
-    formatDate() {
-      return this.$store.getters.formatDate;
-    },
-  },
   created() {
     axiosInstance
       .get('/category-names')

@@ -14,38 +14,20 @@ import Spinner from './Spinner.vue';
 import ArrowLeft from './icons/ArrowLeft.vue';
 import ArrowRight from './icons/ArrowRight.vue';
 
+const padWithZero = (num) => num.toString().padStart(2, '0');
+
 export default {
   components: { Spinner, ArrowLeft, ArrowRight },
   name: 'DateSelector',
   props: ['dateRange'],
   methods: {
-    addMonths(date, months) {
-      const d = date.getUTCDate();
-      date.setUTCMonth(date.getUTCMonth() + +months);
-      if (date.getUTCDate() !== d) {
-        date.setUTCDate(0);
-      }
-      return new Date(date);
-    },
     next() {
-      const start = this.addMonths(this.dateRange.start, 6);
-      const stop = this.addMonths(this.dateRange.stop, 6);
-
-      this.$emit('change', { start, stop });
+      const newInterval = this.dateRange.mapEndpoints((date) => date.plus({ quarters: 2 }));
+      this.$emit('change', newInterval);
     },
     prev() {
-      const start = this.addMonths(this.dateRange.start, -6);
-      const stop = this.addMonths(this.dateRange.stop, -6);
-
-      this.$emit('change', { start, stop });
-    },
-    formatDate(date) {
-      const dateObj = new Date(date);
-      const [year, month] = dateObj
-        .toISOString()
-        .slice(0, 10)
-        .split('-');
-      return `${month}/${year}`;
+      const newInterval = this.dateRange.mapEndpoints((date) => date.minus({ quarters: 2 }));
+      this.$emit('change', newInterval);
     },
   },
   computed: {
@@ -53,7 +35,10 @@ export default {
       return this.$store.state.loading;
     },
     formatedString() {
-      return `${this.formatDate(this.dateRange.start)} - ${this.formatDate(this.dateRange.stop)}`;
+      const { start, end } = this.dateRange;
+      const firstPart = `${padWithZero(start.month)}/${start.year}`;
+      const seccondPart = `${padWithZero(end.month - 1)}/${end.year}`;
+      return `${firstPart} - ${seccondPart}`;
     },
   },
 };

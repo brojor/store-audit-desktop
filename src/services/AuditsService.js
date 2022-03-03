@@ -3,7 +3,10 @@ import axiosInstance from './Api';
 const qs = require('qs');
 
 export function getAudits(dateRange, storeId) {
-  const queryString = qs.stringify(dateRange);
+  const queryString = qs.stringify({
+    start: dateRange.start.toJSDate(),
+    end: dateRange.end.toJSDate(),
+  });
   return axiosInstance.get(`/audits/${storeId}?${queryString}`);
 }
 export function getStores() {

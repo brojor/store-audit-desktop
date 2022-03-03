@@ -15,6 +15,7 @@
     "chart.js": "^3.6.1",
     "core-js": "^3.6.5",
     "flush-promises": "^1.0.2",
+    "luxon": "^2.3.1",
     "qs": "^6.5.2",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",

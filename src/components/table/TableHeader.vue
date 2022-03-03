@@ -22,6 +22,7 @@
 import { mapGetters, mapState } from 'vuex';
 import DateSelector from '../DateSelector.vue';
 import UniversalSelector from '../UniversalSelector.vue';
+import { formatDate } from '../../utils/utils';
 
 export default {
   components: {
@@ -37,6 +38,7 @@ export default {
       this.$store.commit('SET_DATE_RANGE', dateRange);
       this.$store.dispatch('getAudits');
     },
+    formatDate: (date) => formatDate(date),
   },
   computed: {
     showIfValid() {
@@ -46,7 +48,7 @@ export default {
       return this.$store.state.stores.map(({ name: title, id }) => ({ id, title }));
     },
     ...mapState(['audits', 'dateRange']),
-    ...mapGetters(['formatDate', 'avarageScorePerc']),
+    ...mapGetters(['avarageScorePerc']),
   },
   mounted() {
     this.$store.dispatch('getAudits');

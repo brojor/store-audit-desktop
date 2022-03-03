@@ -1,20 +1,16 @@
-const isFirstSemester = (date) => {
-  const month = date.getUTCMonth();
-  return month <= 7 && month >= 2;
-};
+const { DateTime, Interval, Duration } = require('luxon');
+
+const isFirstSemester = (month) => month >= 3 && month < 9;
 
 exports.getDateRange = () => {
-  const now = new Date();
-  const currentMonth = now.getUTCMonth();
+  const { year, month } = DateTime.local({ zone: 'Europe/Belgrade' });
+  const startMonth = isFirstSemester(month) ? 3 : 9;
+  const startYear = month < 3 ? year - 1 : year;
 
-  const startMonth = isFirstSemester(now) ? 2 : 8;
-  const endMonth = isFirstSemester(now) ? 8 : 2;
+  const dateInterval = Interval.after(
+    DateTime.local(startYear, startMonth, { zone: 'Europe/Belgrade' }),
+    Duration.fromObject({ quarters: 2 }),
+  );
 
-  const startYear = currentMonth < 2 ? now.getFullYear() - 1 : now.getFullYear();
-  const endYear = currentMonth < 8 ? now.getFullYear() : now.getFullYear() + 1;
-
-  return {
-    start: new Date(Date.UTC(startYear, startMonth, 1)),
-    stop: new Date(Date.UTC(endYear, endMonth, 1) - 1),
-  };
+  return dateInterval;
 };

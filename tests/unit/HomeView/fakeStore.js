@@ -3,13 +3,12 @@ import { createLocalVue } from '@vue/test-utils';
 import audits from './audits.json';
 import stores from './stores.json';
 import { getAudits } from '../../../src/services/AuditsService';
+import { countAvarage, formatDate } from '../../../src/utils/utils';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
 export { localVue };
-
-const countAvarage = (values) => values.reduce((a, b) => a + b, 0) / values.length;
 
 export default new Vuex.Store({
   state: {
@@ -46,17 +45,9 @@ export default new Vuex.Store({
       const validValues = values.filter((val) => val > 0);
       return validValues.length ? countAvarage(validValues) : -1;
     },
-    dateRange(state, getters) {
-      return `${getters.formatDate(state.dateRange.start)} - ${getters.formatDate(
-        state.dateRange.stop,
-      )}`;
-    },
-    formatDate() {
-      return (date) => {
-        const dateObj = new Date(date);
-        const [, month, year] = dateObj.toLocaleDateString().split('. ');
-        return `${month.padStart(2, '0')}/${year}`;
-      };
+    dateRange(state) {
+      const { start, stop } = state.dateRange;
+      return `${formatDate(start)} - ${formatDate(stop)}`;
     },
   },
 });

@@ -4,12 +4,11 @@ import auth from './modules/auth';
 
 import { getStores, getAudits } from '../services/AuditsService';
 import { getDateRange } from '../utils/DateRange';
+import { countAvarage, formatDate } from '../utils/utils';
 
 Vue.use(Vuex);
 
 const storesInStorage = localStorage.getItem('stores');
-
-const countAvarage = (values) => values.reduce((a, b) => a + b, 0) / values.length;
 
 export default new Vuex.Store({
   state: {
@@ -65,17 +64,9 @@ export default new Vuex.Store({
       const validValues = values.filter((val) => val > 0);
       return validValues.length ? countAvarage(validValues) : -1;
     },
-    dateRange(state, getters) {
-      return `${getters.formatDate(state.dateRange.start)} - ${getters.formatDate(
-        state.dateRange.stop,
-      )}`;
-    },
-    formatDate() {
-      return (date) => {
-        const dateObj = new Date(date);
-        const [, month, year] = dateObj.toLocaleDateString().split('. ');
-        return `${month.padStart(2, '0')}/${year}`;
-      };
+    dateRange(state) {
+      const { start, stop } = state.dateRange;
+      return `${formatDate(start)} - ${formatDate(stop)}`;
     },
   },
   modules: {
