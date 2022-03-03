@@ -10,11 +10,10 @@ export function deficiencies(config) {
     storesFilter: { id, type },
   } = config;
   const path = type === 'group' ? `/chart/aggregated/${id}` : `/chart/individual/${id}`;
-  const { start: after, stop: before } = dateRange;
 
   const queryString = qs.stringify({
-    after,
-    before,
+    after: dateRange.start.toJSDate(),
+    before: dateRange.end.toJSDate(),
     detailLevel,
     sortBy,
   });
