@@ -7,19 +7,21 @@ import Chart from '../views/Chart.vue';
 
 Vue.use(VueRouter);
 
+const onlyAuthenticated = (to, from, next) => {
+  const { isAuthenticated } = store.getters;
+  if (!isAuthenticated) {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
+};
+
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
-    beforeEnter: (to, from, next) => {
-      const { isAuthenticated } = store.getters;
-      if (!isAuthenticated) {
-        next({ name: 'Login' });
-      } else {
-        next();
-      }
-    },
+    beforeEnter: onlyAuthenticated,
   },
   {
     path: '/login',
@@ -30,6 +32,7 @@ const routes = [
     path: '/chart',
     name: 'Chart',
     component: Chart,
+    beforeEnter: onlyAuthenticated,
   },
 ];
 
