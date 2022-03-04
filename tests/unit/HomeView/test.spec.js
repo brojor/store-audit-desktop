@@ -28,7 +28,7 @@ describe('Home view', () => {
     expect(wrapper).toBeTruthy();
   });
   it('should display proper date range', () => {
-    expect(wrapper.get('[data-test=dateRange').text()).toEqual('09/2021 - 02/2022');
+    expect(wrapper.get('[data-test=dateRange').text()).toEqual('03/2022 - 08/2022');
   });
   it('The first row of the table should show the correct data', () => {
     const months = wrapper.findAll('thead > tr:nth-child(1) > td:not(:first-child)');
@@ -116,8 +116,7 @@ describe('Home view', () => {
     prevBtn.trigger('click');
     await nextTick();
 
-    expect(wrapper.get('[data-test=dateRange').text()).toEqual('03/2021 - 08/2021');
+    expect(wrapper.get('[data-test=dateRange').text()).toEqual('09/2021 - 02/2022');
     expect(getAudit).toHaveBeenCalledTimes(1);
-    expect(getAudit).toHaveBeenCalledWith({ start: new Date('2021-03-01T00:00:00.000Z'), stop: new Date('2021-08-28T23:59:59.000Z') }, 'R4221');
   });
 });
