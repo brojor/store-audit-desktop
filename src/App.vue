@@ -46,6 +46,10 @@ html {
   text-align: center;
 }
 
+.btn {
+   border: none;
+   border-radius: 4px;
+}
 .router-link-active {
   color: inherit;
 }

@@ -1,31 +1,35 @@
 <template>
   <div class="backdrop">
-    <div class="modal-window">
+    <form @submit.prevent="submit">
       <div class="logo">
         <img src="@/assets/h-logo-w.png" alt="" class="logo" />
       </div>
       <label for="username">
         <input
-          class="rectangle"
           type="text"
           name="username"
           v-model="username"
           placeholder="Uživatelské jméno"
+          @focus="removeErrorMessage"
+          autofocus
+          autocomplete="off"
         />
       </label>
       <label for="password">
         <input
-          class="rectangle"
           type="password"
           name="password"
           v-model="password"
           placeholder="Heslo"
           @keyup.enter="submit"
+          @focus="removeErrorMessage"
         />
       </label>
-      <p class="error-message">{{ message }}</p>
-      <button type="submit" @click="submit" class="rectangle submit">Přihlásit se</button>
-    </div>
+      <div class="error-message" v-if="errorMessage">
+        <p :class="{ shake: animation }">{{ errorMessage }}</p>
+      </div>
+      <button type="submit" class="btn submit">Přihlásit se</button>
+    </form>
   </div>
 </template>
 
@@ -39,10 +43,30 @@ export default {
     return {
       username: '',
       password: '',
-      message: null,
+      errorMessage: '',
+      animation: false,
     };
   },
+  computed: {
+    credentials() {
+      return this.username + this.password;
+    },
+  },
+  watch: {
+    credentials() {
+      this.removeErrorMessage();
+    },
+  },
   methods: {
+    runAnimation() {
+      this.animation = true;
+      setTimeout(() => {
+        this.animation = false;
+      }, 750);
+    },
+    removeErrorMessage() {
+      this.errorMessage = '';
+    },
     submit() {
       this.$store
         .dispatch('login', {
@@ -54,7 +78,8 @@ export default {
         })
         .catch((err) => {
           const { message } = err.response.data;
-          this.message = message;
+          this.errorMessage = message;
+          this.runAnimation();
         });
     },
   },
@@ -76,7 +101,8 @@ export default {
   overflow: hidden;
   color: white;
 }
-.modal-window {
+
+form {
   background-color: #001414;
   border-radius: 1rem;
   max-width: 700px;
@@ -89,7 +115,8 @@ export default {
   width: 80%;
   margin: 2rem auto;
 }
-.rectangle {
+
+input {
   height: 6rem;
   border: none;
   /* width: 85%; */
@@ -123,17 +150,15 @@ input {
   padding-left: 5rem;
   color: white;
   font-size: 1.6rem;
-}
-
-input {
   box-shadow: none;
   background-color: #262d2d;
 }
-button.submit {
+.submit {
+  background-color: #e60001;
   margin: 5rem;
   padding: 0;
+  height: 6rem;
   overflow: visible;
-  background-color: #e60001;
   color: white;
   font-size: 2rem;
   font-family: 'Avenir Next', 'Avenir', sans-serif;
@@ -147,5 +172,32 @@ button.submit {
   font-size: 1.4em;
   color: #e60001;
   margin-top: 1rem;
+}
+.shake {
+  animation: shake 0.75s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 </style>
